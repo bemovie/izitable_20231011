@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop">
+
+	<resultMap type="Shop" id="ShopMap">
+		<id column="no" property="shopNo"/>
+		<result column="email" property="shopEmail"/>
+		<result column="pwd" property="shopPwd"/>
+		<result column="comp_name" property="compName"/>
+		<result column="comp_num" property="compNum"/>
+		<result column="comp_ceo" property="compCeo"/>
+		<result column="comp_call" property="compCall"/>
+		<result column="comp_addr1" property="compAddr1"/>				
+		<result column="comp_addr2" property="compAddr2"/>				
+		<result column="comp_intro" property="compIntro"/>				
+		<result column="shop_category_no" property="categoryNo"/>				
+		<result column="latitude" property="latitude"/>				
+		<result column="longitude" property="longitude"/>
+	</resultMap>
+	
+	<select id="list_admin" resultMap="ShopMap">
+		SELECT * FROM tbl_shop
+	</select>
+	
+	<select id="list" resultMap="ShopMap">
+		SELECT * FROM tbl_shop
+		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
+			AND comp_addr1 LIKE CONCAT('%', #{gu}, '%')
+			AND comp_addr1 LIKE CONCAT('%', #{dong}, '%')
+			AND shop_category_no = #{categoryNo}
+	</select>
+
+	<select id="item" resultMap="ShopMap">
+ 		SELECT * FROM tbl_shop
+ 		WHERE no = #{shopNo}
+ 	</select>
+ 	
+ 	<select id="login" resultMap="ShopMap">
+		SELECT * FROM tbl_shop
+		WHERE email = #{shopEmail} AND pwd = #{shopPwd}
+	</select>
+	
+	<update id="update">
+		UPDATE tbl_shop
+		SET email = #{shopEmail}, comp_name = #{compName}, comp_num = #{compNum}, comp_ceo = #{compCeo}, comp_call = #{compCall}, comp_addr1 = #{compAddr1}, comp_addr2 = #{compAddr2}, comp_intro = #{compIntro} 
+		WHERE no = #{shopNo}
+	</update>
+	
+</mapper>

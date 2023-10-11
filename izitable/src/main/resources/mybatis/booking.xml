@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking">
+
+	<resultMap type="Booking" id="BookingMap">
+		<id column="no" property="bookingNo"/>
+		<result column="user_no" property="userNo"/>
+		<result column="shop_no" property="shopNo"/>
+		<result column="date" property="bookingDate"/>
+		<result column="time" property="bookingTime"/>
+		<result column="mem_num" property="bookingMemNum"/>
+		
+		<result column="email" property="userEmail"/>
+		<result column="phone" property="userPhone"/>
+	</resultMap> 
+	
+	<insert id="add">
+		INSERT INTO tbl_booking_user (user_no, shop_no, date, time, mem_num)
+		VALUES ( #{userNo}, #{shopNo}, #{bookingDate}, #{bookingTime}, #{bookingMemNum} )
+	</insert>
+	
+	<select id="userBookingList" resultMap="BookingMap">
+		SELECT tbl_booking_user.*, tbl_shop.* FROM tbl_booking_user JOIN tbl_shop ON tbl_booking_user.shop_no = tbl_shop.no
+		WHERE tbl_booking_user.user_no = #{userNo}
+	</select>
+	
+	<select id="userBookingDelete">
+		DELETE FROM tbl_booking_user
+		WHERE no = #{bookingNo}
+	</select>
+	
+	<select id="shopBookingList" resultMap="BookingMap">
+		SELECT tbl_booking_user.*, tbl_user.* 
+		FROM tbl_booking_user JOIN tbl_user ON tbl_booking_user.user_no = tbl_user.no
+		WHERE tbl_booking_user.shop_no = #{shopNo}
+	</select>
+	
+	<select id="shopBookingUpdate">
+		UPDATE tbl_booking_user
+		SET date = #{bookingDate}, time = #{bookingTime}, mem_num = #{bookingMemNum}
+		WHERE no = #{bookingNo}
+	</select>
+	
+	<select id="shopBookingDelete">
+		DELETE FROM tbl_booking_user
+		WHERE no = #{bookingNo}
+	</select>
+	
+</mapper>
