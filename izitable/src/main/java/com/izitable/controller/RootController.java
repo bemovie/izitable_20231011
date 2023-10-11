@@ -1,17 +1,24 @@
 package com.izitable.controller;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.izitable.model.Shop;
 import com.izitable.model.User;
 import com.izitable.service.ShopService;
 import com.izitable.service.UserService;
+
+import net.sf.json.JSONObject;
 
 @Controller
 public class RootController {
@@ -80,23 +87,67 @@ public class RootController {
 		return "redirect:/";
 	}
 	
-	//회원가입 유형
-	@GetMapping("/joinType")
-	String joinType() {
-		return "joinType";
+	//약관 동의
+	@GetMapping("/siteUseAgree")
+	String siteUseAgree() {
+		return "join/SiteUseAgree";
 	}
 	
-	//회원가입
-	@GetMapping("/join")
-	String join() {
-		return "join";
+	//회원가입 유형
+	@PostMapping("/joinType")
+	String joinType() {
+		return "join/joinType";
+	}
+	
+	//회원가입 (일반회원)
+	@GetMapping("/join/user")
+	String joinUser() {
+		return "join/joinUser";
+	}
+	
+	//회원가입 (매장)
+	@GetMapping("/join/shop")
+	String joinShop() {
+		return "join/joinShop";
 	}
 	
 	@PostMapping("/join")
-	String join(User item) {
-		userService.add(item);
+	String join(User user, Shop shop) {
+		if (user.getUserEmail() != null) userService.add(user);
+		else {
+			shop.setCompAddr1( shop.getCompAddr1() + " " + shop.getDetailAddr() ); 
+			shop.setCompAddr2( shop.getCompAddr2() + " " + shop.getDetailAddr() ); 
+			shopService.add(shop);
+		}
 		
-		return "redirect:.";
+		return "join/joinComplete";
+	}
+
+	//아이디 중복체크
+	@PostMapping("/join/duplicateCheck")
+	public void duplicateCheck(User user, Shop shop, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		String successYn = "Y";
+		String message = "성공";
+		
+		JSONObject jo = new JSONObject();
+		response.setContentType("application/json; charset=utf-8"); 
+		
+		int duplicateCnt = 0;
+		if (user.getUserEmail() !=null) duplicateCnt = userService.duplicateCheck(user);
+		else duplicateCnt = shopService.duplicateCheck(shop);
+		
+		if(duplicateCnt > 0) {
+			successYn = "N";
+			message = "이미 사용중인 이메일입니다.";
+		}	
+		
+		jo.put("successYn", successYn);
+		jo.put("message", message);
+		
+		PrintWriter printwriter = response.getWriter();
+		printwriter.println(jo.toString());
+		printwriter.flush();
+		printwriter.close();
 	}
 	
 	/*

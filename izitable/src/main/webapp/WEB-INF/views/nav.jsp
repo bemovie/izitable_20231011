@@ -8,7 +8,7 @@
 	margin:0 auto;
 	width: 100%;
 	height: 100px;
-	/*border: 2px solid black;*/
+	border: 2px solid black;
 }
 
 #logo {
@@ -63,7 +63,7 @@
 <c:if test="${sessionScope.user == null and sessionScope.shop == null}"> <!-- session에 있는 정보 꺼내옴 -->
 	<div id="login">
 		<button class="btn btn-sm"><a href="/login">로그인</a></button>
-		<button class="btn btn-sm"><a href="/joinType">회원가입</a></button>		
+		<button class="btn btn-sm"><a href="/siteUseAgree">회원가입</a></button>		
 	</div>
 </c:if>
 <c:if test="${sessionScope.user != null or sessionScope.shop != null}">
@@ -86,13 +86,3 @@
 </c:if>
 
 </div>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-
-
-

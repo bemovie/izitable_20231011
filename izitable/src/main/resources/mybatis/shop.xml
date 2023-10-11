@@ -41,10 +41,22 @@
 		WHERE email = #{shopEmail} AND pwd = #{shopPwd}
 	</select>
 	
+	<insert id="add">
+		INSERT INTO tbl_shop (email, comp_name, comp_num, comp_ceo, comp_call, comp_addr1, comp_addr2, latitude, longitude, shop_category_no, pwd )
+		VALUES ( #{shopEmail}, #{compName}, #{compNum}, #{compCeo}, #{compCall}, #{compAddr1}, #{compAddr2}, #{latitude}, #{longitude}, #{categoryNo}, #{shopPwd} )
+	</insert>
+	
 	<update id="update">
 		UPDATE tbl_shop
 		SET email = #{shopEmail}, comp_name = #{compName}, comp_num = #{compNum}, comp_ceo = #{compCeo}, comp_call = #{compCall}, comp_addr1 = #{compAddr1}, comp_addr2 = #{compAddr2}, comp_intro = #{compIntro} 
 		WHERE no = #{shopNo}
 	</update>
+	
+	<select id="duplicateCheck" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(*) CNT 
+		FROM tbl_shop
+		WHERE email = #{shopEmail}
+	</select>
 	
 </mapper>

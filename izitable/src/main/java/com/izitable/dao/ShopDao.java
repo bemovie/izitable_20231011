@@ -17,4 +17,8 @@ public interface ShopDao {
 
 	List<Shop> list_admin(Pager pager);
 
+	Object add(Shop shop);
+
+	int duplicateCheck(Shop shop);
+
 }

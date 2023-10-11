@@ -44,5 +44,12 @@
 		SELECT * FROM tbl_user
 		WHERE email = #{userEmail} AND pwd = #{userPwd}
 	</select>
+	
+	<select id="duplicateCheck" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(*) CNT 
+		FROM tbl_user
+		WHERE email = #{userEmail}
+	</select>
 
 </mapper>

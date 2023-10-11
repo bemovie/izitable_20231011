@@ -50,5 +50,15 @@ public class ShopServiceImpl implements ShopService {
 	public List<Shop> list_admin(Pager pager) {
 		return dao.list_admin(pager);
 	}
+
+	@Override
+	public void add(Shop shop) {
+		dao.add(shop);
+	}
+
+	@Override
+	public int duplicateCheck(Shop shop) {
+		return dao.duplicateCheck(shop);
+	}
 	
 }

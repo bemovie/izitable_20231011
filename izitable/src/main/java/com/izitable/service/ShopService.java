@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
+import com.izitable.model.User;
 
 public interface ShopService {
 
@@ -16,5 +17,9 @@ public interface ShopService {
 	void update(Shop item);
 
 	List<Shop> list_admin(Pager pager);
-	
+
+	void add(Shop shop);
+
+	int duplicateCheck(Shop shop);
+
 }

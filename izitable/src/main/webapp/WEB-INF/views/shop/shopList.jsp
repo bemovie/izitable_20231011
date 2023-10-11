@@ -44,10 +44,11 @@
 <select id="gu" name="gu">
 	<option value="동구">동구</option>
 	<option value="서구">서구</option>
+	<option value="대덕구">대덕구</option>
 </select>
 <select id="dong" name="dong">
-	<option value="가양1동">가양1동</option>
-	<option value="가양2동">가양2동</option>
+	<option value="가양동">가양동</option>
+	<option value="비래동">비래동</option>
 </select>
 <select id="categoryNo" name="categoryNo">
 	<option value="1">한식</option>
@@ -133,8 +134,12 @@ for (var i = 0; i < positions.length; i ++) {
     	document.getElementById('sn').value = `${item.shopNo}`;
 
     	alert("매장번호" + ${item.shopNo});
-    });
-    
+    });   
+}
+
+//검색 결과가 있을 때, 첫 번째 마커를 기준으로 지도 중심을 설정합니다
+if (positions.length > 0) {
+    map.setCenter(positions[0].latlng);
 }
 </script>
 

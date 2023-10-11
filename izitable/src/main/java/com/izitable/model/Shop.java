@@ -21,6 +21,15 @@ public class Shop {
 	
 	private String loginType;	//로그인 타입
 	
+	private String detailAddr; //매장 상세 주소
+	
+	public String getDetailAddr() {
+		return detailAddr;
+	}
+	public void setDetailAddr(String detailAddr) {
+		this.detailAddr = detailAddr;
+	}
+	
 	public String getLoginType() {
 		return loginType;
 	}

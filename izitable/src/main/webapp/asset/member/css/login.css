@@ -107,6 +107,10 @@ select {
     text-align:center;
 }
 
+/* ~ btn ~ */
+
+/*
+
 .btn,
 .btn-sm,
 .btn-lg {
@@ -160,6 +164,8 @@ a[class^=btn-] + a[class^=btn-] { margin-left:4px; }
 	line-height:26px;
     box-sizing:border-box;
 }
+
+*/
 
 /* btn : default */
 .btn,
@@ -266,6 +272,8 @@ a.btn.cancle:focus,
 	background:#aaa; 
 	border:1px solid #aaa;
 }
+
+
 /* -------------------------------------------------
     JQUERY-UI
 ------------------------------------------------- */

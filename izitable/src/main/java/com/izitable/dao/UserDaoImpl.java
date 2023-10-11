@@ -51,6 +51,11 @@ public class UserDaoImpl implements UserDao {
 		return sql.selectOne("user.item", userNo);
 	}
 
+	@Override
+	public int duplicateCheck(User user) {
+		return sql.selectOne("user.duplicateCheck", user);
+	}
+
 	
 
 }

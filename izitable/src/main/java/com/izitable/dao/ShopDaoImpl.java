@@ -40,4 +40,14 @@ public class ShopDaoImpl implements ShopDao {
 		return sql.selectList("shop.list_admin", pager);
 	}
 
+	@Override
+	public Object add(Shop shop) {
+		return sql.insert("shop.add", shop);
+	}
+
+	@Override
+	public int duplicateCheck(Shop shop) {
+		return sql.selectOne("shop.duplicateCheck", shop);
+	}
+
 }

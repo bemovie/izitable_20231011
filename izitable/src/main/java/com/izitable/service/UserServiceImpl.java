@@ -38,6 +38,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void add(User item) {
 		
+		
+		
 		item.setUserPhoneCert("0"); //전화번호 인증 : 미인증 -0, 인증-1
 		
 		dao.add(item);
@@ -59,6 +61,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User item(int userNo) {
 		return dao.item(userNo);
+	}
+
+	@Override
+	public int duplicateCheck(User user) {
+		return dao.duplicateCheck(user);
 	}
 
 }

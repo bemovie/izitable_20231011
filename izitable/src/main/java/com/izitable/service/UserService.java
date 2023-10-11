@@ -19,4 +19,6 @@ public interface UserService {
 
 	User item(int userNo);
 
+	int duplicateCheck(User user);
+
 }

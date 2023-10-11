@@ -113,6 +113,11 @@ public class ShopController {
 		return "redirect:../";
 	}
 	
+	//매장 설정
+	@GetMapping("/setting/{shopNo}")
+	String shopSetting(@PathVariable int shopNo) {
+		return path + "shopSetting";
+	}
 	
 
 }

@@ -1,9 +1,17 @@
 package com.izitable.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class User {
+	@NotNull @Email
 	private int userNo;				//회원 번호
+	@NotNull
 	private String userEmail;		//회원 이메일(아이디)
+	@NotNull @Size(min = 8, max = 20, message = "영문, 숫자, 특수문자 중 2종류 이상을 조합하여 8~20자리로 설정해주세요.")
 	private String userPwd;			//회원 비밀번호
+	@NotNull
 	private String userPhone;		//회원 전화번호
 	private String userPhoneCert;	//회원 전화번호 인증여부
 	
