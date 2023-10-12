@@ -2,16 +2,18 @@ package com.izitable.model;
 
 public class ShopTable {
 	
-	private int shopNo;
-	
 	//tbl_shop_table
+	private int tableNo;
 	private String name;
 	private int number;
-	public int getShopNo() {
-		return shopNo;
+	
+	private int shopNo;
+	
+	public int getTableNo() {
+		return tableNo;
 	}
-	public void setShopNo(int shopNo) {
-		this.shopNo = shopNo;
+	public void setTableNo(int tableNo) {
+		this.tableNo = tableNo;
 	}
 	public String getName() {
 		return name;
@@ -24,6 +26,12 @@ public class ShopTable {
 	}
 	public void setNumber(int number) {
 		this.number = number;
+	}
+	public int getShopNo() {
+		return shopNo;
+	}
+	public void setShopNo(int shopNo) {
+		this.shopNo = shopNo;
 	}
 
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
+import com.izitable.model.ShopTable;
+import com.izitable.model.ShopTime;
 
 @Repository
 public class ShopDaoImpl implements ShopDao {
@@ -51,23 +53,33 @@ public class ShopDaoImpl implements ShopDao {
 	}
 
 	@Override
-	public void shopSettingTimeAdd(Shop shop) {
-		sql.insert("shop.shopSettingTimeAdd", shop);
+	public void shopSettingTimeAdd(ShopTime shopTm) {
+		sql.insert("shop.shopSettingTimeAdd", shopTm);
 	}
 
 	@Override
-	public List<Shop> shopSettingTimeList(Shop shop) {
-		return sql.selectList("shop.shopSettingTimeList", shop);
+	public List<Shop> shopSettingTimeList(ShopTime shopTm) {
+		return sql.selectList("shop.shopSettingTimeList", shopTm);
 	}
 
 	@Override
-	public void shopSettingTableAdd(Shop shop) {
-		sql.insert("shop.shopSettingTableAdd", shop);
+	public void shopSettingTableAdd(ShopTable shopTb) {
+		sql.insert("shop.shopSettingTableAdd", shopTb);
 	}
 
 	@Override
-	public List<Shop> shopSettingTableList(Shop shop) {
-		return sql.selectList("shop.shopSettingTableList", shop);
+	public List<Shop> shopSettingTableList(ShopTable shopTb) {
+		return sql.selectList("shop.shopSettingTableList", shopTb);
+	}
+
+	@Override
+	public void shopSettingTableDel(int tableNo) {
+		sql.delete("shop.shopSettingTableDel", tableNo);
+	}
+
+	@Override
+	public void shopSettingTimeDel(int timeNo) {
+		sql.delete("shop.shopSettingTimeDel", timeNo);
 	}
 
 }

@@ -73,7 +73,7 @@
 		WHERE email = #{shopEmail}
 	</select>
 	
-	<insert id="shopSettingAdd">
+	<insert id="shopSettingTimeAdd">
 		INSERT INTO tbl_shop_time (shop_no, day, hour)
 		VALUES (#{shopNo}, #{day}, #{hour})
 	</insert>
@@ -92,7 +92,17 @@
 	<select id="shopSettingTableList" resultMap="ShopTableMap">
 		SELECT * FROM tbl_shop_table
 		WHERE tbl_shop_table.shop_no = #{shopNo}
-		ORDER BY day ASC, hour ASC
+		ORDER BY number ASC, name ASC
 	</select>
-
+	
+	<delete id="shopSettingTableDel">
+		DELETE FROM tbl_shop_table
+		WHERE tbl_shop_table.no = #{tableNo}
+	</delete>
+	
+	<delete id="shopSettingTimeDel">
+		DELETE FROM tbl_shop_time
+		WHERE tbl_shop_time.no = #{timeNo}
+	</delete>
+	
 </mapper>

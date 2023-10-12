@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.izitable.model.Booking;
 import com.izitable.model.Shop;
+import com.izitable.model.ShopTable;
+import com.izitable.model.ShopTime;
 import com.izitable.model.User;
 import com.izitable.service.BookingService;
 import com.izitable.service.ShopService;
@@ -115,10 +117,11 @@ public class ShopController {
 	
 	//매장 설정
 	@GetMapping("/setting/{shopNo}")
-	String shopSetting(@PathVariable int shopNo, Shop shop, Model model) {
-		shop.setShopNo(shopNo);
-		List<Shop> timelist = shopService.shopSettingTimeList(shop);
-		List<Shop> tablelist = shopService.shopSettingTableList(shop);
+	String shopSetting(@PathVariable int shopNo, ShopTime shopTm, ShopTable shopTb, Model model) {
+		shopTm.setShopNo(shopNo);
+		shopTb.setShopNo(shopNo);
+		List<Shop> timelist = shopService.shopSettingTimeList(shopTm);
+		List<Shop> tablelist = shopService.shopSettingTableList(shopTb);
 		
 		model.addAttribute("timelist", timelist);
 		model.addAttribute("tablelist", tablelist);
@@ -128,21 +131,38 @@ public class ShopController {
 	
 	//매장 시간대 등록
 	@PostMapping("/setting/{shopNo}/addtime")
-	String shopSettingTimeAdd(@PathVariable int shopNo, Shop shop) {
-		shop.setShopNo(shopNo);
-		shopService.shopSettingTimeAdd(shop);
+	String shopSettingTimeAdd(@PathVariable int shopNo, ShopTime shopTm) {
+		shopTm.setShopNo(shopNo);
+		shopService.shopSettingTimeAdd(shopTm);
 		
 		return "redirect:.";
 	}
 	
-	//매장 시간대 등록
+	//매장 시간대 삭제
+	@GetMapping("/setting/{shopNo}/deleteTime/{timeNo}")
+	String shopSettingTimeDel(@PathVariable int shopNo, @PathVariable int timeNo) {
+		
+		shopService.shopSettingTimeDel(timeNo);
+		
+		return "redirect:../";
+	}
+	
+	//매장 테이블 등록
 	@PostMapping("/setting/{shopNo}/addtable")
-	String shopSettingTableAdd(@PathVariable int shopNo, Shop shop) {
-		shop.setShopNo(shopNo);
-		shopService.shopSettingTableAdd(shop);
+	String shopSettingTableAdd(@PathVariable int shopNo, ShopTable shopTb) {
+		shopTb.setShopNo(shopNo);
+		shopService.shopSettingTableAdd(shopTb);
 		
 		return "redirect:.";
 	}
 	
+	//매장 테이블 삭제
+	@GetMapping("/setting/{shopNo}/deleteTable/{tableNo}")
+	String shopSettingTableDel(@PathVariable int shopNo, @PathVariable int tableNo) {
+		
+		shopService.shopSettingTableDel(tableNo);
+		
+		return "redirect:../";
+	}
 
 }

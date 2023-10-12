@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.izitable.dao.ShopDao;
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
+import com.izitable.model.ShopTable;
+import com.izitable.model.ShopTime;
 import com.izitable.model.User;
 
 @Service
@@ -62,23 +64,33 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public void shopSettingTimeAdd(Shop shop) {
-		dao.shopSettingTimeAdd(shop);
+	public void shopSettingTimeAdd(ShopTime shopTm) {
+		dao.shopSettingTimeAdd(shopTm);
 	}
 
 	@Override
-	public List<Shop> shopSettingTimeList(Shop shop) {
-		return dao.shopSettingTimeList(shop);
+	public List<Shop> shopSettingTimeList(ShopTime shopTm) {
+		return dao.shopSettingTimeList(shopTm);
 	}
 
 	@Override
-	public void shopSettingTableAdd(Shop shop) {
-		dao.shopSettingTableAdd(shop);
+	public void shopSettingTableAdd(ShopTable shopTb) {
+		dao.shopSettingTableAdd(shopTb);
 	}
 
 	@Override
-	public List<Shop> shopSettingTableList(Shop shop) {
-		return dao.shopSettingTableList(shop);
+	public List<Shop> shopSettingTableList(ShopTable shopTb) {
+		return dao.shopSettingTableList(shopTb);
+	}
+
+	@Override
+	public void shopSettingTableDel(int tableNo) {
+		dao.shopSettingTableDel(tableNo);
+	}
+
+	@Override
+	public void shopSettingTimeDel(int timeNo) {
+		dao.shopSettingTimeDel(timeNo);
 	}
 	
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
+import com.izitable.model.ShopTable;
+import com.izitable.model.ShopTime;
 import com.izitable.model.User;
 
 public interface ShopService {
@@ -22,12 +24,16 @@ public interface ShopService {
 
 	int duplicateCheck(Shop shop);
 
-	void shopSettingTimeAdd(Shop shop);
+	void shopSettingTimeAdd(ShopTime shopTm);
 
-	List<Shop> shopSettingTimeList(Shop shop);
+	List<Shop> shopSettingTimeList(ShopTime shopTm);
 
-	void shopSettingTableAdd(Shop shop);
+	void shopSettingTableAdd(ShopTable shopTb);
 
-	List<Shop> shopSettingTableList(Shop shop);
+	List<Shop> shopSettingTableList(ShopTable shopTb);
+
+	void shopSettingTableDel(int tableNo);
+
+	void shopSettingTimeDel(int timeNo);
 
 }

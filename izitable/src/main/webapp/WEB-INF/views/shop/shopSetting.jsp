@@ -101,7 +101,7 @@
 							<td>${item.tableNo}</td>
 							<td>${item.name}</td>
 							<td>${item.number}</td>
-							<td><a href="delete/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
+							<td><a href="deleteTable/${item.tableNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>
@@ -187,7 +187,7 @@
 							
 							</td>
 							<td>${item.hour}:00</td>
-							<td><a href="delete/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
+							<td><a href="deleteTime/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>
