@@ -50,4 +50,24 @@ public class ShopDaoImpl implements ShopDao {
 		return sql.selectOne("shop.duplicateCheck", shop);
 	}
 
+	@Override
+	public void shopSettingTimeAdd(Shop shop) {
+		sql.insert("shop.shopSettingTimeAdd", shop);
+	}
+
+	@Override
+	public List<Shop> shopSettingTimeList(Shop shop) {
+		return sql.selectList("shop.shopSettingTimeList", shop);
+	}
+
+	@Override
+	public void shopSettingTableAdd(Shop shop) {
+		sql.insert("shop.shopSettingTableAdd", shop);
+	}
+
+	@Override
+	public List<Shop> shopSettingTableList(Shop shop) {
+		return sql.selectList("shop.shopSettingTableList", shop);
+	}
+
 }

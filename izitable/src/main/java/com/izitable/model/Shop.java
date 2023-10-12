@@ -1,6 +1,6 @@
 package com.izitable.model;
 
-public class Shop {
+public class Shop extends ShopTime {
 	private int shopNo; 		//점주 번호
 	private String shopEmail;	//점주 이메일
 	private String shopPwd;		//점주 비밀번호

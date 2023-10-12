@@ -16,7 +16,21 @@
 		<result column="comp_intro" property="compIntro"/>				
 		<result column="shop_category_no" property="categoryNo"/>				
 		<result column="latitude" property="latitude"/>				
-		<result column="longitude" property="longitude"/>
+		<result column="longitude" property="longitude"/>	
+	</resultMap>
+	
+	<resultMap type="ShopTime" id="ShopTimeMap">
+		<id column="no" property="timeNo"/>
+		<result column="day" property="day"/>
+		<result column="hour" property="hour"/>
+		<result column="shop_no" property="shopNo"/>	
+	</resultMap>
+	
+	<resultMap type="ShopTable" id="ShopTableMap">
+		<id column="no" property="tableNo"/>
+		<result column="name" property="name"/>
+		<result column="number" property="number"/>
+		<result column="shop_no" property="shopNo"/>	
 	</resultMap>
 	
 	<select id="list_admin" resultMap="ShopMap">
@@ -59,4 +73,26 @@
 		WHERE email = #{shopEmail}
 	</select>
 	
+	<insert id="shopSettingAdd">
+		INSERT INTO tbl_shop_time (shop_no, day, hour)
+		VALUES (#{shopNo}, #{day}, #{hour})
+	</insert>
+	
+	<select id="shopSettingTimeList" resultMap="ShopTimeMap">
+		SELECT * FROM tbl_shop_time
+		WHERE tbl_shop_time.shop_no = #{shopNo}
+		ORDER BY day ASC, hour ASC
+	</select>
+	
+	<insert id="shopSettingTableAdd">
+		INSERT INTO tbl_shop_table (shop_no, name, number)
+		VALUES (#{shopNo}, #{name}, #{number})
+	</insert>
+	
+	<select id="shopSettingTableList" resultMap="ShopTableMap">
+		SELECT * FROM tbl_shop_table
+		WHERE tbl_shop_table.shop_no = #{shopNo}
+		ORDER BY day ASC, hour ASC
+	</select>
+
 </mapper>

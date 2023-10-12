@@ -11,6 +11,8 @@
 		<typeAlias type="com.izitable.model.User" alias="User"/>
 		<typeAlias type="com.izitable.model.Shop" alias="Shop"/>
 		<typeAlias type="com.izitable.model.Booking" alias="Booking"/>
+		<typeAlias type="com.izitable.model.ShopTime" alias="ShopTime"/>
+		<typeAlias type="com.izitable.model.ShopTable" alias="ShopTable"/>
 	</typeAliases>
 	
 	<mappers>

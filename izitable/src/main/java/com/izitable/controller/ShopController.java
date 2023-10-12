@@ -115,8 +115,33 @@ public class ShopController {
 	
 	//매장 설정
 	@GetMapping("/setting/{shopNo}")
-	String shopSetting(@PathVariable int shopNo) {
+	String shopSetting(@PathVariable int shopNo, Shop shop, Model model) {
+		shop.setShopNo(shopNo);
+		List<Shop> timelist = shopService.shopSettingTimeList(shop);
+		List<Shop> tablelist = shopService.shopSettingTableList(shop);
+		
+		model.addAttribute("timelist", timelist);
+		model.addAttribute("tablelist", tablelist);
+		
 		return path + "shopSetting";
+	}
+	
+	//매장 시간대 등록
+	@PostMapping("/setting/{shopNo}/addtime")
+	String shopSettingTimeAdd(@PathVariable int shopNo, Shop shop) {
+		shop.setShopNo(shopNo);
+		shopService.shopSettingTimeAdd(shop);
+		
+		return "redirect:.";
+	}
+	
+	//매장 시간대 등록
+	@PostMapping("/setting/{shopNo}/addtable")
+	String shopSettingTableAdd(@PathVariable int shopNo, Shop shop) {
+		shop.setShopNo(shopNo);
+		shopService.shopSettingTableAdd(shop);
+		
+		return "redirect:.";
 	}
 	
 

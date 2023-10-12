@@ -16,34 +16,34 @@
 	</resultMap> 
 	
 	<insert id="add">
-		INSERT INTO tbl_booking_user (user_no, shop_no, date, time, mem_num)
+		INSERT INTO tbl_booking (user_no, shop_no, date, time, mem_num)
 		VALUES ( #{userNo}, #{shopNo}, #{bookingDate}, #{bookingTime}, #{bookingMemNum} )
 	</insert>
 	
 	<select id="userBookingList" resultMap="BookingMap">
-		SELECT tbl_booking_user.*, tbl_shop.* FROM tbl_booking_user JOIN tbl_shop ON tbl_booking_user.shop_no = tbl_shop.no
-		WHERE tbl_booking_user.user_no = #{userNo}
+		SELECT tbl_booking.*, tbl_shop.* FROM tbl_booking JOIN tbl_shop ON tbl_booking.shop_no = tbl_shop.no
+		WHERE tbl_booking.user_no = #{userNo}
 	</select>
 	
 	<select id="userBookingDelete">
-		DELETE FROM tbl_booking_user
+		DELETE FROM tbl_booking
 		WHERE no = #{bookingNo}
 	</select>
 	
 	<select id="shopBookingList" resultMap="BookingMap">
-		SELECT tbl_booking_user.*, tbl_user.* 
-		FROM tbl_booking_user JOIN tbl_user ON tbl_booking_user.user_no = tbl_user.no
-		WHERE tbl_booking_user.shop_no = #{shopNo}
+		SELECT tbl_booking.*, tbl_user.* 
+		FROM tbl_booking JOIN tbl_user ON tbl_booking.user_no = tbl_user.no
+		WHERE tbl_booking.shop_no = #{shopNo}
 	</select>
 	
 	<select id="shopBookingUpdate">
-		UPDATE tbl_booking_user
+		UPDATE tbl_booking
 		SET date = #{bookingDate}, time = #{bookingTime}, mem_num = #{bookingMemNum}
 		WHERE no = #{bookingNo}
 	</select>
 	
 	<select id="shopBookingDelete">
-		DELETE FROM tbl_booking_user
+		DELETE FROM tbl_booking
 		WHERE no = #{bookingNo}
 	</select>
 	

@@ -60,5 +60,25 @@ public class ShopServiceImpl implements ShopService {
 	public int duplicateCheck(Shop shop) {
 		return dao.duplicateCheck(shop);
 	}
+
+	@Override
+	public void shopSettingTimeAdd(Shop shop) {
+		dao.shopSettingTimeAdd(shop);
+	}
+
+	@Override
+	public List<Shop> shopSettingTimeList(Shop shop) {
+		return dao.shopSettingTimeList(shop);
+	}
+
+	@Override
+	public void shopSettingTableAdd(Shop shop) {
+		dao.shopSettingTableAdd(shop);
+	}
+
+	@Override
+	public List<Shop> shopSettingTableList(Shop shop) {
+		return dao.shopSettingTableList(shop);
+	}
 	
 }

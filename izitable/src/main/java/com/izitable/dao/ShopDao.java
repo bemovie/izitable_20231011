@@ -21,4 +21,12 @@ public interface ShopDao {
 
 	int duplicateCheck(Shop shop);
 
+	void shopSettingTimeAdd(Shop shop);
+
+	List<Shop> shopSettingTimeList(Shop shop);
+
+	void shopSettingTableAdd(Shop shop);
+
+	List<Shop> shopSettingTableList(Shop shop);
+
 }
