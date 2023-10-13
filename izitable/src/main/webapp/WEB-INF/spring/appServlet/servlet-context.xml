@@ -57,4 +57,7 @@
 		</interceptor>
 	</interceptors>
 
+	<beans:bean id="naverLoginService" class="com.izitable.auth.naver.NaverLoginServiceImpl" />
+
+
 </beans:beans>

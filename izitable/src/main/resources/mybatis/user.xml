@@ -42,7 +42,7 @@
 	
 	<select id="login" resultMap="UserMap">
 		SELECT * FROM tbl_user
-		WHERE email = #{userEmail} AND pwd = #{userPwd}
+		WHERE email = #{userEmail}
 	</select>
 	
 	<select id="duplicateCheck" resultType="java.lang.Integer">

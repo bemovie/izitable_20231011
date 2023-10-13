@@ -17,6 +17,9 @@ public class User {
 	
 	private String loginType;		//로그인 타입
 	
+	private String userSe;			//사용자구분
+	
+	
 	public String getLoginType() {
 		return loginType;
 	}
@@ -54,4 +57,12 @@ public class User {
 	public void setUserPhoneCert(String userPhoneCert) {
 		this.userPhoneCert = userPhoneCert;
 	}
+	public String getUserSe() {
+		return userSe;
+	}
+	public void setUserSe(String userSe) {
+		this.userSe = userSe;
+	}
+	
+	
 }
