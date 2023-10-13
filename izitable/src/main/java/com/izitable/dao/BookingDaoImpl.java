@@ -36,13 +36,33 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	@Override
-	public void shopBookingUpdate(int shopNo) {
-		sql.update("booking.shopBookingUpdate", shopNo);
+	public void shopBookingUpdate(Booking booking) {
+		sql.update("booking.shopBookingUpdate", booking);
 	}
 
 	@Override
 	public void shopBookingDelete(int shopNo) {
 		sql.delete("booking.userBookingDelete", shopNo);
+	}
+
+	@Override
+	public List<Booking> list(Pager pager) {
+		return sql.selectList("booking.list", pager);
+	}
+
+	@Override
+	public int total(Pager pager) {
+		return sql.selectOne("booking.total", pager);
+	}
+
+	@Override
+	public int totalShop(int shopNo) {
+		return sql.selectOne("booking.totalShop", shopNo);
+	}
+
+	@Override
+	public int totalUser(int userNo) {
+		return sql.selectOne("booking.totalUser", userNo);
 	}
 
 }

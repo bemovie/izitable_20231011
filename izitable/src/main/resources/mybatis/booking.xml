@@ -13,7 +13,25 @@
 		
 		<result column="email" property="userEmail"/>
 		<result column="phone" property="userPhone"/>
-	</resultMap> 
+	</resultMap>
+	
+	<select id="list" resultMap="BookingMap">
+		SELECT * FROM tbl_booking
+	</select>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM tbl_booking
+	</select>
+	
+	<select id="totalShop" resultType="Integer">
+		SELECT COUNT(*) FROM tbl_booking
+		WHERE shop_no = #{shopNo}
+	</select>
+	
+	<select id="totalUser" resultType="Integer">
+		SELECT COUNT(*) FROM tbl_booking
+		WHERE user_no = #{userNo}
+	</select>
 	
 	<insert id="add">
 		INSERT INTO tbl_booking (user_no, shop_no, date, time, mem_num)

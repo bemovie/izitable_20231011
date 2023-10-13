@@ -2,11 +2,14 @@ package com.izitable.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Booking {
 	
 	private int bookingNo;		//예약 번호
 	private int userNo;			//회원 번호
 	private int shopNo;			//매장 번호
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bookingDate;	//예약 날짜
 	private String bookingTime;	//예약 시간
 	private int bookingMemNum;	//예약 인원

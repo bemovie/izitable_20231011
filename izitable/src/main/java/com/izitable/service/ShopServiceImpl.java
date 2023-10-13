@@ -21,6 +21,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public List<Shop> list(Shop shop) {
+		
 		return dao.list(shop);
 	}
 
@@ -50,6 +51,10 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public List<Shop> list_admin(Pager pager) {
+		int total = dao.total(pager);
+
+		pager.setTotal(total);
+		
 		return dao.list_admin(pager);
 	}
 
@@ -91,6 +96,16 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public void shopSettingTimeDel(int timeNo) {
 		dao.shopSettingTimeDel(timeNo);
+	}
+
+	@Override
+	public void update_admin(Shop item) {
+		dao.update_admin(item);
+	}
+
+	@Override
+	public void delete(int shopNo) {
+		dao.delete(shopNo);
 	}
 	
 }

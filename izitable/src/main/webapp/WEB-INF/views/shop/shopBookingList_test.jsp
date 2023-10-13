@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="content">
-<div class="container" style="margin: 0 auto; width: 1200px;">
+<div class="container" style="margin: 0 auto; width: 50%;">
 <div id="contents">
 <div id="bbs_wrap">	
 	
@@ -58,23 +58,28 @@
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${list}">
+						<form method="post" action="${item.shopNo}/update/${item.bookingNo}">
 							<tr>
 								<td>${item.bookingNo}</td>
 								<td>${item.userNo}</td>
 								<td>${item.userEmail}</td>
 								<td>${item.userPhone}</td>
-								<td><fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd"/></td>
-								<td>${item.bookingTime}</td>
-								<td>${item.bookingMemNum}</td>
+								<td><input type="date" name="bookingDate" value="<fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd"/>"></td>
+								<%-- <td><input type="date" name="bookingDate" value="${item.bookingDate}"></td> --%>
+								<%-- <fmt:formatDate value="${item.bookingDate}" pattern="yyyy년 MM월 dd일"/> --%>
+								<td><input type="text" name="bookingTime" value="${item.bookingTime}"></td>
+								<td><input type="number" name="bookingMemNum" value="${item.bookingMemNum}"></td>
 								<td>
+									<button type="submit">수정</button>
 									<button><a href="${item.shopNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm">취소</a></button>
 								</td>
 							</tr>
+						</form>	
 					</c:forEach>	
 					
 					<c:if test="${list.size() < 1}">
 					<tr>
-						<td colspan="8">검색 된 예약이 없습니다</td>
+						<td colspan="5">검색 된 예약이 없습니다</td>
 					</tr>
 					</c:if>
 					

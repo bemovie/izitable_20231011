@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.izitable.model.Booking;
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
 import com.izitable.model.User;
@@ -81,5 +82,51 @@ public class AdminController {
 		
 		return path + "shopList";
 	}
+	
+	//매장 정보 변경
+	@PostMapping("/shopupdate/{shopNo}")
+	String shopupdate(@PathVariable int shopNo, Shop item) {
+		item.setShopNo(shopNo);
+		
+		shopService.update_admin(item);
+		
+		return "redirect:../shoplist";
+	}
+	
+	//매장 삭제
+	@GetMapping("/shopdelete/{shopNo}")
+	String shopdelete(@PathVariable int shopNo) {
+		shopService.delete(shopNo);
+		
+		return "redirect:../shoplist";
+	}
+	
+	//예약 목록
+	@GetMapping("/bookinglist")
+	String bookinglist(Model model, Pager pager) {
+		List<Booking> list = bookingService.list(pager);
+		
+		model.addAttribute("list", list);
+		
+		return path + "bookingList";
+	}
+	
+	//예약 정보 변경
+	@PostMapping("/bookingupdate/{bookingNo}")
+	String bookingupdate(@PathVariable int bookingNo, Booking booking) {
+		booking.setBookingNo(bookingNo);
+		bookingService.shopBookingUpdate(booking);
+		
+		return "redirect:../bookinglist";
+	}
+		
+	//예약 삭제
+	@GetMapping("/bookingdelete/{bookingNo}")
+	String bookingdelete(@PathVariable int bookingNo) {
+		bookingService.shopBookingDelete(bookingNo);
+		
+		return "redirect:../bookinglist";
+	}
+	
 
 }

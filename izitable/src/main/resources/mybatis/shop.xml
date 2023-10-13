@@ -37,6 +37,10 @@
 		SELECT * FROM tbl_shop
 	</select>
 	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM tbl_shop
+	</select>
+	
 	<select id="list" resultMap="ShopMap">
 		SELECT * FROM tbl_shop
 		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
@@ -103,6 +107,17 @@
 	<delete id="shopSettingTimeDel">
 		DELETE FROM tbl_shop_time
 		WHERE tbl_shop_time.no = #{timeNo}
+	</delete>
+	
+	<update id="update_admin">
+		UPDATE tbl_shop
+		SET email = #{shopEmail}, comp_name = #{compName}, comp_addr2 = #{compAddr2}, comp_call = #{compCall} 
+		WHERE no = #{shopNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_shop
+		WHERE tbl_shop.no = #{shopNo}
 	</delete>
 	
 </mapper>

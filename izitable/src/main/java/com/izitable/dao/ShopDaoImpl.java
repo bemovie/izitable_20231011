@@ -82,4 +82,19 @@ public class ShopDaoImpl implements ShopDao {
 		sql.delete("shop.shopSettingTimeDel", timeNo);
 	}
 
+	@Override
+	public void update_admin(Shop item) {
+		sql.update("shop.update_admin", item);
+	}
+
+	@Override
+	public void delete(int shopNo) {
+		sql.delete("shop.delete", shopNo);
+	}
+
+	@Override
+	public int total(Pager pager) {
+		return sql.selectOne("shop.total", pager);
+	}
+
 }

@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<div class="container">
+	<div class="container" style="margin: 0 auto; width: 1200px;">
 		<div>
 			<h3>회원 목록</h3>
 		</div>

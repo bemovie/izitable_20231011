@@ -20,11 +20,11 @@
 <!-- 문교수님 CSS -->
 
 <jsp:include page="../nav.jsp"></jsp:include>
-
+ 
 </head>
 <body>
 <div id="content">
-<div class="container">
+<div class="container" style="margin: 0 auto; width: 1200px;">
 <div id="contents">
 <div id="bbs_wrap">	
 
@@ -36,51 +36,55 @@
 
 		</div>
 		
+		<br>
+		
 		<form method="post">
 			<div>
 			
-				<div>
-					<label>이메일</label>
+				<div class="inline">
+					<label>이메일</label><br>
 					<input type="text" name="shopEmail" value="${item.shopEmail}">
 				</div>
 				
-				<div>
-					<label>매장명</label>
+				<div class="inline">
+					<label>매장명</label><br>
 					<input type="text" name="compName" value="${item.compName}">
 				</div>
 				
-				<div>
-					<label>매장 번호(사업자번호)</label>
+				<div class="inline">
+					<label>매장 번호(사업자번호)</label><br>
 					<input type="text" name="compNum" value="${item.compNum}">
 				</div>
 				
-				<div>
-					<label>매장 사장님명</label>
+				<div class="inline">
+					<label>매장 사장님명</label><br>
 					<input type="text" name="compCeo" value="${item.compCeo}">
 				</div>
 				
 				
-				<div>
-					<label>매장 전화번호</label>
+				<div class="inline">
+					<label>매장 전화번호</label><br>
 					<input type="text" name="compCall" value="${item.compCall}">
 				</div>
 				
-				<div>
-					<label>매장 구주소</label>
+				<div class="inline">
+					<label>매장 구주소</label><br>
 					<input type="text" name="compAddr1" value="${item.compAddr1}">
 				</div>
 				
-				<div>
-					<label>매장 신주소(도로명주소)</label>
+				<div class="inline">
+					<label>매장 신주소(도로명주소)</label><br>
 					<input type="text" name="compAddr2" value="${item.compAddr2}">
 				</div>
 				
-				<div>
-					<label>매장 소개</label>
+				<div class="inline">
+					<label>매장 소개</label><br>
 					<input type="text" name="compIntro" value="${item.compIntro}">
 				</div>
-
-				<div>
+				
+				<br>
+				
+				<div class="inline">
 					<button type="submit" id="update" class="btn">변경 완료</button>
 				</div>
 				

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.izitable.model.Booking;
+import com.izitable.model.Pager;
 import com.izitable.model.Shop;
 import com.izitable.model.ShopTable;
 import com.izitable.model.ShopTime;
@@ -32,35 +33,6 @@ public class ShopController {
 	@Autowired
 	BookingService bookingService;
 	
-	//매장 목록 (메인 페이지)
-	@GetMapping("/list")
-	String list() {
-		
-		return path + "shopList";
-	}
-	
-	//매장 목록 (필터) 
-	@PostMapping("/list")
-	String list(Model model, @ModelAttribute("Shop") Shop shop) {
-		
-		//System.out.println(shop.getCity());
-		
-		List<Shop> list = shopService.list(shop);
-		
-		model.addAttribute("list", list);
-		
-		return path + "shopList";
-	}
-	
-	//매장 상세정보
-	@GetMapping("/item/{shopNo}")
-	String item(@PathVariable int shopNo, Model model) {
-		Shop item = shopService.item(shopNo);
-		
-		model.addAttribute("info", item);
-		
-		return path + "shopList";
-	}
 	
 	//매장 정보 변경
 	@GetMapping("/update/{shopNo}")
@@ -84,9 +56,13 @@ public class ShopController {
 	
 	//매장 페이지 예약 목록
 	@GetMapping("/booking/{shopNo}")
-	String shopBookingList(@PathVariable int shopNo, Model model) {
+	String shopBookingList(@PathVariable int shopNo, Pager pager, Model model) {
 		
 		List<Booking> list = bookingService.shopBookingList(shopNo);
+		
+		int total = (int) bookingService.totalShop(shopNo);
+		pager.setTotal(total);
+		model.addAttribute("pager", pager);
 		
 		model.addAttribute("list", list);
 		
@@ -96,10 +72,11 @@ public class ShopController {
 	}
 	
 	//매장 페이지 예약 수정
-	@GetMapping("/booking/{shopNo}/update/{bookingNo}")
-	String shopBookingUpdate(@PathVariable int shopNo, @PathVariable int bookingNo, Model model) {
-		
-		bookingService.shopBookingUpdate(shopNo);
+	@PostMapping("/booking/{shopNo}/update/{bookingNo}")
+	String shopBookingUpdate(@PathVariable int shopNo, @PathVariable int bookingNo, Booking booking, Model model) {
+		booking.setShopNo(shopNo);
+		booking.setBookingNo(bookingNo);
+		bookingService.shopBookingUpdate(booking);
 		
 		//return path + "bookingList";
 		return "redirect:../";

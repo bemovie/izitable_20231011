@@ -19,12 +19,14 @@
 <link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
 <!-- 문교수님 CSS -->
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <jsp:include page="../nav.jsp"></jsp:include>
 
 </head>
 <body>
 <div id="content">
-<div class="container" style="margin: 0 auto; width: 1200px;">
+<div class="container" style="margin: 0 auto; width: 50%;">
 <div id="contents">
 <div id="bbs_wrap">	
 	
@@ -80,7 +82,7 @@
 		
 		<h3 class="mt-2">테이블 목록</h3>
 		<div class="mb-2 px-3">
-			<table class="list_table">
+			<table class="table table-sm table-striped">
 				<thead class="table-dark">
 					<tr>
 						<th class="col">구분번호</th>
@@ -100,7 +102,7 @@
 							<td>${item.tableNo}</td>
 							<td>${item.name}</td>
 							<td>${item.number}</td>
-							<td><a href="${item.shopNo}/deleteTable/${item.tableNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
+							<td><a href="deleteTable/${item.tableNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>
@@ -154,7 +156,7 @@
 
 	<h3 class="mt-2">시간대 목록</h3>
 		<div class="mb-2 px-3">
-			<table class="list_table">
+			<table class="table table-sm table-striped">
 				<thead class="table-dark">
 					<tr>
 						<th class="col">구분번호</th>
@@ -185,7 +187,7 @@
 							
 							</td>
 							<td>${item.hour}:00</td>
-							<td><a href="${item.shopNo}deleteTime/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
+							<td><a href="deleteTime/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>

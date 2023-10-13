@@ -71,7 +71,7 @@
 </head>
 <body>
 
-<div class="container" style="margin: 0 auto; width: 50%; /*border: 2px solid black;*/">
+<div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/">
 
 <div class="tit_intro_step">
 	<ul>

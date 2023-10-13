@@ -35,4 +35,10 @@ public interface ShopDao {
 
 	void shopSettingTimeDel(int timeNo);
 
+	void update_admin(Shop item);
+
+	void delete(int shopNo);
+
+	int total(Pager pager);
+
 }

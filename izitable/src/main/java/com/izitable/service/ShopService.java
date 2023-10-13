@@ -36,4 +36,8 @@ public interface ShopService {
 
 	void shopSettingTimeDel(int timeNo);
 
+	void update_admin(Shop item);
+
+	void delete(int shopNo);
+
 }

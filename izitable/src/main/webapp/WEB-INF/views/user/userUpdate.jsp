@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="content">
-<div class="container">
+<div class="container" style="margin: 0 auto; width: 1200px;">
 <div id="contents">
 <div id="bbs_wrap">	
 		<div style="/*border: 2px solid black;*/ text-align: center;">
@@ -42,19 +42,21 @@
 			<div>
 			
 				<div>
-					<label>이메일</label>
+					<label>이메일</label><br>
 					<input type="text" name="userEmail" value="${item.userEmail}">
 				</div>
 				
 				<div>
-					<label>휴대폰 번호</label>
+					<label>휴대폰 번호</label><br>
 					<input type="text" name="userPhone" value="${item.userPhone}">
 				</div>
 				
 				<div>
-					<label>휴대폰 번호 인증</label>
+					<label>휴대폰 번호 인증</label><br>
 					<input type="hidden" name="userPhoneCert">
 				</div>
+				
+				<br>
 	
 				<div>
 					<button type="submit" id="update" class="btn">변경 완료</button>

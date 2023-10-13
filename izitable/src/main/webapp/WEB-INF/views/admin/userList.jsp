@@ -23,30 +23,27 @@
 
 </head>
 <body>
-	<div class="container">
+<div id="content">
+<div class="container" style="margin: 0 auto; width: 1200px;">
+<div id="contents">
+<div id="bbs_wrap">	
 	
-		<div>
-			<a href="/admin/userlist/${sessionScope.shop.shopNo}"><h3>회원 관리</h3></a>
+		<div style="/*border: 2px solid black;*/ text-align: center;">
+			
+				<button class="btn" style="margin-right: 30px;"><a href="/admin/userlist/${sessionScope.shop.shopNo}"><h3>회원 관리</h3></a></button>
+				<button class="btn" style="margin-right: 30px;"><a href="/admin/shoplist/${sessionScope.shop.shopNo}"><h3>매장 관리</h3></a></button>
+				<button class="btn" style="margin-right: 30px;"><a href="/admin/bookinglist/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a></button>
+				
 		</div>
 		
-		<div>
-			<a href="/admin/shoplist/${sessionScope.shop.shopNo}"><h3>매장 관리</h3></a>
-		</div>
-	
-		<div>
-			<a href="/admin/bookinglist/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a>
-		</div>
-		
-		<div>
-			<a href="/admin/update/${sessionScope.shop.shopNo}"><h3>정보 변경</h3></a>
-		</div>
+		<br>
 		
 		<div>
 			총 회원 수 <fmt:formatNumber value="${pager.total}" pattern="#"></fmt:formatNumber> 명
 		</div>
 		
 		<div>
-			<table>
+			<table class="list_table" style="text-align: center;">
 				<thead>
 					<tr>
 						<th>회원번호</th>
@@ -57,7 +54,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${list}">
-						<form method="post" action="userupdate/${item.userNo}">
+						<form method="post" action="/admin/userupdate/${item.userNo}">
 							<tr>
 								<td>${item.userNo}</td>
 								<td><input type="text" name="userEmail" value="${item.userEmail}"></td>
@@ -81,5 +78,8 @@
 			</table>
 		</div>
 	</div>
+</div>
+</div>
+</div>
 </body>
 </html>

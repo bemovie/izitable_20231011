@@ -15,8 +15,16 @@ public interface BookingDao {
 
 	List<Booking> shopBookingList(int shopNo);
 
-	void shopBookingUpdate(int shopNo);
+	void shopBookingUpdate(Booking booking);
 
 	void shopBookingDelete(int shopNo);
+
+	List<Booking> list(Pager pager);
+
+	int total(Pager pager);
+
+	int totalShop(int shopNo);
+
+	int totalUser(int userNo);
 
 }

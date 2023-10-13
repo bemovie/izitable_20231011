@@ -3,6 +3,7 @@ package com.izitable.service;
 import java.util.List;
 
 import com.izitable.model.Booking;
+import com.izitable.model.Pager;
 
 public interface BookingService {
 
@@ -14,8 +15,14 @@ public interface BookingService {
 
 	List<Booking> shopBookingList(int shopNo);
 
-	void shopBookingUpdate(int shopNo);
+	void shopBookingUpdate(Booking booking);
 
 	void shopBookingDelete(int shopNo);
+
+	List<Booking> list(Pager pager);
+
+	int totalShop(int shopNo);
+
+	int totalUser(int userNo);
 
 }

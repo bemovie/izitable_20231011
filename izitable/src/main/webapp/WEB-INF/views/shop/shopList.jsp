@@ -34,9 +34,14 @@
 <title>IZITABLE - 이지테이블</title>
 
 </head>
-<body style="text-align: center;">
+<body>
+
+<div id="content">
+<div class="container" style="margin: 0 auto; width: 1200px; text-align: center">
+<div id="contents">
+<div id="bbs_wrap">	
 		
-<form method="post" action="/shop/list" style="margin: 10px;">
+<form method="post" action="/list" style="margin: 10px;">
 <select id="si" name="si">
 	<option value="서울">서울</option>
 	<option value="대전">대전</option>
@@ -436,6 +441,13 @@ window.addEventListener('click', function(event) {
 </script>
 
 <button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()">내 위치 가져오기</button>
+
+
+
+</div>
+</div>
+</div>
+</div>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.izitable.controller;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.izitable.model.Shop;
@@ -160,5 +162,37 @@ public class RootController {
 			return "FAIL";
 	}
 	*/
+	
+	final String path = "shop/";
+	
+	//매장 목록 (메인 페이지)
+	@GetMapping("/list")
+	String list() {
+		
+		return path + "shopList";
+	}
+	
+	//매장 목록 (필터) 
+	@PostMapping("/list")
+	String list(Model model, @ModelAttribute("Shop") Shop shop) {
+		
+		//System.out.println(shop.getCity());
+		
+		List<Shop> list = shopService.list(shop);
+		
+		model.addAttribute("list", list);
+		
+		return path + "shopList";
+	}
+	
+	//매장 상세정보
+	@GetMapping("/item/{shopNo}")
+	String item(@PathVariable int shopNo, Model model) {
+		Shop item = shopService.item(shopNo);
+		
+		model.addAttribute("info", item);
+		
+		return path + "shopList";
+	}
 	
 }

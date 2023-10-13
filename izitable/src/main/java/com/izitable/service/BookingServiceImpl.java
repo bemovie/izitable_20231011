@@ -36,8 +36,8 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void shopBookingUpdate(int shopNo) {
-		dao.shopBookingUpdate(shopNo);
+	public void shopBookingUpdate(Booking booking) {
+		dao.shopBookingUpdate(booking);
 	}
 
 	@Override
@@ -45,4 +45,22 @@ public class BookingServiceImpl implements BookingService {
 		dao.shopBookingDelete(shopNo);
 	}
 
+	@Override
+	public List<Booking> list(Pager pager) {
+		int total = dao.total(pager);
+
+		pager.setTotal(total);
+		
+		return dao.list(pager);
+	}
+
+	@Override
+	public int totalShop(int shopNo) {
+		return dao.totalShop(shopNo);
+	}
+	
+	@Override
+	public int totalUser(int userNo) {
+		return dao.totalUser(userNo);
+	}
 }

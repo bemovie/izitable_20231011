@@ -24,7 +24,7 @@
 </head>
 <body>
  <div id="content">
-<div class="container">
+<div class="container" style="margin: 0 auto; width: 1200px;">
 <div id="contents">
 <div id="bbs_wrap">
 
