@@ -192,17 +192,7 @@
     <script src="resources/assets/js/custom.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    $(function() {
-        $("#date").datepicker({
-            dateFormat: "yy년 mm월 dd일", // 한국식 날짜 형식으로 변경 (년, 월, 일 추가)
-            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 요일 이름 한국어로 설정
-            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 월 이름 한국어로 설정
-            nextText: '다음 달', // 다음 달 버튼 텍스트 설정
-            prevText: '이전 달', // 이전 달 버튼 텍스트 설정
-        });
-    });
-</script>
+ 
     
     
     <script>
