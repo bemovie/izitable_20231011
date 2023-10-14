@@ -229,7 +229,7 @@ public class RootController {
 	}
 	*/
 	
-	final String path = "/";
+	final String path = "shop/";
 	
 	//매장 목록 (메인 페이지)
 	@GetMapping("/list")
@@ -248,7 +248,7 @@ public class RootController {
 		
 		model.addAttribute("list", list);
 		
-		return path + "main_test";
+		return path + "shopList";
 	}
 	
 	//매장 상세정보
