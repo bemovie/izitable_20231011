@@ -19,50 +19,16 @@
 
     <title>Izitable-Reservation</title>
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="resources/assets/css/bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="resources/assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="resources/assets/css/template_izitable.css">
-
-    <link rel="stylesheet" href="resources/assets/css/owl-carousel.css">
-
-    <link rel="stylesheet" href="resources/assets/css/lightbox.css">
-
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        .search {
-            margin-left: 100px;
-            margin-top: 30px;
-            float: left;
-            width: 450px;
-        }
-
-        .search input {
-            width: 100%;
-            border: 1px solid #bbb;
-            border-radius: 8px;
-            padding: 10px 12px;
-            font-size: 14px;
-        }
-
-        .search img {
-            position: absolute;
-            width: 17px;
-            top: 42px;
-            right: 430px;
-            margin: 0;
-        }
-
-        .nav2 {
-            margin-left: 10px;
-            margin-top: 30px;
-        }
-    </style>
 </head>
 
 <body>
+	
+	<!-- ***** Header Area Starts ***** -->
+	<div>
+	   <jsp:include page="header.jsp"></jsp:include>
+	</div>
+	<!-- ***** Header Area Ends ***** -->
 
     <!-- ***** Reservation Us Area Starts ***** -->
     <section class="section" id="reservation" >
@@ -173,6 +139,11 @@
     </section>
     <!-- ***** Reservation Area Ends ***** -->
     
+    <!-- ***** Footer Area Starts ***** -->
+    <div>
+	   <jsp:include page="footer.jsp"></jsp:include>
+	</div>
+    <!-- ***** Footer Area Ends ***** -->
     
    
 
