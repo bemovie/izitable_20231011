@@ -1,5 +1,8 @@
 package com.izitable.controller;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izitable.model.Booking;
 import com.izitable.model.Shop;
+import com.izitable.model.ShopTime;
 import com.izitable.service.BookingService;
 import com.izitable.service.ShopService;
 
@@ -41,6 +46,22 @@ public class BookingController {
 		bookingservice.add(item);
 		
 		return "booking/confirm";
+	}
+	
+	//날짜 - 영업시간
+	@PostMapping("/date")
+	@ResponseBody
+	List<ShopTime> date(ShopTime shopTime) {
+		List<ShopTime> list = bookingservice.bookingTimeList(shopTime);
+		
+//		for (int i = 0; i < list.size(); i++) {
+//			if (list.get(i).get == 2) {
+//				
+//			}
+//			
+//		}
+		
+		return list;
 	}
 	
 }

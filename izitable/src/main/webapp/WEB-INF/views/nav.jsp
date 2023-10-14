@@ -80,7 +80,7 @@
 			</c:choose>
 		</c:if>
 		<c:if test="${sessionScope.shop != null}">
-			<button class="btn btn-sm"><a href="/shop/booking/${sessionScope.shop.shopNo}">${sessionScope.shop.shopEmail}</a></a></button>
+			<button class="btn btn-sm"><a href="/shop/booking/${sessionScope.shop.shopNo}">${sessionScope.shop.shopEmail}</a></button>
 		</c:if>
 	</div>	
 </c:if>

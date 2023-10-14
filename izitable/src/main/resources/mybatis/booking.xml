@@ -65,4 +65,9 @@
 		WHERE no = #{bookingNo}
 	</select>
 	
+	<select id="bookingTimeList">
+		SELECT * FROM tbl_shop_time
+		WHERE shop_no = #{shopNo} and day = DAYOFWEEK(#{bookingDate})
+	</select>
+	
 </mapper>

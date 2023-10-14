@@ -1,5 +1,6 @@
 package com.izitable.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.izitable.dao.BookingDao;
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTime;
 import com.izitable.model.Booking;
 
 @Service
@@ -62,5 +64,10 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public int totalUser(int userNo) {
 		return dao.totalUser(userNo);
+	}
+
+	@Override
+	public List<ShopTime> bookingTimeList(ShopTime shopTime) {
+		return dao.bookingTimeList(shopTime);
 	}
 }

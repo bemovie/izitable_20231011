@@ -1,5 +1,6 @@
 package com.izitable.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTime;
 import com.izitable.model.Booking;
 
 @Repository
@@ -63,6 +65,11 @@ public class BookingDaoImpl implements BookingDao {
 	@Override
 	public int totalUser(int userNo) {
 		return sql.selectOne("booking.totalUser", userNo);
+	}
+
+	@Override
+	public List<ShopTime> bookingTimeList(ShopTime shopTime) {
+		return sql.selectList("booking.bookingTimeList", shopTime);
 	}
 
 }

@@ -56,7 +56,7 @@ join_input {
 			<div>
 				<div class="join_input">
 					<label>이메일</label><br>
-					<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요">
+					<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요" pattern="[^ @]*@[^ @]*">
 					<a href="#" id="btn-id-check" class="btn-sm spot fn" title="중복확인(새창열림)"><span>중복확인</span></a>
 					<!-- <button class="btn">이메일 인증</button> -->
 				</div>

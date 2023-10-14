@@ -17,7 +17,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		
 		User user = (User) session.getAttribute("user");
 		if(user != null) { //로그인 한 경우
-			if(!user.getUserEmail().equals("admin") ) { //일반 유저인 경우
+			if(!user.getUserEmail().equals("admin@admin") ) { //일반 유저인 경우
 				response.sendRedirect("/"); // 처음 페이지로 보냄
 				return false;
 			}

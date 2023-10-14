@@ -1,9 +1,11 @@
 package com.izitable.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.izitable.model.Booking;
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTime;
 
 public interface BookingService {
 
@@ -24,5 +26,7 @@ public interface BookingService {
 	int totalShop(int shopNo);
 
 	int totalUser(int userNo);
+
+	List<ShopTime> bookingTimeList(ShopTime shopTime);
 
 }

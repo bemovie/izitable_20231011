@@ -50,7 +50,7 @@ public class RootController {
 			session.removeAttribute("msg");
 		}
 		
-		return "shop/shopList";
+		return "main_test";
 	}
 	
 	//로그인
@@ -229,7 +229,7 @@ public class RootController {
 	}
 	*/
 	
-	final String path = "shop/";
+	final String path = "/";
 	
 	//매장 목록 (메인 페이지)
 	@GetMapping("/list")
@@ -248,7 +248,7 @@ public class RootController {
 		
 		model.addAttribute("list", list);
 		
-		return path + "shopList";
+		return path + "main_test";
 	}
 	
 	//매장 상세정보
