@@ -21,4 +21,9 @@ public interface UserService {
 
 	int duplicateCheck(User user);
 
+	User actionlogin(User user);
+
+	
+
+	
 }

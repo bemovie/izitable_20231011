@@ -24,4 +24,6 @@ public interface UserDao {
 
 	int duplicateCheck(User user);
 
+	
+
 }

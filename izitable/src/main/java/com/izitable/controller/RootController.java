@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.izitable.auth.naver.NaverLoginService;
+
+
+
 import com.izitable.model.Shop;
 import com.izitable.model.User;
 import com.izitable.service.ShopService;
@@ -36,8 +35,6 @@ public class RootController {
 	@Autowired
 	ShopService shopService;
 	
-	@Autowired
-	private NaverLoginService naverLoginService;
 	
 	
 	//메인 페이지
@@ -55,12 +52,7 @@ public class RootController {
 	
 	//로그인
 	@GetMapping("/login")
-	public String login(User user,HttpServletRequest request, ModelMap model, HttpSession session) {
-		//Naver
-				String domain = request.getServerName();
-				String port = Integer.toString(request.getServerPort());
-				String naverAuthUrl = naverLoginService.getAuthorizationUrl(session, domain, port);
-				model.addAttribute("naverAuthUrl", naverAuthUrl);
+	public String login() {
 		return "login";
 	}
 	
@@ -89,6 +81,8 @@ public class RootController {
 			
 			else {
 				session.setAttribute("msg", "로그인에 실패하였습니다");
+				
+				return "join/joinUser";
 			}
 		}
 		
@@ -102,57 +96,6 @@ public class RootController {
 		
 		return "redirect:/";
 	}
-	
-	//네이버 로그인 콜백
-			@PostMapping("/login/naverLogin")
-			public String naverLogin(@ModelAttribute("user") User user, @RequestParam String code,@RequestParam String state ,HttpSession session, HttpServletRequest request, HttpServletResponse respone, ModelMap model) throws Exception {
-				
-				String domain = request.getServerName();
-				String port = Integer.toString(request.getServerPort());
-				OAuth2AccessToken oauthToken;
-				
-				
-				oauthToken = naverLoginService.getAccessToken(session, code, state, domain, port);
-				
-				
-				//로그인 사용자 정보를 읽어온다.
-				String apiResult = naverLoginService.getUserProfile(oauthToken);
-				
-				JSONParser parser = new JSONParser();
-				Object obj = parser.parse(apiResult);
-				JSONObject jsonObj = (JSONObject) obj;
-				JSONObject result = (JSONObject)jsonObj.get("response");
-				
-				user.setUserEmail("NAVER-" + result.get("userEmail").toString());
-				user.setUserPwd("");
-				user.setUserSe("USR");
-				
-				user.setUserPwd("");
-				user.setUserSe("USR");
-			
-				//로그인 값이 없으면 회원가입처리
-				if(user != null  && user.getUserEmail() != null && !user.getUserEmail().equals("")) {
-					request.getSession().setAttribute("User",user);
-					return "redirect:/";
-				} else {
-					//일반 가입을 제외하고는 ID 값은 SNS명 + ID값
-					User user1 = new User();
-					user1.setUserEmail(user.getUserEmail());
-					if(result.get("email") != null) {
-						user1.setUserEmail(result.get("email").toString());
-					}
-					user1.setUserPwd("");
-					
-					
-					if(result.get("mobile") != null) {
-						System.out.println("mobile : " + result.get("email").toString());
-					}
-					userService.add(user1);
-					model.addAttribute("loginMessage","회원가입이 완료되었습니다.");
-					
-					 return " /MemberComplete";
-				}
-			}
 	
 	
 	//약관 동의
@@ -169,7 +112,10 @@ public class RootController {
 	
 	//회원가입 (일반회원)
 	@GetMapping("/join/user")
-	String joinUser() {
+	String joinUser(@ModelAttribute("searchVO") User user, HttpServletRequest request, ModelMap model) {
+		
+		
+		
 		return "join/joinUser";
 	}
 	

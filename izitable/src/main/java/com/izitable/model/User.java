@@ -15,9 +15,9 @@ public class User {
 	private String userPhone;		//회원 전화번호
 	private String userPhoneCert;	//회원 전화번호 인증여부
 	
+	private String userNm;		//로그인 타입
 	private String loginType;		//로그인 타입
 	
-	private String userSe;			//사용자구분
 	
 	
 	public String getLoginType() {
@@ -57,12 +57,13 @@ public class User {
 	public void setUserPhoneCert(String userPhoneCert) {
 		this.userPhoneCert = userPhoneCert;
 	}
-	public String getUserSe() {
-		return userSe;
+	public String getUserNm() {
+		return userNm;
 	}
-	public void setUserSe(String userSe) {
-		this.userSe = userSe;
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
 	}
+
 	
 	
 }

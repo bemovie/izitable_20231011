@@ -97,6 +97,19 @@
 				<a href=""><img src="/resources/image/naverlogin.png" width="200px"></a>		
 			</div>
 			
+			<article>
+			<h3 class="icon2 ico-user">SNS회원</h3>
+				<div class="confirm_box">
+					<p class="mB20">카카오 회원</p>
+					<div class="btn-cont">
+						<a class="btn-kakao" href="#" data-type="join">
+							<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="150" alt="카카오 로그인 버튼"/>
+						</a>
+					</div>
+				</div>
+			</article>
+			
+			
 			<div style="border: 2px solid black; width: 200px; height: 200px; float: right; padding: 10px; text-align: center;">
 				<a href="/join/shop"><img src="/resources/image/shop.png" width="200px">
 				<button class="btn">매장 회원 가입</button></a>
@@ -104,6 +117,70 @@
 		</div>
 			
 	</div>
+	
+	
+	<form id="joinFrm" name="joinFrm" method="post" action="/join/insertMember.do">
+	<input type="hidden" name="loginType" value=""/>
+	<input type="hidden" name="userEmail"/>
+	<input type="hidden" name="userNm"/>
+	<input type="hidden" name="emailAdres"/>
+	</form>
+	
+	
+	
+	
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+$(document).ready(function(){
+	//카카오 로그인 버튼
+	$(".btn-kakao").click(function(){
+		const type = $(this).data("type");
+		kakaoLogin(type);
+		return false;
+	});
+});
+
+//카카오 키 정보 입력
+Kakao.init('0b7a004ffb2b6ac4334ce44c38e6ddaa'); // 본인 Javascript key
+
+//카카오 SDK 초기화
+Kakao.isInitialized();
+
+//카카오로그인
+function kakaoLogin(type){
+	Kakao.Auth.login({
+		success: function (response) {
+			Kakao.API.request({
+				url: '/v2/user/me',
+				success:function (response) {
+					console.log(response)
+					$("input[name=loginType]").val("KAKAO");
+					$("input[name=userId]").val(response.id);
+					$("input[name=userNm]").val(response.properties.nickname);
+					$("input[name=userEmail]").val(response.kakao_account.email);
+					$("#joinFrm").submit();
+				},
+				fail: function (error){
+					console.log(error)
+				},
+			})
+		}, fail: function (error){
+			console.log(error)
+		},
+	})
+}
+<c:if test="${ not empty message}">
+	alert("${message}");
+</c:if>
+
+<c:if test="${ not empty loginMessage}">
+	alert("${loginMessage}");
+</c:if>
+
+</script>
+	
+	
+	
 
 </body>
 </html>

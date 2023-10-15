@@ -74,4 +74,12 @@ public class UserServiceImpl implements UserService {
 		return dao.duplicateCheck(user);
 	}
 
+	@Override
+	public User actionlogin(User user) {
+		
+		return dao.login(user);
+	}
+
+
+
 }

@@ -73,6 +73,11 @@
 			<div>
 				<img src="${pageContext.request.contextPath}/resources/image/kakaologin.png" width="200px">
 			</div>
+			<div class="btn-cont">
+								<a class="btn-kakao" href="#" data-type="login">
+									<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="200" alt="카카오 로그인 버튼"/>
+								</a>
+			</div>
 			<div>
 				<img src="${pageContext.request.contextPath}/resources/image/naverlogin.png" width="200px">
 			</div>
@@ -87,5 +92,55 @@
 </div>
 </div>
 </div>
+
+</script>
+
+<form id="frmLogin" name="frmLogin" method="post" action="/login">
+	<input type="hidden" name="loginType" value=""/>
+	<input type="hidden" id="snsId" name="id"/>
+</form>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+$(document).ready(function(){
+	//카카오 로그인 버튼
+	$(".btn-kakao").click(function(){
+		const type = $(this).data("type");
+		kakaoLogin(type);
+		return false;
+	});
+});
+
+//카카오 키 정보 입력
+Kakao.init('2a3e332780189603d4027c2c218ee6a4'); // 본인 Javascript key
+
+//카카오 SDK 초기화
+Kakao.isInitialized();
+
+//카카오로그인
+function kakaoLogin(type){
+	Kakao.Auth.login({
+		success: function (response) {
+			Kakao.API.request({
+				url: '/v2/user/me',
+				success:function (response) {
+					console.log(response)
+					$("input[name=loginType]").val("KAKAO");
+					$("#snsId").val(response.id);
+					$("#frmLogin").submit();
+				},
+				fail: function (error){
+					console.log(error)
+				},
+			})
+		}, fail: function (error){
+			console.log(error)
+		},
+	})
+}
+</script>
+
+
+
 </body>
 </html>
