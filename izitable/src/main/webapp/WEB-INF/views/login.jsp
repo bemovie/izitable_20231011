@@ -2,28 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 
-<!-- 문교수님 CSS -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"> -->
+<jsp:include page="header.jsp"></jsp:include>
 
-<!-- BBS Style -->
-<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet" />
-<!-- 공통 Style -->
-<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
-<!-- 문교수님 CSS -->
-
-<meta charset="UTF-8">
+<body style="text-align: center; /*border: 2px solid black*/">
 
 <jsp:include page="nav.jsp"></jsp:include>
-
-</head>
-<body style="text-align: center; /*border: 2px solid black*/">
 
 <!-- <h2 class="icon1">로그인</h2> -->
 
@@ -81,6 +65,14 @@
 			<div>
 				<img src="${pageContext.request.contextPath}/resources/image/naverlogin.png" width="200px">
 			</div>
+			
+			<br>
+			<br>
+			
+			<div>
+				회원 가입이 필요하신가요? <button class="btn"><a href="/siteUseAgree">회원가입</a></button>	
+			</div>
+			
 		</div>
 		</form>
 	</div>
@@ -92,8 +84,6 @@
 </div>
 </div>
 </div>
-
-</script>
 
 <form id="frmLogin" name="frmLogin" method="post" action="/login">
 	<input type="hidden" name="loginType" value=""/>
@@ -140,7 +130,7 @@ function kakaoLogin(type){
 }
 </script>
 
-
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -3,39 +3,23 @@
     
 <!DOCTYPE html>
 <html>
+
 <head>
-
-<!-- 문교수님 CSS -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"> -->
-
-<!-- BBS Style -->
-<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet" />
-<!-- 공통 Style -->
-<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
-
-<link rel="stylesheet" href="/asset/member/css/login.css">
-<!-- 문교수님 CSS -->
-
 <style>
-join_input {
-	margin-bottom: 30px;
-}
+join_input { margin-bottom: 30px; }
 </style>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<title>IZITABLE - 이지테이블 : 회원가입</title>
 
-<meta charset="UTF-8">
+<jsp:include page="../header.jsp"></jsp:include>
+<!-- 회원가입 Style -->
+<link rel="stylesheet" href="/asset/member/css/login.css">
+</head>
+
+<body>
 
 <jsp:include page="../nav.jsp"></jsp:include>
 
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
-<title>IZITABLE - 이지테이블 : 회원가입</title>
-</head>
-<body>
 <div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/">
 
 <div class="tit_intro_step">
@@ -59,6 +43,11 @@ join_input {
 					<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요" pattern="[^ @]*@[^ @]*">
 					<a href="#" id="btn-id-check" class="btn-sm spot fn" title="중복확인(새창열림)"><span>중복확인</span></a>
 					<!-- <button class="btn">이메일 인증</button> -->
+				</div>
+				
+				<div class="join_input">
+					<label>이름</label><br>
+					<input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요">
 				</div>
 				
 				<div class="join_input">
@@ -148,6 +137,9 @@ function regist(){
 	}else if(!$("#userEmail").val()){
 		alert("이메일을 입력해주세요.");
 		return false;
+	}else if(!$("#userName").val()){
+		alert("이름을 입력해주세요.");
+		return false;	
 	}else if(!$("#userPhone").val()){
 		alert("휴대폰 번호를 입력해주세요.");
 		return false;
@@ -192,6 +184,8 @@ function regist(){
 	}			
 }
 </script>
+
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>

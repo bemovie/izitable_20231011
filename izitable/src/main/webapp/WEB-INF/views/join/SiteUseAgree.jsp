@@ -3,35 +3,22 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-
-<!-- 문교수님 CSS -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"> -->
-
-<!-- BBS Style -->
-<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet" />
-<!-- 공통 Style -->
-<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
-
-<link rel="stylesheet" href="/asset/member/css/login.css">
-
-<!-- 문교수님 CSS -->
-
-<meta charset="UTF-8">
-
-<jsp:include page="../nav.jsp"></jsp:include>
-
+<style>
+join_input { margin-bottom: 30px; }
+</style>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
 <title>IZITABLE - 이지테이블 : 회원가입</title>
 
+<jsp:include page="../header.jsp"></jsp:include>
+<!-- 회원가입 Style -->
+<link rel="stylesheet" href="/asset/member/css/login.css">
 </head>
+
 <body>
+
+<jsp:include page="../nav.jsp"></jsp:include>
 
 <div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/">
 
@@ -126,6 +113,8 @@ $(document).ready(function() {
 	});
 });
 </script>
+
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>

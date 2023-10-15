@@ -4,13 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <jsp:include page="header.jsp"></jsp:include>
 
 <body>
 
-<jsp:include page="nav_test.jsp"></jsp:include>
+<jsp:include page="nav.jsp"></jsp:include>
 
     <!-- ***** Main Banner Area Start ***** -->
     <div id="top">

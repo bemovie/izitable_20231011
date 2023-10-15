@@ -1,10 +1,12 @@
 package com.izitable.model;
 
+import java.util.Date;
+
 public class ShopTime {
 	
 	//tbl_shop_time
 	private int timeNo;
-	private int day;
+	private String day;
 	private int hour;
 	
 	private int shopNo;
@@ -17,11 +19,11 @@ public class ShopTime {
 		this.timeNo = timeNo;
 	}
 
-	public int getDay() {
+	public String getDay() {
 		return day;
 	}
 
-	public void setDay(int day) {
+	public void setDay(String day) {
 		this.day = day;
 	}
 

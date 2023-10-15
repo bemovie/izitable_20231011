@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-
-
+import com.izitable.model.Pager;
 import com.izitable.model.Shop;
 import com.izitable.model.User;
 import com.izitable.service.ShopService;
@@ -47,7 +45,7 @@ public class RootController {
 			session.removeAttribute("msg");
 		}
 		
-		return "shop/shopList";
+		return "main";
 	}
 	
 	//로그인
@@ -178,7 +176,11 @@ public class RootController {
 	
 	//매장 목록 (메인 페이지)
 	@GetMapping("/list")
-	String list() {
+	String list(Model model, Pager pager) {
+		
+		List<Shop> list = shopService.list_admin(pager);
+		
+		model.addAttribute("list", list);
 		
 		return path + "shopList";
 	}

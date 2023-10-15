@@ -4,25 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <title>Izitable-Reservation</title>
-
-
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
 
 <body>
+
+<jsp:include page="../nav.jsp"></jsp:include>
 
 	<div>
 	   <jsp:include page="../header.jsp"></jsp:include>
@@ -136,9 +126,6 @@
         </div>
     </section>
     <!-- ***** Reservation Area Ends ***** -->
-    
-    
-   
 
     <!-- jQuery -->
     <script src="resources/assets/js/jquery-2.1.0.min.js"></script>
@@ -203,6 +190,9 @@ myDateInput.max = oneMonthLater.toISOString().slice(0, 10); // 1개월 후의 �
 
         
     </script>
+
+<jsp:include page="../footer.jsp"></jsp:include>
+
 </body>
 
 </html>

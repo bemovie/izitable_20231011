@@ -3,38 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-
-<!-- 문교수님 CSS -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"> -->
-
-<!-- BBS Style -->
-<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet" />
-<!-- 공통 Style -->
-<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
-<!-- 문교수님 CSS -->
-
-
-<%-- <jsp:include page="../header.jsp"></jsp:include> --%>
-
-<link rel="stylesheet" type="text/css" href="../../../resources/css/modal.css">
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3deea4e437afacaccf5d342a0a21b891&libraries=services"></script>
-
 <!-- 내 위치 가져오기 -->
 <script src="../../../resources/js/kakaomap/pos.js"></script>   
-
-<jsp:include page="../nav.jsp"></jsp:include>
-
 <title>IZITABLE - 이지테이블</title>
 
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
+
 <body>
+<jsp:include page="../nav.jsp"></jsp:include>
 
 <div id="content">
 <div class="container" style="margin: 0 auto; width: 1200px; text-align: center">
@@ -61,12 +41,37 @@
 </select>
 <!-- <button onclick="applyFn()">적용</button> -->
 <button type="submit" class="btn">적용</button>
+
+<button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()" class="btn">▲ 내 위치 가져오기</button>
+
 </form>
 
-<div id="map" style="width:500px;height:400px;margin: 0 auto;"></div>
 
+
+<div id="map" style="width:500px;height:400px; margin: 0 auto; display: inline-block;"></div>
 <!-- 카카오 지도 생성 -->
 <script src="../../../resources/js/kakaomap/map.js"></script>
+
+<div style="border: 2px solid black; width:500px; height:400px; display: inline-block; margin-left: 10px; overflow: auto">
+	<c:forEach var="item" items="${list}">
+		<div style="border: 2px solid black; width:450px; text-align: left;">
+			<div style="display: inline-block;"><img src="" width="100" height="100"></div>
+			<div style="display: inline-block;">
+				<ul>
+					<li>매장명 : ${item.compName}</li>
+					<li>전화번호 : ${item.compCall}</li>
+					<li>소개 : ${item.compIntro}</li>
+					<%-- <li>카테고리 : ${item.categoryNo}</li> --%>
+				</ul>
+			</div>
+			<div style="text-align: right"><a href="/booking/shop/${item.shopNo}" class="btn">예약하기</a></div>
+		</div>
+	</c:forEach>
+	<c:if test="${list.size() < 1}" >
+		해당하는 음식점이 없습니다.
+	</c:if>
+</div>
+
 
 <!-- 카테고리에 따른 지도 중심 이동 -->
 <script>
@@ -90,13 +95,13 @@ map.setCenter(coords);
 	    
 <!-- 카테고리에 따른 마커 생성 -->
 <c:forEach var="item" items="${list}">
-<p>위도 : ${item.latitude}, 경도 : ${item.longitude}</p>
+<%-- <p>위도 : ${item.latitude}, 경도 : ${item.longitude}</p> --%>
 
 <script>
 //var lat = [];
 //var lng = [];
 
-alert(`${item.latitude}, ${item.longitude}`);
+//alert(`${item.latitude}, ${item.longitude}`);
 
 
 
@@ -440,14 +445,16 @@ window.addEventListener('click', function(event) {
 });
 </script>
 
-<button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()">내 위치 가져오기</button>
 
 
 
+
 </div>
 </div>
 </div>
 </div>
+
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>
