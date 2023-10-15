@@ -47,7 +47,7 @@ public class RootController {
 			session.removeAttribute("msg");
 		}
 		
-		return "main_test";
+		return "shop/shopList";
 	}
 	
 	//로그인
@@ -81,8 +81,7 @@ public class RootController {
 			
 			else {
 				session.setAttribute("msg", "로그인에 실패하였습니다");
-				
-				return "join/joinUser";
+
 			}
 		}
 		

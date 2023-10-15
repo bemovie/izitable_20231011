@@ -31,7 +31,7 @@
 	<div style="/*border: 2px solid black;*/ text-align: center;">
 		
 		<button class="btn" style="margin-right: 30px;"><a href="/user/update/${sessionScope.user.userNo}"><h3>정보 변경</h3></a></button>
-		<button class="btn"><a href="/user/booking/${sessionScope.user.userNo}"><h3>예약 목록</h3></a></button>
+		<button class="btn btn-lg"><a href="/user/booking/${sessionScope.user.userNo}"><h3>예약 목록</h3></a></button>
 
 	</div>
 		
@@ -60,7 +60,7 @@
 						<td>${item.bookingTime}</td>
 						<td>${item.bookingMemNum}</td>
 						<td>
-							<button><a href="${item.userNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm">취소</a></button>
+							<button><a href="/user/booking/${item.userNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm">취소</a></button>
 						</td>
 					</tr>
 					</c:forEach>	

@@ -42,10 +42,21 @@ public class BookingController {
 	
 	//예약 추가
 	@PostMapping("/add")
-     String add(Booking item) {
+    String add(Booking item) {
 		bookingservice.add(item);
 		
-		return "booking/confirm";
+		return path + "confirm";
+	}
+	
+	//예약 페이지 이동
+	@GetMapping("/shop/{shopNo}")
+	String booking(@PathVariable int shopNo, Shop shop, Model model) {
+		
+		shopService.item(shopNo);
+		
+		model.addAttribute("shop", shop);
+		
+		return path + "booking_test";
 	}
 	
 	//날짜 - 영업시간

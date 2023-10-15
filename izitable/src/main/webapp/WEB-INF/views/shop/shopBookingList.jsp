@@ -30,7 +30,7 @@
 	
 	<div style="/*border: 2px solid black;*/ text-align: center;">
 		
-			<button class="btn" style="margin-right: 30px;"><a href="/shop/booking/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a></button>
+			<button class="btn btn-lg" style="margin-right: 30px;"><a href="/shop/booking/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a></button>
 			<button class="btn" style="margin-right: 30px;"><a href="/shop/setting/${sessionScope.shop.shopNo}"><h3>매장 설정</h3></a></button>
 			<button class="btn"><a href="/shop/update/${sessionScope.shop.shopNo}"><h3>정보 변경</h3></a></button>
 
@@ -67,7 +67,7 @@
 								<td>${item.bookingTime}</td>
 								<td>${item.bookingMemNum}</td>
 								<td>
-									<button><a href="${item.shopNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm">취소</a></button>
+									<button><a href="/shop/booking/${item.shopNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm">취소</a></button>
 								</td>
 							</tr>
 					</c:forEach>	

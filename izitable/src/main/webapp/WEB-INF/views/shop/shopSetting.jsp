@@ -31,7 +31,7 @@
 	<div style="/*border: 2px solid black;*/ text-align: center;">
 		
 			<button class="btn" style="margin-right: 30px;"><a href="/shop/booking/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a></button>
-			<button class="btn" style="margin-right: 30px;"><a href="/shop/setting/${sessionScope.shop.shopNo}"><h3>매장 설정</h3></a></button>
+			<button class="btn btn-lg" style="margin-right: 30px;"><a href="/shop/setting/${sessionScope.shop.shopNo}"><h3>매장 설정</h3></a></button>
 			<button class="btn"><a href="/shop/update/${sessionScope.shop.shopNo}"><h3>정보 변경</h3></a></button>
 
 	</div>
@@ -100,7 +100,7 @@
 							<td>${item.tableNo}</td>
 							<td>${item.name}</td>
 							<td>${item.number}</td>
-							<td><a href="${item.shopNo}/deleteTable/${item.tableNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
+							<td><a href="/shop/setting/${item.shopNo}/deleteTable/${item.tableNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>
@@ -185,7 +185,7 @@
 							
 							</td>
 							<td>${item.hour}:00</td>
-							<td><a href="${item.shopNo}deleteTime/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
+							<td><a href="/shop/setting/${item.shopNo}/deleteTime/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>

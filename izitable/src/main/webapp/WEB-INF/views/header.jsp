@@ -1,25 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<title>쉽고 빠른 식당 예약 서비스 - IZITABLE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../../resources/fonts/bootstrap-icons.css">
-<link rel="stylesheet" type="text/css" href="../../../resources/css/style.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<meta id="theme-check" name="theme-color" content="#FFFFFF">
-<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <title>IZITABLE_header</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/bootstrap.min.css">
 
-<script src="../../../resources/js/bootstrap.min.js"></script>
-<script src="../../../resources/js/custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/font-awesome.css">
 
-<meta charset="UTF-8">
+    <link rel="stylesheet" href="/resources/assets/css/template_izitable.css">
 
+    <link rel="stylesheet" href="/resources/assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="/resources/assets/css/lightbox.css">
+
+    <style>
+        .search {
+            margin-left: 100px;
+            margin-top: 30px;
+            float: left;
+            width: 450px;
+        }
+
+        .search input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+
+        .search img {
+            position: absolute;
+            width: 17px;
+            top: 42px;
+            right: 430px;
+            margin: 0;
+        }
+
+        .nav2 {
+            margin-left: 10px;
+            margin-top: 30px;
+        }
+    </style>

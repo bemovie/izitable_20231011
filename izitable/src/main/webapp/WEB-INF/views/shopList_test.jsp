@@ -183,7 +183,8 @@ function refreshList() {
 			<td>${item.compCall}</td>
 			<td>${item.categoryNo}</td>
 			<td>
-				<button id="booking_${item.shopNo}"><a href="#reservation">예약</a></button>
+				<button><a href="/booking/shop/${item.shopNo}">예약</a></button>
+				<%-- <button id="booking_${item.shopNo}"><a href="#reservation">예약</a></button> --%>
 			</td>
 		</tr>
 		</c:forEach>	
