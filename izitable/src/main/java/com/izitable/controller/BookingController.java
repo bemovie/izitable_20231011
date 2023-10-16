@@ -56,7 +56,7 @@ public class BookingController {
 		
 		model.addAttribute("shop", shop);
 		
-		return path + "booking_test";
+		return path + "booking";
 	}
 	
 	//날짜 - 영업시간
