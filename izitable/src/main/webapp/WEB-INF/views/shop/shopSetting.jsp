@@ -34,9 +34,9 @@
 		<div>
 			<form method="post" action="/shop/setting/${sessionScope.shop.shopNo}/addtable">
 				
-				<span class="row mb-3">
-					<label class="col-3">인용:</label>
-					<span class="col">
+				<span>
+					<label>인용:</label>
+					<span>
 						<select name="number">
 							<option value="2">2인용</option>
 							<option value="4">4인용</option>
@@ -46,23 +46,20 @@
 					</span>
 				</span>
 				
-				<span class="row mb-3">
-					<label class="col-3">테이블 이름:</label>
-					<span class="col">
-						<input type="text" name="name" class="form-control">
+				<span>
+					<label>테이블 이름:</label>
+					<span>
+						<input type="text" name="name">
 					</span>
 				</span>
 				
-				<span class="row mb-3">
-					<span class="col"></span>
-					<span class="row col">
-						<button type="submit" class="btn btn-primary">등록</button>
+				<span>
+					<span></span>
+					<span>
+						<button type="submit" class="btn">등록</button>
 					</span>
-					<span class="col"></span>
-					<span class="row col">
-						<a href="list" class="row"><button type="button" class="btn btn-secondary">취소</button></a>
-					</span>
-					<span class="col"></span>
+					<span></span>
+					<span></span>
 				</span>			
 			</form>
 		</div>
@@ -105,9 +102,9 @@
 		<div>
 			<form method="post" action="/shop/setting/${sessionScope.shop.shopNo}/addtime">
 				
-				<span class="row mb-3">
-					<label class="col-3">요일:</label>
-					<span class="col">
+				<span>
+					<label>요일:</label>
+					<span>
 						<select name="day">
 							<option value="2">월요일</option>
 							<option value="3">화요일</option>
@@ -120,23 +117,20 @@
 					</span>
 				</span>
 				
-				<span class="row mb-3">
-					<label class="col-3">영업 시간대:</label>
-					<span class="col">
-						<input type="number" name="hour" min="0" max="23" class="form-control"> 시
+				<span>
+					<label>영업 시간대:</label>
+					<span>
+						<input type="number" name="hour" min="0" max="23"> 시
 					</span>
 				</span>
 				
-				<span class="row mb-3">
-					<span class="col"></span>
-					<span class="row col">
-						<button type="submit" class="btn btn-primary">등록</button>
+				<span>
+					<span></span>
+					<span>
+						<button type="submit" class="btn">등록</button>
 					</span>
-					<span class="col"></span>
-					<span class="row col">
-						<a href="list" class="row"><button type="button" class="btn btn-secondary">취소</button></a>
-					</span>
-					<span class="col"></span>
+					<span></span>
+					<span></span>
 				</span>			
 			</form>
 		</div>
@@ -157,7 +151,7 @@
 				<tbody>
 					<c:if test="${timelist.size() < 1}">
 						<tr>
-							<td colspan="5">등록 된 영업시간이 없습니다</td>					
+							<td colspan="4">등록 된 영업시간이 없습니다</td>					
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${timelist}">

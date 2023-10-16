@@ -76,6 +76,26 @@
         <div class="menu-item-carousel">
             <div class="col-lg-12">
                 <div class="owl-menu-item owl-carousel">
+                
+                <c:forEach var="item" items="${list}">
+                	<div class="item">
+                        <div class='card' style="background-image: url(/upload/${item.imgFilename});">
+                            <div class='info'>
+                                <h1 class='title'>${item.compName}</h1>
+                                <p class='description'>${item.compIntro}</p>
+                                <div class="main-text-button">
+                                    <div class="scroll-to-section"><a href="/booking/shop/${item.shopNo}">예약하기<i
+                                                class="fa fa-angle-down"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+                
+                
+                
+                    <!-- 원본 템플릿 -->
+                    <!-- 
                     <div class="item">
                         <div class='card card1'>
                             <div class='info'>
@@ -89,6 +109,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="item">
                         <div class='card card2'>
                             <div class='info'>
@@ -102,6 +123,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="item">
                         <div class='card card3'>
                             <div class='info'>
@@ -115,6 +137,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="item">
                         <div class='card card4'>
                             <div class='info'>
@@ -128,6 +151,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="item">
                         <div class='card card4'>
                             <div class='info'>
@@ -141,6 +165,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="item">
                         <div class='card card5'>
                             <div class='info'>
@@ -154,6 +179,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="item">
                         <div class='card card3'>
                             <div class='info'>
@@ -167,6 +193,10 @@
                             </div>
                         </div>
                     </div>
+                     -->
+                    
+                    
+                    
                 </div>
             </div>
         </div>

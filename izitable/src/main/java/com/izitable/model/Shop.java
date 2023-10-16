@@ -23,6 +23,15 @@ public class Shop {
 	
 	private String detailAddr; //매장 상세 주소
 	
+	private String imgFilename; //매장 대표사진(이미지 파일명)
+	
+	public String getImgFilename() {
+		return imgFilename;
+	}
+	public void setImgFilename(String imgFilename) {
+		this.imgFilename = imgFilename;
+	}
+	
 	public String getDetailAddr() {
 		return detailAddr;
 	}

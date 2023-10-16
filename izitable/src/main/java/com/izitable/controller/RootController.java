@@ -37,13 +37,16 @@ public class RootController {
 	
 	//메인 페이지
 	@GetMapping("/")
-	String index(HttpSession session, Model model) {
+	String index(HttpSession session, Model model, Pager pager) {
 		String msg = (String) session.getAttribute("msg");
 		
 		if(msg != null) {
 			model.addAttribute("msg", msg);
 			session.removeAttribute("msg");
 		}
+		
+		List<Shop> list = shopService.list_admin(pager);
+		model.addAttribute("list", list);
 		
 		return "main";
 	}
@@ -64,6 +67,7 @@ public class RootController {
 			if(result) { //result가 true면 로그인 되었다 => session에 사용자 정보를 저장			
 				session.setAttribute("msg", "환영합니다");
 				session.setAttribute("shop", shop); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
+				return "redirect:/shop/booking/"+shop.getShopNo();
 			}
 			
 		}

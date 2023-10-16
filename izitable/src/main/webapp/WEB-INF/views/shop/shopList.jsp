@@ -45,7 +45,7 @@
 <!-- <button onclick="applyFn()">적용</button> -->
 <button type="submit" class="btn">적용</button>
 
-<button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()" class="btn">▲ 내 위치 가져오기</button>
+<button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()" class="btn"><img src="/resources/image/mylocation2.png" width="14px" height="20px"> 내 위치</button>
 
 </form>
 
@@ -57,9 +57,9 @@
 
 <div style="border: 2px solid black; width:500px; height:500px; display: inline-block; margin-left: 10px; overflow: auto">
 	<c:forEach var="item" items="${list}">
-		<div style="border: 2px solid black; width:450px; text-align: left;">
-			<div style="display: inline-block;"><img src="" width="100" height="100"></div>
-			<div style="display: inline-block;">
+		<div style="border: 2px solid black; width:479px; text-align: left;">
+			<div style="display: inline-block; border: 2px solid black;"><img src="/upload/${item.imgFilename}" width="100" height="100"></div>
+			<div style="display: inline-block; border: 2px solid black; width:320px; height:120px; vertical-align: middle;">
 				<ul>
 					<li>매장명 : ${item.compName}</li>
 					<li>전화번호 : ${item.compCall}</li>

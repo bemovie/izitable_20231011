@@ -56,7 +56,7 @@ body {
 	font-size:14px;
 	line-height:1.5;
 	font-family:"Noto Sans KR", "맑은 고딕", "Malgun Gothic", "Apple SD Gothic Neo", Helvetica,"돋움", Dotum, "굴림", Gulim, sans-serif;
-	background-color:transparent;
+	background-color: #fffafa;
 	color:#555;
 	font-weight:400;
 	/*-webkit-font-smoothing:antialiased;
