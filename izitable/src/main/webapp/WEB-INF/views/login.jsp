@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 <html>
 
+<head>
 <jsp:include page="header.jsp"></jsp:include>
+<style>
+#bbs_wrap {min-height: 608px;}
+</style>
+</head>
 
 <body style="text-align: center; /*border: 2px solid black*/">
 

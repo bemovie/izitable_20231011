@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-#bbs_wrap {min-height: 60%;}
+#bbs_wrap {min-height: 608px;}
 </style>
 </head>
 

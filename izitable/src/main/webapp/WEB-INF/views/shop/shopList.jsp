@@ -11,6 +11,9 @@
 <title>IZITABLE - 이지테이블</title>
 
 <jsp:include page="../header.jsp"></jsp:include>
+<style>
+#bbs_wrap {min-height: 608px;}
+</style>
 </head>
 
 <body>
@@ -19,7 +22,7 @@
 <div id="content">
 <div class="container" style="margin: 0 auto; width: 1200px; text-align: center">
 <div id="contents">
-<div id="bbs_wrap">	
+<div id="bbs_wrap" >
 		
 <form method="post" action="/list" style="margin: 10px;">
 <select id="si" name="si">
@@ -48,11 +51,11 @@
 
 
 
-<div id="map" style="width:500px;height:400px; margin: 0 auto; display: inline-block;"></div>
+<div id="map" style="width:500px;height:500px; margin: 0 auto; display: inline-block;"></div>
 <!-- 카카오 지도 생성 -->
 <script src="../../../resources/js/kakaomap/map.js"></script>
 
-<div style="border: 2px solid black; width:500px; height:400px; display: inline-block; margin-left: 10px; overflow: auto">
+<div style="border: 2px solid black; width:500px; height:500px; display: inline-block; margin-left: 10px; overflow: auto">
 	<c:forEach var="item" items="${list}">
 		<div style="border: 2px solid black; width:450px; text-align: left;">
 			<div style="display: inline-block;"><img src="" width="100" height="100"></div>
