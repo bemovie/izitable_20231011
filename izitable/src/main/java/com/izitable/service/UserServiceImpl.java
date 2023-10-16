@@ -80,6 +80,13 @@ public class UserServiceImpl implements UserService {
 		return dao.login(user);
 	}
 
+	@Override
+	public void addKakao(User item) {
+		
+		 dao.add(item);
+		
+	}
+
 
 
 }

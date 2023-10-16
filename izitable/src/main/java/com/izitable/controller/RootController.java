@@ -95,6 +95,38 @@ public class RootController {
 		return "redirect:/";
 	}
 	
+	//카카오 로그인
+	@PostMapping("/kakaoLogin")
+	public String kakaoLogin(@ModelAttribute("userVO") User user, HttpServletRequest request, ModelMap model, HttpSession session ) {
+		//model에 값이 있는지 확인한다. 
+		user.setUserPwd(user.getUserEmail());
+		User userVO = userService.actionlogin(user);
+		if(userVO != null && userVO.getUserEmail() != null && !userVO.getUserEmail().equals("") && userVO.getUserPhone().equals("kakao가입자") ) {
+			
+			if(userVO.getUserEmail() != null && userVO.getUserName() != null) {
+				request.getSession().setAttribute("user", userVO);
+				return "redirect:/";
+			
+			}else {
+				model.addAttribute("loginMessage", "fail.common.login"); //로그인 정보가 올바르지 않습니다.	
+				return "redirect:/login";
+				}
+		}
+		else {
+			User kakao = user;
+			kakao.setUserEmail(user.getUserEmail());
+			kakao.setUserPwd(kakao.getUserEmail());
+			kakao.setUserName(user.getUserName());
+			kakao.setUserPhone("kakao가입자");
+			kakao.setUserPhoneCert(kakao.getUserPhoneCert());
+			userService.addKakao(kakao);
+			
+			session.setAttribute("user", userVO);
+		}
+		return "redirect:/";
+	}
+
+	
 	//로그아웃
 	@GetMapping("/logout")
 	String logout(HttpSession session) {

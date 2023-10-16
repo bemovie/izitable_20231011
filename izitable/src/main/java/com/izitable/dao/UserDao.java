@@ -23,7 +23,7 @@ public interface UserDao {
 	User item(int userNo);
 
 	int duplicateCheck(User user);
-
+	
 	
 
 }

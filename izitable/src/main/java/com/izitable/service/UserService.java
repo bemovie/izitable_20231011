@@ -14,6 +14,8 @@ public interface UserService {
 	void delete(int userNo);
 
 	void add(User item);
+	
+	void addKakao(User item);
 
 	Boolean login(User user);
 
@@ -23,6 +25,7 @@ public interface UserService {
 
 	User actionlogin(User user);
 
+	
 	
 
 	
