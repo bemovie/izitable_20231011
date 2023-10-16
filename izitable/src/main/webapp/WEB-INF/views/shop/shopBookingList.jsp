@@ -8,6 +8,8 @@
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
 #bbs_wrap {min-height: 608px;}
+body {margin: 0; padding: 0; margin-top: 50px;}
+
 </style>
 </head>
 
@@ -38,12 +40,12 @@
 				<thead>
 					<tr>
 						<th>예약번호</th>
-						<th>회원번호</th>
+						<th>회원이름</th>
 						<th>회원이메일</th>
 						<th>연락처</th>
 						<th>예약날짜</th>
 						<th>예약시간</th>
-						<th>예약테이블</th>
+						<th>예약인원</th>
 						<th>관리</th>
 					</tr>
 				</thead>
@@ -51,11 +53,11 @@
 					<c:forEach var="item" items="${list}">
 							<tr>
 								<td>${item.bookingNo}</td>
-								<td>${item.userNo}</td>
+								<td>${item.userName}</td>
 								<td>${item.userEmail}</td>
 								<td>${item.userPhone}</td>
 								<td><fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd"/></td>
-								<td>${item.bookingTime}</td>
+								<td>${item.bookingTime}:00</td>
 								<td>${item.bookingMemNum}</td>
 								<td>
 									<button><a href="/shop/booking/${item.shopNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm">취소</a></button>

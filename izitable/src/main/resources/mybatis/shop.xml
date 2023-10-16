@@ -16,7 +16,10 @@
 		<result column="comp_intro" property="compIntro"/>				
 		<result column="shop_category_no" property="categoryNo"/>				
 		<result column="latitude" property="latitude"/>				
-		<result column="longitude" property="longitude"/>	
+		<result column="longitude" property="longitude"/>
+			
+		<result column="comp_hour" property="compHour"/>	
+		<result column="parking" property="parking"/>	
 	</resultMap>
 	
 	<resultMap type="ShopTime" id="ShopTimeMap">

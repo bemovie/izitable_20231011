@@ -25,6 +25,23 @@ public class Shop {
 	
 	private String imgFilename; //매장 대표사진(이미지 파일명)
 	
+	private String compHour;	//매장 영업시간
+	private String parking;		//매장 주차여부
+	
+	
+	public String getCompHour() {
+		return compHour;
+	}
+	public void setCompHour(String compHour) {
+		this.compHour = compHour;
+	}
+	public String getParking() {
+		return parking;
+	}
+	public void setParking(String parking) {
+		this.parking = parking;
+	}
+	
 	public String getImgFilename() {
 		return imgFilename;
 	}

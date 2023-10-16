@@ -62,15 +62,15 @@
 							<c:if test="${sessionScope.user != null}">
 								<c:choose>
 									<c:when test="${sessionScope.user.userNo <= 0}">
-										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userEmail}</a></li>
+										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userName}</a>님 환영합니다</li>
 									</c:when>
 									<c:otherwise>
-										<li class="scroll-to-section"><a href="/user/booking/${sessionScope.user.userNo}">${sessionScope.user.userEmail}</a></li>
+										<li class="scroll-to-section"><a href="/user/booking/${sessionScope.user.userNo}">${sessionScope.user.userName}</a>님 환영합니다</li>
 									</c:otherwise>
 								</c:choose>
 							</c:if>
 							<c:if test="${sessionScope.shop != null}">
-								<li class="scroll-to-section"><a href="/shop/booking/${sessionScope.shop.shopNo}">${sessionScope.shop.shopEmail}</a></li>
+								<li class="scroll-to-section"><a href="/shop/booking/${sessionScope.shop.shopNo}">${sessionScope.shop.compName}</a>님 환영합니다</li>
 							</c:if>
 						</c:if>
                         

@@ -27,33 +27,35 @@
                         <div class="section-heading">
                             <h6>Restaurant Info</h6><br>
                         	<div style="display: inline-block;">
-                        		<img src="/upload/guangchun.png" width="200" height="200">
+                        		<img src="/upload/${shop.imgFilename}" width="200" height="200">
                         	</div>
-                        	<div style="display: inline-block; vertical-align: middle;">
+                        	<div style="display: inline-block; width:350px; height:250px; vertical-align: middle; margin-left: 10px; /*border: 2px solid black*/">
 	                            <h2>${shop.compName}</h2>
 	                            <ul style="color: white">
 	                        		<li>${shop.compIntro}</li>
-	                        		<li>${shop.compNum}</li>
-	                        		<li>${shop.compCeo}</li>
-	                        		<li>${shop.compAddr2}</li>
+	                        		<li>사업자 번호 : ${shop.compNum}</li>
+	                        		<li>대표 : ${shop.compCeo}</li>
+	                        		<li>주소 : ${shop.compAddr2}</li>
+	                        		<li>영업시간 : ${shop.compHour}</li>
+	                        		<li>주차 : ${shop.parking}</li>
 	                        	</ul>
                         	</div>
                         </div>
-                        <p>이벤트 및 인원수 등 추가적인 문의 필요시 이지테이블(IZITABLE) 또는 매장으로 직접 연락 부탁드립니다.</p>
+                        <p>이벤트 및 인원수 등 추가적인 문의 필요시 이지테이블(IZITABLE) 또는 매장으로 <br>직접 연락 부탁드립니다.</p>
                         <!-- <p>If you need additional inquiries such as events and number of people, please contact the IZITABLE or the store directly.</p> -->
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
                                     <h4>전화번호</h4>
-                                    <span>${shop.compName} : <a href="#">${shop.compCall}</a><br><a href="#">이지테이블 : 000-0000-0000</a></span>
+                                    <span><a href="#">${shop.compName}</a> : <a href="#">${shop.compCall}</a><br><a href="#">이지테이블 : 123-4567-8901</a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="message">
                                     <i class="fa fa-envelope"></i>
                                     <h4>이메일</h4>
-                                    <span>${shop.compName} : <a href="#">${shop.shopEmail}</a><br><a href="#">이지테이블 : izitable@izitable.com</a></span>
+                                    <span><a href="#">${shop.compName}</a> : <a href="#">${shop.shopEmail}</a><br><a href="#">이지테이블 : admin@izitable.com</a></span>
                                 </div>
                             </div>
                         </div>
@@ -62,18 +64,61 @@
                 <div class="col-lg-6">
                     <div class="contact-form">
                         <form id="contact" action="" method="post">
+                        <input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4>Table Reservation</h4>
+                                    <h4>테이블 예약</h4>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div id="filterDate2">
-                                        
-                                       <input type="date" id="myDate" max="2023-10-25" placeholder="예약 가능 날짜">
+                                <div class="col-md-12 col-sm-12">
+                                    <div id="filterDate2" style="margin-left:15px; width: 480px;">
+                                       
+                                       <c:set var="ymd" value="<%=new java.util.Date()%>" />
+                                       <%-- <c:set var="maxymd" value="${ymd}+30" /> --%> 
+                                       <c:set var="maxymd" value="<%=new java.util.Date(new java.util.Date().getTime() + 60*60*24*1000*20)%>"/>
+                                       <%-- <fmt:formatDate value="${maxymd}" pattern="yyyy-MM-dd" /> --%>
+                                       <input type="date" name="date" id="date" min="<fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" />" max="<fmt:formatDate value="${maxymd}" pattern="yyyy-MM-dd" />" placeholder="예약 가능 날짜">
+                                       <!-- <input type="date" id="myDate" max="2023-10-25" placeholder="예약 가능 날짜"> -->
+                                       
+                                       <!-- 날짜 선택시(날짜 input 클릭) ajax 발생 -->
+                                       <script>
+                                       //document.addEventListener('DOMContentLoaded', function() {
+                                    	   
+		                                    //~ fetch api 방식 ~
+		                                    var sInp = document.querySelector('#shopNo');
+		                                    var dInp = document.querySelector('#date');
+		                                    var tInp = document.querySelector('#time');
+		                                    
+											dInp.onchange = function() {
+		                               			alert('test');
+		                               			console.log(sInp.value, dInp.value);
+		                               			fetch('/booking/date', {
+		                               				method: 'POST',
+		                               				body: new URLSearchParams({shopNo: sInp.value, bookingDate: dInp.value})
+		                               			}).then(function(response) {
+		                               				//let data = response.json();
+		                               				return response.json();
+		                               			}).then(function(data){ //response.json()의 결과가 인자로 전달
+		                               				console.dir(data);
+		                               				for (var i = 0; i < data.length; i++) {
+														var d = data[i];
+														let optElm = tInp.createElement('option');
+			                               				optElm.innerHTML = d.bookingTime;
+			                               				tInp.append(optElm);
+			                               				//tInp.innerHTML = d.bookingTime;
+													}
+		                               			}).catch(function(error){
+		                               				console.log(error);
+		                               				//alert(error);
+		                               			});
+		                               		};
+	                               		
+                                       //}
+                                        </script>
                                             
                                             <div class="input-group-addon">
                                                 <span class="glyphicon glyphicon-th"></span>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -82,6 +127,7 @@
                                     <fieldset>
                                         <select value="time" name="time" id="time">
                                             <option value="time">예약 가능 시간</option>
+                                            <!-- 
                                             <option name="1" id="1">09:00</option>
                                             <option name="2" id="2">10:00</option>
                                             <option name="3" id="3">11:00</option>
@@ -96,6 +142,7 @@
                                             <option name="12" id="12">20:00</option>
                                             <option name="13" id="13">21:00</option>
                                             <option name="14" id="14">22:00</option>
+                                             -->
                                         </select>
                                     </fieldset>
                                 </div>
@@ -121,7 +168,7 @@
                                 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Message"
+                                        <textarea name="message" rows="6" id="message" placeholder="요청사항을 입력해주세요"
                                             required=""></textarea>
                                     </fieldset>
                                 </div>

@@ -6,10 +6,18 @@ public class ShopTime {
 	
 	//tbl_shop_time
 	private int timeNo;
-	private String day;
-	private int hour;
+	private String bookingDate;
+	private String bookingTime;
 	
 	private int shopNo;
+	
+	public int getShopNo() {
+		return shopNo;
+	}
+
+	public void setShopNo(int shopNo) {
+		this.shopNo = shopNo;
+	}
 
 	public int getTimeNo() {
 		return timeNo;
@@ -19,28 +27,20 @@ public class ShopTime {
 		this.timeNo = timeNo;
 	}
 
-	public String getDay() {
-		return day;
+	public String getBookingDate() {
+		return bookingDate;
 	}
 
-	public void setDay(String day) {
-		this.day = day;
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
-	public int getHour() {
-		return hour;
+	public String getBookingTime() {
+		return bookingTime;
 	}
 
-	public void setHour(int hour) {
-		this.hour = hour;
+	public void setBookingTime(String bookingTime) {
+		this.bookingTime = bookingTime;
 	}
 
-	public int getShopNo() {
-		return shopNo;
-	}
-
-	public void setShopNo(int shopNo) {
-		this.shopNo = shopNo;
-	}
-	
 }

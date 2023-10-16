@@ -18,6 +18,17 @@ public class Booking {
 	
 	private String userEmail;	//회원 이메일
 	private String userPhone;	//회원 연락처
+	
+	private String userName;	//회원 이름
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public String getUserEmail() {
 		return userEmail;

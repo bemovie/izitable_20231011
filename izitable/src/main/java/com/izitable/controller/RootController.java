@@ -70,6 +70,11 @@ public class RootController {
 				return "redirect:/shop/booking/"+shop.getShopNo();
 			}
 			
+			else {
+				session.setAttribute("msg", "로그인에 실패하였습니다");
+				return "redirect:/login";	
+			}
+			
 		}
 		//일반 로그인
 		else {
@@ -83,7 +88,7 @@ public class RootController {
 			
 			else {
 				session.setAttribute("msg", "로그인에 실패하였습니다");
-
+				return "redirect:/login";
 			}
 		}
 		
