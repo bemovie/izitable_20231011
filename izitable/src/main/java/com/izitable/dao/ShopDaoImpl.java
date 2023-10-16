@@ -23,7 +23,7 @@ public class ShopDaoImpl implements ShopDao {
 	}
 
 	@Override
-	public Shop list(int shopNo) {
+	public Shop item(int shopNo) {
 		return sql.selectOne("shop.item", shopNo);
 	}
 

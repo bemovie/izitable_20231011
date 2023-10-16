@@ -52,9 +52,9 @@ public class BookingController {
 	@GetMapping("/shop/{shopNo}")
 	String booking(@PathVariable int shopNo, Shop shop, Model model) {
 		
-		shopService.item(shopNo);
+		Shop item = shopService.item(shopNo);
 		
-		model.addAttribute("shop", shop);
+		model.addAttribute("shop", item);
 		
 		return path + "booking";
 	}

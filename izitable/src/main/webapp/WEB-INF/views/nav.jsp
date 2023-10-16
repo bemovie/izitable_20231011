@@ -10,7 +10,7 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="${pageContext.request.contextPath}/" class="logo">
-                        <img src="/resources/assets/images/IZITABLE_logo.png">
+                        <img src="/resources/assets/images/IZITABLE_logo2.png">
                     </a>
                     <!-- ***** Logo End ***** -->
                     

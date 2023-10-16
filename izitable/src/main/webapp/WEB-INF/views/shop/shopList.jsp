@@ -41,6 +41,9 @@
 <select id="categoryNo" name="categoryNo">
 	<option value="1">한식</option>
 	<option value="2">일식</option>
+	<option value="3">중식</option>
+	<option value="4">양식</option>
+	<option value="5">디저트</option>
 </select>
 <!-- <button onclick="applyFn()">적용</button> -->
 <button type="submit" class="btn">적용</button>
@@ -55,11 +58,11 @@
 <!-- 카카오 지도 생성 -->
 <script src="../../../resources/js/kakaomap/map.js"></script>
 
-<div style="border: 2px solid black; width:500px; height:500px; display: inline-block; margin-left: 10px; overflow: auto">
+<div style="/*border: 2px solid black;*/ width:500px; height:500px; display: inline-block; margin-left: 10px; overflow: auto">
 	<c:forEach var="item" items="${list}">
-		<div style="border: 2px solid black; width:479px; text-align: left;">
-			<div style="display: inline-block; border: 2px solid black;"><img src="/upload/${item.imgFilename}" width="100" height="100"></div>
-			<div style="display: inline-block; border: 2px solid black; width:320px; height:120px; vertical-align: middle;">
+		<div style="border: 2px solid #fb5849; border-radius:2%; width:479px; text-align: left; margin-bottom: 5px;">
+			<div style="display: inline-block; /*border: 2px solid black;*/"><img src="/upload/${item.imgFilename}" width="100" height="100"></div>
+			<div style="display: inline-block; /*border: 2px solid black;*/ width:320px; height:120px; vertical-align: middle;">
 				<ul>
 					<li>매장명 : ${item.compName}</li>
 					<li>전화번호 : ${item.compCall}</li>
@@ -67,7 +70,7 @@
 					<%-- <li>카테고리 : ${item.categoryNo}</li> --%>
 				</ul>
 			</div>
-			<div style="text-align: right"><a href="/booking/shop/${item.shopNo}" class="btn">예약하기</a></div>
+			<div style="text-align: left"><a href="/booking/shop/${item.shopNo}" class="btn">예약하기</a></div>
 		</div>
 	</c:forEach>
 	<c:if test="${list.size() < 1}" >

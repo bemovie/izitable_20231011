@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="/resources/assets/images/IZITABLE_logo_white.png" alt=""></a>
+                        <a href="index.html"><img src="/resources/assets/images/IZITABLE_logo2_white.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">

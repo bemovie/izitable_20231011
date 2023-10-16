@@ -25,23 +25,35 @@
                 <div class="col-lg-6 align-self-center">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>Contact Us</h6>
-                            <h2>이벤트 및 인원수 등 추가적인 문의 필요시 이지테이블(IZITABLE) 또는 매장으로 직접 연락 부탁드립니다.</h2>
+                            <h6>Restaurant Info</h6><br>
+                        	<div style="display: inline-block;">
+                        		<img src="/upload/guangchun.png" width="200" height="200">
+                        	</div>
+                        	<div style="display: inline-block; vertical-align: middle;">
+	                            <h2>${shop.compName}</h2>
+	                            <ul style="color: white">
+	                        		<li>${shop.compIntro}</li>
+	                        		<li>${shop.compNum}</li>
+	                        		<li>${shop.compCeo}</li>
+	                        		<li>${shop.compAddr2}</li>
+	                        	</ul>
+                        	</div>
                         </div>
-                        <p>If you need additional inquiries such as events and number of people, please contact the IZITABLE or the store directly.</p>
+                        <p>이벤트 및 인원수 등 추가적인 문의 필요시 이지테이블(IZITABLE) 또는 매장으로 직접 연락 부탁드립니다.</p>
+                        <!-- <p>If you need additional inquiries such as events and number of people, please contact the IZITABLE or the store directly.</p> -->
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
-                                    <h4>매장 전화번호</h4>
-                                    <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
+                                    <h4>전화번호</h4>
+                                    <span>${shop.compName} : <a href="#">${shop.compCall}</a><br><a href="#">이지테이블 : 000-0000-0000</a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="message">
                                     <i class="fa fa-envelope"></i>
-                                    <h4>매장 이메일</h4>
-                                    <span><a href="#">Izitable@company.com</a><br><a href="#">Izitable-info@company.com</a></span>
+                                    <h4>이메일</h4>
+                                    <span>${shop.compName} : <a href="#">${shop.shopEmail}</a><br><a href="#">이지테이블 : izitable@izitable.com</a></span>
                                 </div>
                             </div>
                         </div>

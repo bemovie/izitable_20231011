@@ -11,7 +11,7 @@ public interface ShopDao {
 
 	List<Shop> list(Shop shop);
 
-	Shop list(int shopNo);
+	Shop item(int shopNo);
 
 	Shop login(Shop shop);
 
