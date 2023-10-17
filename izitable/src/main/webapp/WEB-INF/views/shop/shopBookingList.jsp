@@ -72,6 +72,7 @@ body {margin: 0; padding: 0; margin-top: 50px;}
 					</c:if>
 					
 				</tbody>
+				
 			</table>
 		</div>
 	</div>

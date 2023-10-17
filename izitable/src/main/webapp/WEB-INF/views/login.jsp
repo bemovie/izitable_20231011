@@ -141,7 +141,7 @@ function kakaoLogin(type){
 				success:function (response) {
 					console.log(response)
 					$("input[name=userEmail]").val(response.id).hide();
-					$("input[name=userName]").val();
+					$("input[name=userName]").val(response.properties.nickname);
 					$("#frmLogin").submit();
 				},
 				fail: function (error){

@@ -124,13 +124,13 @@ public class RootController {
 		else {
 			User kakao = user;
 			kakao.setUserEmail(user.getUserEmail());
-			kakao.setUserPwd(kakao.getUserEmail());
+			kakao.setUserPwd("");
 			kakao.setUserName(user.getUserName());
 			kakao.setUserPhone("kakao가입자");
 			kakao.setUserPhoneCert(kakao.getUserPhoneCert());
 			userService.addKakao(kakao);
 			
-			session.setAttribute("user", userVO);
+			session.setAttribute("user", kakao);
 		}
 		return "redirect:/";
 	}

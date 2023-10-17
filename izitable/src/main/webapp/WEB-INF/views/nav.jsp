@@ -15,11 +15,13 @@
                     <!-- ***** Logo End ***** -->
                     
                     <!-- ***** search box start ***** -->
-                    <div class="search row">
-                        <input type="text" name="keyword" value="${pager.keyword}" placeholder="지역, 음식, 매장명 검색">
-                        <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-                    </div>
-                    <!-- ***** search box End *****-->
+<form name="form1" method="post" action="/list" style="width: 50%">
+    <div class="search">
+        <input type="text" name="keyword" value="${pager.keyword}" placeholder="지역, 음식, 매장명 검색">
+        <button class="btn btn-sm btn-primary">검색</button>
+    </div>
+</form>
+<!-- ***** search box End *****-->
 
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">

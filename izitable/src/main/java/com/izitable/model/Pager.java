@@ -23,6 +23,7 @@ public class Pager {
 	}
 	
 	
+	
 	public int getPage() {
 		return page;
 	}
