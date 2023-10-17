@@ -56,6 +56,9 @@
 			<beans:bean class="com.izitable.Interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
+	
+	<resources location="file:///d:/upload/" mapping="/upload/**"></resources>
+	
 
 
 

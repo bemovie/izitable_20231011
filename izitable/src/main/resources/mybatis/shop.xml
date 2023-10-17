@@ -63,8 +63,8 @@
 	</select>
 	
 	<insert id="add">
-		INSERT INTO tbl_shop (email, comp_name, comp_num, comp_ceo, comp_call, comp_addr1, comp_addr2, latitude, longitude, shop_category_no, pwd )
-		VALUES ( #{shopEmail}, #{compName}, #{compNum}, #{compCeo}, #{compCall}, #{compAddr1}, #{compAddr2}, #{latitude}, #{longitude}, #{categoryNo}, #{shopPwd} )
+		INSERT INTO tbl_shop (email, comp_name, comp_num, comp_ceo, comp_call, comp_addr1, comp_addr2, latitude, longitude, shop_category_no, pwd, img_filename )
+		VALUES ( #{shopEmail}, #{compName}, #{compNum}, #{compCeo}, #{compCall}, #{compAddr1}, #{compAddr2}, #{latitude}, #{longitude}, #{categoryNo}, #{shopPwd}, #{imgFilename} )
 	</insert>
 	
 	<update id="update">

@@ -234,6 +234,14 @@
         </dependency>        
 		        
 		<!-- ====================SNS 로그인 END==================== -->       
+		
+		<!-- ====================Fileupload START==================== -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
+		<!-- ====================Fileupload END==================== -->
 		        
 	</dependencies>
     <build>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@ join_input { margin-bottom: 30px; }
 <h2 class="icon1">정보입력</h2>
 		<!-- <form method="post" action="add"> --> <!-- jsp는 페이지 단위, 어쩔 수 없이 form tag를 받아줄 페이지 필요 -->
 		<!-- <form method="post" name="signup_form"> --> <!-- jsp는 페이지 단위, 어쩔 수 없이 form tag를 받아줄 페이지 필요 -->
-		<form method="post" action="/join" onsubmit="return regist();">
+		<form method="post" action="/join" onsubmit="return regist();" enctype="multipart/form-data">
 			<input type="hidden" id="idCheckAt" value="N"/>
 			
 			<div>
@@ -71,7 +72,7 @@ join_input { margin-bottom: 30px; }
 				<div class="join_input">
 					<label>매장 주소</label><br>
 					<input type="text" id="postcode" placeholder="우편번호">
-					<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="button" id="postcodebutton"onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" id="roadAddress" name="compAddr2" placeholder="도로명주소">
 					<input type="text" id="jibunAddress" name="compAddr1" placeholder="지번주소">
 					<span id="guide" style="color:#999;display:none"></span>
@@ -81,37 +82,10 @@ join_input { margin-bottom: 30px; }
 				    <input type="hidden" id="latInput" name="latitude" class="form-control rounded-0" value="" />
 				    <!-- 경도 -->
 				    <input type="hidden" id="lngInput" name="longitude" class="form-control rounded-0" value="" />
-				    <button type="button" id="showLocationButton">위치 확인하기</button>
+<!-- 				    <button type="button" id="showLocationButton">위치 확인하기</button> -->
 				</div>
 				
-				<script>
-			    // 주소 확인 버튼 클릭 시 이벤트 핸들러
-			    document.getElementById('showLocationButton').addEventListener('click', function () {
-			        var address = document.getElementById('roadAddress').value; // 입력된 주소 가져오기
-			        console.log(address);
-			
-			        // 주소를 좌표로 변환하는 Geocoder 객체 생성
-			        var geocoder = new kakao.maps.services.Geocoder();
-			
-			        // 주소를 좌표로 변환
-			        geocoder.addressSearch(address, function (result, status) {
-			            if (status === kakao.maps.services.Status.OK) {
-			                var latitude = result[0].y; // 위도
-			                var longitude = result[0].x; // 경도
-			                
-			                console.log(latitude);
-			                console.log(longitude);
-			
-			                // 위도와 경도를 숨겨진 입력 필드에 채워 넣기
-			                document.getElementById('latInput').value = latitude;
-			                document.getElementById('lngInput').value = longitude;
-			                alert('위치 확인 되었습니다.');
-			            } else {
-			                alert('주소를 찾을 수 없습니다.');
-						}
-				    });
-			    });
-				</script>
+				
 				
 				<div class="join_input">
 					<label>매장 카테고리</label><br>
@@ -134,12 +108,41 @@ join_input { margin-bottom: 30px; }
 					<input type="password" id="passwd_confirm" name="passwd_confirm" placeholder="비밀번호를 다시 한 번 입력해주세요">
 				</div>
 				
-				영문, 숫자, 특수문자 등 3가지 사용시 8자 이상, 2가지 사용시 10자리 이상으로 설정해주세요.
+				<p>영문, 숫자, 특수문자 등 3가지 사용시 8자 이상, 2가지 사용시 10자리 이상으로 설정해주세요.</p>
+				<br>
+				
+				
+				<!-- 회원사진 등록 -->
+				<form>
+					<div class="join_photo">
+						
+					<p>매장이미지 등록</p>						
+						<div>
+							<label>파일:</label>
+							<input name="uploadFile" type="file" id="imageInput">
+						</div>
+						
+						<div>
+							<button type="button" id="previewbtn" class="btn">미리보기</button>
+						</div>
+						
+						<div id="imagePreview">
+							<img id="previewImage" alt="미리보기" src="/resources/image/profile.png">
+						</div>
+					</div>
+				
+					<hr>
+					
+				
+				</form>
+				
 	
 				<div class="join_input">
 					<button type="submit" id="join" class="btn">등록</button>
 					<a href="${pageContext.request.contextPath}"><button type="button" class="btn">처음으로</button></a>
 				</div>
+				
+
 				
 			</div>
 		</form>
@@ -202,6 +205,32 @@ join_input { margin-bottom: 30px; }
                     guideTextBox.innerHTML = '';
                     guideTextBox.style.display = 'none';
                 }
+                
+                
+                //우편번호 검색 버튼 클릭 시 위도 경도 좌표 가져오기
+                var address = document.getElementById('roadAddress').value; // 입력된 주소 가져오기
+		        console.log(address);
+		
+		        // 주소를 좌표로 변환하는 Geocoder 객체 생성
+		        var geocoder = new kakao.maps.services.Geocoder();
+		
+		        // 주소를 좌표로 변환
+		        geocoder.addressSearch(address, function (result, status) {
+		            if (status === kakao.maps.services.Status.OK) {
+		                var latitude = result[0].y; // 위도
+		                var longitude = result[0].x; // 경도
+		                
+		                console.log(latitude);
+		                console.log(longitude);
+		
+		                // 위도와 경도를 숨겨진 입력 필드에 채워 넣기
+		                document.getElementById('latInput').value = latitude;
+		                document.getElementById('lngInput').value = longitude;
+		                alert('위치 확인 되었습니다.');
+		            } else {
+		                alert('주소를 찾을 수 없습니다.');
+					}
+			    });
             }
         }).open();
     }
@@ -250,6 +279,29 @@ $(document).ready(function() {
 	*/
 	
 	
+});
+
+//매장 이미지 등록할 때 미리보기
+$(document).ready(function() {
+    $("#previewbtn").click(function() {
+        var input = document.getElementById("imageInput");
+        var preview = document.getElementById("previewImage");
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                $("#imagePreview").show(); // 미리 보기 영역 표시
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            alert("파일을 선택해주세요.");
+        }
+    });
+
+    // 나머지 코드 (아이디 중복 검사 및 유효성 검사)는 그대로 유지
 });
 
 //validation 체크

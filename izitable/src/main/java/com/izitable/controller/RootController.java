@@ -1,6 +1,9 @@
 package com.izitable.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.izitable.model.Image;
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
 import com.izitable.model.User;
@@ -33,6 +38,10 @@ public class RootController {
 	@Autowired
 	ShopService shopService;
 	
+	//매장 프로필 사진 업로드 경로
+	private String uploadPath = "D:/upload/";
+	
+	List<Image> list = new ArrayList<Image>();
 	
 	
 	//메인 페이지
@@ -164,17 +173,34 @@ public class RootController {
 	}
 	
 	@PostMapping("/join")
-	String join(User user, Shop shop) {
+	String join(User user, Shop shop, Image image) throws IOException {
 		if (user.getUserEmail() != null) userService.add(user);
 		else {
 			shop.setCompAddr1( shop.getCompAddr1() + " " + shop.getDetailAddr() ); 
-			shop.setCompAddr2( shop.getCompAddr2() + " " + shop.getDetailAddr() ); 
+			shop.setCompAddr2( shop.getCompAddr2() + " " + shop.getDetailAddr() );
+			
+			//매장 프로필 사진 업로드
+			MultipartFile file = image.getUploadFile();
+			System.out.println(file.getOriginalFilename());
+			
+			if(file != null && !file.isEmpty()) {
+				String filename = file.getOriginalFilename();
+				
+				file.transferTo(new File(uploadPath  + filename));
+				
+				System.out.println(file.getOriginalFilename());
+				
+				list.add(image);
+				
+				shop.setImgFilename(filename);
+			}
+			
 			shopService.add(shop);
 		}
 		
 		return "join/joinComplete";
 	}
-
+	
 	//아이디 중복체크
 	@PostMapping("/join/duplicateCheck")
 	public void duplicateCheck(User user, Shop shop, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
