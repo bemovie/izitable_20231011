@@ -140,9 +140,8 @@ function kakaoLogin(type){
 				url: '/v2/user/me',
 				success:function (response) {
 					console.log(response)
-					$("input[name=userEmail]").val(response.id);
+					$("input[name=userEmail]").val(response.id).hide();
 					$("input[name=userName]").val();
-					
 					$("#frmLogin").submit();
 				},
 				fail: function (error){
