@@ -48,7 +48,7 @@
 
 <body>
 
-<jsp:include page="../nav.jsp"></jsp:include>
+<jsp:include page="../nav1.jsp"></jsp:include>
 
 <div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/ min-height: 1000px;">
 

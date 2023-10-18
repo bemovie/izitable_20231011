@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<style>
+img {
+	margin:0;
+	border:none;
+	margin-bottom: 20px;
+}
+</style>
+
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky" style="position: fixed; background-color: white">
     <div class="container">
@@ -9,7 +17,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="${pageContext.request.contextPath}/" class="logo">
+                    <a href="${pageContext.request.contextPath}/" class="iz_logo3">
                         <img src="/resources/assets/images/IZITABLE_logo2.png">
                     </a>
                     <!-- ***** Logo End ***** -->
@@ -65,7 +73,7 @@
 							<c:if test="${sessionScope.user != null}">
 								<c:choose>
 									<c:when test="${sessionScope.user.userNo <= 0}">
-										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userName}님</a></li>
+										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userName}님</a> 환영합니다</li>
 									</c:when>
 									<c:otherwise>
 										<li class="scroll-to-section"><a href="/user/booking/${sessionScope.user.userNo}">${sessionScope.user.userName}님</a></li>

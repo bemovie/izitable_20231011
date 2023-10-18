@@ -45,7 +45,7 @@
         margin-left: 100px;
         margin-top: 30px;
         float: left;
-        width: 450px;
+        width: 300px;
     }
 
     .search input {
