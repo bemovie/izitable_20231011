@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.izitable.model.Image;
@@ -161,7 +162,8 @@ public class RootController {
 	}
 	
 	//회원가입 유형
-	@PostMapping("/joinType")
+	@RequestMapping("/joinType")
+	//@PostMapping("/joinType")
 	String joinType() {
 		return "join/joinType";
 	}

@@ -30,19 +30,24 @@ body {
 		
 <form method="post" action="/list" style="margin: 10px;">
 <select id="si" name="si">
-	<option value="서울">서울</option>
+	<option value="">시</option>
+	<!-- <option value="서울">서울</option> -->
 	<option value="대전">대전</option>
 </select>
 <select id="gu" name="gu">
+	<option value="">구</option>
 	<option value="동구">동구</option>
 	<option value="서구">서구</option>
 	<option value="대덕구">대덕구</option>
 </select>
 <select id="dong" name="dong">
+	<option value="">동</option>
+	<option value="가양동">가양동</option>
 	<option value="가양동">가양동</option>
 	<option value="비래동">비래동</option>
 </select>
 <select id="categoryNo" name="categoryNo">
+	<option value="0">카테고리</option>
 	<option value="1">한식</option>
 	<option value="2">일식</option>
 	<option value="3">중식</option>

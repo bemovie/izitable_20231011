@@ -76,7 +76,7 @@ join_input { margin-bottom: 30px; }
 	
 				<div class="join_input">
 					<button type="submit" id="join" class="btn">등록</button>
-					<a href="${pageContext.request.contextPath}"><button type="button" class="btn">처음으로</button></a>
+					<a href="/joinType"><button type="button" class="btn">뒤로</button></a>
 				</div>
 				
 			</div>

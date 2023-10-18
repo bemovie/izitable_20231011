@@ -53,10 +53,20 @@
 	
 	<select id="list" resultMap="ShopMap">
 		SELECT * FROM tbl_shop
-		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
-			AND comp_addr1 LIKE CONCAT('%', #{gu}, '%')
-			AND comp_addr1 LIKE CONCAT('%', #{dong}, '%')
-			AND shop_category_no = #{categoryNo}
+		<where>
+			<if test="si != ''">
+				comp_addr1 LIKE CONCAT('%', #{si}, '%')
+			</if>
+			<if test="gu != ''">
+				AND comp_addr1 LIKE CONCAT('%', #{gu}, '%')
+			</if>
+			<if test="dong != ''">
+				AND comp_addr1 LIKE CONCAT('%', #{dong}, '%')
+			</if>
+			<if test="categoryNo != 0">
+				AND shop_category_no = #{categoryNo}
+			</if>
+		</where>
 	</select>
 
 	<select id="item" resultMap="ShopMap">
@@ -138,13 +148,15 @@
 	
 	<sql id="search">
 		SELECT * FROM tbl_shop
+		<if test="#{keyword} != null"> 
 		<where>
 				
 				comp_name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
 				or comp_addr1 LIKE CONCAT(CONCAT('%', #{keyword}), '%')
 				or comp_intro LIKE CONCAT(CONCAT('%', #{keyword}), '%')
 				
-		</where> 
+		</where>
+		</if>
 		
 		ORDER BY comp_name
 		
