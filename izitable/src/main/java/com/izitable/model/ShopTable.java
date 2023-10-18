@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class ShopTable {
+public class ShopTable extends Pager {
 	
 	//tbl_shop_table
 	private int tableNo;

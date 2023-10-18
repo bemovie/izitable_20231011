@@ -70,12 +70,25 @@ body {
 <div style="/*border: 2px solid black;*/ width:500px; height:500px; display: inline-block; margin-left: 10px; overflow: auto">
 	<c:forEach var="item" items="${list}">
 		<div style="border: 2px solid #fb5849; border-radius:2%; width:479px; text-align: left; margin-bottom: 5px; background-color: #fb5849; color: white">
-			<c:if test="${item.imgFilename != null}"> 
+			
+			<c:choose>
+				<c:when test="${item.imgFilename == null || item.imgFilename == \"\"}">
+					<div style="display: inline-block; /*border: 2px solid black;*/"><img src="/resources/image/shop.png" width="100" height="100"></div>
+				</c:when>
+				<c:otherwise> 
+					<div style="display: inline-block; /*border: 2px solid black;*/"><img src="/upload/${item.imgFilename}" width="100" height="100"></div>
+				</c:otherwise>
+			</c:choose>
+			
+			<!-- 
+			<c:if test="${item.imgFilename != null || item.imgFilename != \"\"}"> 
 				<div style="display: inline-block; /*border: 2px solid black;*/"><img src="/upload/${item.imgFilename}" width="100" height="100"></div>
 			</c:if>
-			<c:if test="${item.imgFilename == null}">
+			<c:if test="${item.imgFilename == null || item.imgFilename == \"\"}">
 				<div style="display: inline-block; /*border: 2px solid black;*/"><img src="/resources/image/shop.png" width="100" height="100"></div>
 			</c:if>
+			 -->
+			 
 			<div style="display: inline-block; /*border: 2px solid black;*/ width:320px; height:100px; vertical-align: middle;">
 				<ul>
 					<li>매장명 : ${item.compName}</li>

@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-#bbs_wrap {min-height: 608px;}
+#bbs_wrap {min-height: 608px; margin-top: 50px;}
 </style>
 </head>
 
@@ -37,7 +37,7 @@
 				<span>
 					<label>인용:</label>
 					<span>
-						<select name="number">
+						<select name="tableNumber">
 							<option value="2">2인용</option>
 							<option value="4">4인용</option>
 							<option value="6">6인용</option>
@@ -49,7 +49,7 @@
 				<span>
 					<label>테이블 이름:</label>
 					<span>
-						<input type="text" name="name">
+						<input type="text" name="tableName">
 					</span>
 				</span>
 				
@@ -86,12 +86,31 @@
 					<c:forEach var="item" items="${tablelist}">
 						<tr>
 							<td>${item.tableNo}</td>
-							<td>${item.name}</td>
-							<td>${item.number}</td>
+							<td>${item.tableName}</td>
+							<td>${item.tableNumber}</td>
 							<td><a href="/shop/setting/${item.shopNo}/deleteTable/${item.tableNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>
+				
+				<!-- 
+				<tfoot>
+					<tr>
+						<td colspan="8">
+							<ul class="pagination justify-content-center mt-3">
+								<li class="page-item"><a class="page-link" href="?page=1${pager.query}">처음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>
+								<c:forEach var="page" items="${pager.list}">
+									<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}${pager.query}">${page}</a></li>
+								</c:forEach>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next}${pager.query}">다음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.last}${pager.query}">마지막</a></li>
+							</ul>
+						</td>
+					</tr>
+				</tfoot>
+				 -->
+				
 			</table>
 		</div>
 		
@@ -105,7 +124,7 @@
 				<span>
 					<label>요일:</label>
 					<span>
-						<select name="day">
+						<select name="timeDay">
 							<option value="2">월요일</option>
 							<option value="3">화요일</option>
 							<option value="4">수요일</option>
@@ -120,7 +139,7 @@
 				<span>
 					<label>영업 시간대:</label>
 					<span>
-						<input type="number" name="hour" min="0" max="23"> 시
+						<input type="number" name="timeHour" min="0" max="23"> 시
 					</span>
 				</span>
 				
@@ -159,21 +178,38 @@
 							<td>${item.timeNo}</td>
 							<td>
 							<c:choose>
-								<c:when test="${item.day eq 1}">일요일</c:when>
-								<c:when test="${item.day eq 2}">월요일</c:when>
-								<c:when test="${item.day eq 3}">화요일</c:when>
-								<c:when test="${item.day eq 4}">수요일</c:when>
-								<c:when test="${item.day eq 5}">목요일</c:when>
-								<c:when test="${item.day eq 6}">금요일</c:when>
-								<c:when test="${item.day eq 7}">토요일</c:when>
+								<c:when test="${item.timeDay eq 1}">일요일</c:when>
+								<c:when test="${item.timeDay eq 2}">월요일</c:when>
+								<c:when test="${item.timeDay eq 3}">화요일</c:when>
+								<c:when test="${item.timeDay eq 4}">수요일</c:when>
+								<c:when test="${item.timeDay eq 5}">목요일</c:when>
+								<c:when test="${item.timeDay eq 6}">금요일</c:when>
+								<c:when test="${item.timeDay eq 7}">토요일</c:when>
 							</c:choose>
 							
 							</td>
-							<td>${item.hour}:00</td>
+							<td>${item.timeHour}:00</td>
 							<td><a href="/shop/setting/${item.shopNo}/deleteTime/${item.timeNo}" class="btn btn-outline-danger btn-sm">삭제</a>							
 						</tr>
 					</c:forEach>					
 				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<ul class="pagination justify-content-center mt-3">
+								<li class="page-item"><a class="page-link" href="?timeDay=2">월</a></li>
+								<li class="page-item"><a class="page-link" href="?timeDay=3">화</a></li>
+								<li class="page-item"><a class="page-link" href="?timeDay=4">수</a></li>
+								<li class="page-item"><a class="page-link" href="?timeDay=5">목</a></li>
+								<li class="page-item"><a class="page-link" href="?timeDay=6">금</a></li>
+								<li class="page-item"><a class="page-link" href="?timeDay=7">토</a></li>
+								<li class="page-item"><a class="page-link" href="?timeDay=1">일</a></li>
+							</ul>
+						</td>
+					</tr>
+				</tfoot>
+				
 			</table>
 		</div>
 	</div>

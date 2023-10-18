@@ -7,7 +7,9 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-#bbs_wrap {min-height: 608px;}
+#bbs_wrap {min-height: 608px; margin-top: 50px;}
+.inline {display: inline-block; margin: 0 10;}
+input {width:500px;'}
 </style>
 </head>
 
@@ -30,54 +32,60 @@
 		<br>
 		
 		<form method="post">
-			<div>
+			<div style="/*border: 2px solid black;*/ margin: 0 auto; width: 1100px; margin-top: 50px;">
 			
 				<div class="inline">
-					<label>이메일</label><br>
-					<input type="text" name="shopEmail" value="${item.shopEmail}">
+					<img src="/upload/${item.imgFilename}" width="500px" height="500px"><br>
+					<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				</div>
-				
 				<div class="inline">
-					<label>매장명</label><br>
-					<input type="text" name="compName" value="${item.compName}">
-				</div>
-				
-				<div class="inline">
-					<label>매장 번호(사업자번호)</label><br>
-					<input type="text" name="compNum" value="${item.compNum}">
-				</div>
-				
-				<div class="inline">
-					<label>매장 사장님명</label><br>
-					<input type="text" name="compCeo" value="${item.compCeo}">
-				</div>
-				
-				
-				<div class="inline">
-					<label>매장 전화번호</label><br>
-					<input type="text" name="compCall" value="${item.compCall}">
-				</div>
-				
-				<div class="inline">
-					<label>매장 구주소</label><br>
-					<input type="text" name="compAddr1" value="${item.compAddr1}">
-				</div>
-				
-				<div class="inline">
-					<label>매장 신주소(도로명주소)</label><br>
-					<input type="text" name="compAddr2" value="${item.compAddr2}">
-				</div>
-				
-				<div class="inline">
-					<label>매장 소개</label><br>
-					<input type="text" name="compIntro" value="${item.compIntro}">
-				</div>
-				
-				<br>
-				
-				<div class="inline">
-					<button type="submit" id="update" class="btn">변경 완료</button>
-				</div>
+					<div>
+						<label>- 이메일</label><br>
+						<input type="text" name="shopEmail" value="${item.shopEmail}">
+					</div>
+					
+					<div>
+						<label>- 매장명</label><br>
+						<input type="text" name="compName" value="${item.compName}">
+					</div>
+					
+					<div>
+						<label>- 매장 번호(사업자번호)</label><br>
+						<input type="text" name="compNum" value="${item.compNum}">
+					</div>
+					
+					<div>
+						<label>- 매장 사장님명</label><br>
+						<input type="text" name="compCeo" value="${item.compCeo}">
+					</div>
+					
+					
+					<div>
+						<label>- 매장 전화번호</label><br>
+						<input type="text" name="compCall" value="${item.compCall}">
+					</div>
+					
+					<div>
+						<label>- 매장 구주소</label><br>
+						<input type="text" name="compAddr1" value="${item.compAddr1}">
+					</div>
+					
+					<div>
+						<label>- 매장 신주소(도로명주소)</label><br>
+						<input type="text" name="compAddr2" value="${item.compAddr2}">
+					</div>
+					
+					<div>
+						<label>- 매장 소개</label><br>
+						<input type="text" name="compIntro" value="${item.compIntro}">
+					</div>
+					
+					<br>
+					
+					<div>
+						<button type="submit" id="update" class="btn btn-mod" style="float: right;">변경 완료</button>
+					</div>
+				</div>	
 				
 			</div>
 		</form>
@@ -85,6 +93,15 @@
 </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function(){
+	//변경
+	$(".btn-mod").click(function(){
+		alert('변경이 완료되었습니다');
+	});
+});
+</script>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

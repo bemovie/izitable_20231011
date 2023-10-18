@@ -51,6 +51,8 @@ public class UserController {
 	@GetMapping("/booking/{userNo}")
 	String userBookingList(@PathVariable int userNo, Pager pager, Model model) {
 		
+		pager.setPerPage(5);
+		pager.setOffset(pager.getOffset());
 		List<Booking> list = bookingService.userBookingList(userNo);
 		
 		int total = (int) bookingService.totalUser(userNo);

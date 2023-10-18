@@ -25,7 +25,7 @@ public class Booking {
 	
 	private int tableNo;		//테이블 번호
 	private int tableNumber;	//테이블 인원수
-	private String tableName;	//테이블 인원수
+	private String tableName;	//테이블 이름
 
 
 	public String getTableName() {

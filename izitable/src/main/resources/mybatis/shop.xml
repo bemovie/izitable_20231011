@@ -24,15 +24,15 @@
 	
 	<resultMap type="ShopTime" id="ShopTimeMap">
 		<id column="no" property="timeNo"/>
-		<result column="day" property="day"/>
-		<result column="hour" property="hour"/>
+		<result column="day" property="timeDay"/>
+		<result column="hour" property="timeHour"/>
 		<result column="shop_no" property="shopNo"/>	
 	</resultMap>
 	
 	<resultMap type="ShopTable" id="ShopTableMap">
 		<id column="no" property="tableNo"/>
-		<result column="name" property="name"/>
-		<result column="number" property="number"/>
+		<result column="name" property="tableName"/>
+		<result column="number" property="tableNumber"/>
 		<result column="shop_no" property="shopNo"/>	
 	</resultMap>
 	
@@ -99,24 +99,28 @@
 	
 	<insert id="shopSettingTimeAdd">
 		INSERT INTO tbl_shop_time (shop_no, day, hour)
-		VALUES (#{shopNo}, #{day}, #{hour})
+		VALUES (#{shopNo}, #{timeDay}, #{timeHour})
 	</insert>
 	
 	<select id="shopSettingTimeList" resultMap="ShopTimeMap">
 		SELECT * FROM tbl_shop_time
-		WHERE tbl_shop_time.shop_no = #{shopNo}
+		<where>
+		tbl_shop_time.shop_no = #{shopNo}
+		AND day = #{timeDay}
+		</where>
 		ORDER BY day ASC, hour ASC
 	</select>
 	
 	<insert id="shopSettingTableAdd">
 		INSERT INTO tbl_shop_table (shop_no, name, number)
-		VALUES (#{shopNo}, #{name}, #{number})
+		VALUES (#{shopNo}, #{tableName}, #{tableNumber})
 	</insert>
 	
 	<select id="shopSettingTableList" resultMap="ShopTableMap">
 		SELECT * FROM tbl_shop_table
 		WHERE tbl_shop_table.shop_no = #{shopNo}
 		ORDER BY number ASC, name ASC
+		<!-- LIMIT #{offset}, #{perPage}  -->
 	</select>
 	
 	<delete id="shopSettingTableDel">
@@ -148,7 +152,7 @@
 	
 	<sql id="search">
 		SELECT * FROM tbl_shop
-		<if test="#{keyword} != null"> 
+		<if test="keyword != null"> 
 		<where>
 				
 				comp_name LIKE CONCAT(CONCAT('%', #{keyword}), '%')

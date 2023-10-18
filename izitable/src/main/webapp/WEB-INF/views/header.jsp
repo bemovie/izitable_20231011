@@ -37,6 +37,8 @@
 <link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
 <!-- 문교수님 CSS -->
 
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 
 <style>
     .search {

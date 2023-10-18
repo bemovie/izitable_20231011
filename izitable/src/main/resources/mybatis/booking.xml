@@ -18,6 +18,9 @@
 		
 		<result column="date" property="bookingDate"/>
 		<result column="time" property="bookingTime"/>
+		
+		<result column="table_name" property="tableName"/>
+		<result column="table_num" property="tableNumber"/>
 	</resultMap>
 	
 	<resultMap type="ShopTime" id="shopTimeMap">
@@ -36,6 +39,7 @@
 	
 	<select id="list" resultMap="BookingMap">
 		SELECT * FROM tbl_booking
+		ORDER BY date, time
 	</select>
 	
 	<select id="total" resultType="Integer">
@@ -60,6 +64,8 @@
 	<select id="userBookingList" resultMap="BookingMap">
 		SELECT tbl_booking.*, tbl_shop.* FROM tbl_booking JOIN tbl_shop ON tbl_booking.shop_no = tbl_shop.no
 		WHERE tbl_booking.user_no = #{userNo}
+		ORDER BY date, time
+		<!-- LIMIT #{offset}, #{perPage}  -->
 	</select>
 	
 	<select id="userBookingDelete">
@@ -71,6 +77,8 @@
 		SELECT tbl_booking.*, tbl_user.* 
 		FROM tbl_booking JOIN tbl_user ON tbl_booking.user_no = tbl_user.no
 		WHERE tbl_booking.shop_no = #{shopNo}
+		ORDER BY date, time
+		<!-- LIMIT #{offset}, #{perPage} -->
 	</select>
 	
 	<select id="shopBookingUpdate">

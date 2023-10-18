@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.izitable.model.Booking;
 import com.izitable.model.Pager;
@@ -58,11 +60,11 @@ public class ShopController {
 	@GetMapping("/booking/{shopNo}")
 	String shopBookingList(@PathVariable int shopNo, Pager pager, Model model) {
 		
-		List<Booking> list = bookingService.shopBookingList(shopNo);
-		
 		int total = (int) bookingService.totalShop(shopNo);
 		pager.setTotal(total);
 		model.addAttribute("pager", pager);
+		
+		List<Booking> list = bookingService.shopBookingList(shopNo);		
 		
 		model.addAttribute("list", list);
 		
@@ -94,9 +96,13 @@ public class ShopController {
 	
 	//매장 설정
 	@GetMapping("/setting/{shopNo}")
-	String shopSetting(@PathVariable int shopNo, ShopTime shopTm, ShopTable shopTb, Model model) {
+	String shopSetting(@PathVariable int shopNo, ShopTime shopTm, ShopTable shopTb, Model model, String timeDay, Pager pager) {
+		if (timeDay != null) shopTm.setTimeDay(timeDay);
+		else shopTm.setTimeDay("2");
+		
 		shopTm.setShopNo(shopNo);
 		shopTb.setShopNo(shopNo);
+		
 		List<Shop> timelist = shopService.shopSettingTimeList(shopTm);
 		List<Shop> tablelist = shopService.shopSettingTableList(shopTb);
 		
