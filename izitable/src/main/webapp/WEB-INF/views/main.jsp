@@ -23,7 +23,7 @@
                             <h6>ENJOY YOUR MEAL :p</h6>
                             
                             <div class="main-white-button scroll-to-section">
-                                <a href="/list">예약하기</a>
+                                <a href="/list?keyword=">예약하기</a>
                             </div>
                         </div>
                     </div>
