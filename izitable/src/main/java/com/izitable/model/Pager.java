@@ -10,14 +10,19 @@ public class Pager {
 	private float total;
 	private int perGroup = 3;
 	
-	private int search;
+	private int search = 1; // 1로 설정해서 shop.xml에서 검색 조건문을 실행한다. 아래의 조건문이 search가 0이상이므로 !
 	private String keyword;
+	
+	
+	public int getOffset() {
+		return (((page - 1) / perGroup) + 0 ) * perGroup; //startPage
+	}
 	
 	public String getQuery() {
 		String queryString = "";
-		
+	
 		if(search > 0)
-			queryString += "&search=" + search + "&keyword=" + keyword;
+			queryString += "&keyword=" + keyword;
 		
 		return queryString;
 	}

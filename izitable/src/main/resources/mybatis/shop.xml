@@ -43,11 +43,12 @@
 	</select>
 	
 	<select id="list_admin" resultMap="ShopMap">
-		SELECT * FROM tbl_shop
+		SELECT * FROM (<include refid="search"></include>) sub
+<!-- 		LIMIT #{offset}, #{perPage} -->
 	</select>
 	
 	<select id="total" resultType="Integer">
-		SELECT COUNT(*) FROM tbl_shop
+		SELECT COUNT(*) FROM (<include refid="search"></include>) sub
 	</select>
 	
 	<select id="list" resultMap="ShopMap">
@@ -134,5 +135,19 @@
 		SET view_count = view_count + 1
 		WHERE no = #{shopNo}
 	</update>
+	
+	<sql id="search">
+		SELECT * FROM tbl_shop
+		<where>
+				
+				comp_name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+				or comp_addr1 LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+				or comp_intro LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+				
+		</where> 
+		
+		ORDER BY comp_name
+		
+	</sql>
 	
 </mapper>

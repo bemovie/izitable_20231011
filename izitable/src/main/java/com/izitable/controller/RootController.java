@@ -53,7 +53,9 @@ public class RootController {
 			model.addAttribute("msg", msg);
 			session.removeAttribute("msg");
 		}
-		
+
+		pager.setKeyword("");
+//		pager.setPerPage(3);
 		List<Shop> list = shopService.list_popular(pager);
 		model.addAttribute("list", list);
 		
@@ -167,8 +169,6 @@ public class RootController {
 	//회원가입 (일반회원)
 	@GetMapping("/join/user")
 	String joinUser(@ModelAttribute("searchVO") User user, HttpServletRequest request, ModelMap model) {
-		
-		
 		
 		return "join/joinUser";
 	}

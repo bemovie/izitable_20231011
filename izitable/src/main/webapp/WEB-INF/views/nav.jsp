@@ -14,14 +14,15 @@
                     </a>
                     <!-- ***** Logo End ***** -->
                     
-                    <!-- ***** search box start ***** -->
-<form name="form1" method="post" action="/list" style="width: 50%">
-    <div class="search">
-        <input type="text" name="keyword" value="${pager.keyword}" placeholder="지역, 음식, 매장명 검색">
-        <button class="btn btn-sm btn-primary">검색</button>
-    </div>
-</form>
-<!-- ***** search box End *****-->
+     <!-- ***** search box start ***** -->
+                    
+					<form name="form1" method="get" action="/list" style="width: 50%">
+					    <div class="search">
+					        <input type="text" name="keyword" value="${pager.keyword}" placeholder="지역, 음식, 매장명 검색">
+					    </div>
+					</form>
+					
+	<!-- ***** search box End *****-->
 
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
