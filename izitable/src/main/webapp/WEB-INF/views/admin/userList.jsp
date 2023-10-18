@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-#bbs_wrap {min-height: 608px;}
+#bbs_wrap {min-height: 608px; margin-top: 50px;}
 </style>
 </head>
 
@@ -39,8 +39,10 @@
 				<thead>
 					<tr>
 						<th>회원번호</th>
+						<th>회원이름</th>
 						<th>이메일</th>
 						<th>전화번호</th>
+						<th>가입날짜</th>
 						<th>관리</th>
 					</tr>
 				</thead>
@@ -49,12 +51,14 @@
 						<form method="post" action="/admin/userupdate/${item.userNo}">
 							<tr>
 								<td>${item.userNo}</td>
+								<td><input type="text" name="userName" value="${item.userName}"></td>
 								<td><input type="text" name="userEmail" value="${item.userEmail}"></td>
 								<td><input type="text" name="userPhone" value="${item.userPhone}"></td>
+								<td><input type="date" name="userRegDate" value="<fmt:formatDate value="${item.userRegDate}" pattern="yyyy-MM-dd" />"></td>
 								
 								<td>
-									<button type="submit" class="btn btn-danger btn-sm">수정</button>
-									<button><a href="userdelete/${item.userNo}" class="btn btn-warning btn-sm">삭제</a></button>
+									<button type="submit" class="btn btn-danger btn-sm btn-mod">수정</button>
+									<button><a href="userdelete/${item.userNo}" class="btn btn-warning btn-sm btn-del">삭제</a></button>
 								</td>
 							</tr>
 						</form>	
@@ -73,6 +77,24 @@
 </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function(){
+	//변경
+	$(".btn-mod").click(function(){
+		alert('변경이 완료되었습니다');
+	});
+});
+
+$(document).ready(function(){
+	//삭제
+	$(".btn-del").click(function(){
+		if(!confirm('삭제하시면 복구할 수 없습니다. \n 정말로 삭제하시겠습니까?')){
+	        return false;
+	    }
+	});
+});
+</script>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

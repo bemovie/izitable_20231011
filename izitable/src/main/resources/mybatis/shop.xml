@@ -19,7 +19,9 @@
 		<result column="longitude" property="longitude"/>
 			
 		<result column="comp_hour" property="compHour"/>	
-		<result column="parking" property="parking"/>	
+		<result column="parking" property="parking"/>
+		
+		<result column="reg_date" property="shopRegDate"/>
 	</resultMap>
 	
 	<resultMap type="ShopTime" id="ShopTimeMap">
@@ -135,7 +137,7 @@
 	
 	<update id="update_admin">
 		UPDATE tbl_shop
-		SET email = #{shopEmail}, comp_name = #{compName}, comp_addr2 = #{compAddr2}, comp_call = #{compCall} 
+		SET email = #{shopEmail}, comp_name = #{compName}, comp_addr2 = #{compAddr2}, comp_call = #{compCall}, reg_date = #{shopRegDate} 
 		WHERE no = #{shopNo}
 	</update>
 	

@@ -21,6 +21,9 @@
 		
 		<result column="table_name" property="tableName"/>
 		<result column="table_num" property="tableNumber"/>
+		
+		<result column="user_name" property="userName"/>
+		<result column="comp_name" property="compName"/>
 	</resultMap>
 	
 	<resultMap type="ShopTime" id="shopTimeMap">
@@ -38,7 +41,8 @@
 	</resultMap>
 	
 	<select id="list" resultMap="BookingMap">
-		SELECT * FROM tbl_booking
+		SELECT * FROM tbl_booking b
+		JOIN tbl_user u ON b.user_no = u.no JOIN tbl_shop s ON b.shop_no = s.no 
 		ORDER BY date, time
 	</select>
 	

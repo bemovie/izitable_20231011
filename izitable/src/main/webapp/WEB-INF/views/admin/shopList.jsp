@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-#bbs_wrap {min-height: 608px;}
+#bbs_wrap {min-height: 608px; margin-top: 50px;}
 </style>
 </head>
 
@@ -38,12 +38,13 @@
 			<table class="list_table" style="text-align: center;">
 				<thead>
 					<tr>
-						<th width="60px">매장번호</th>
-						<th width="250px">이메일</th>
-						<th width="100px">매장명</th>
-						<th width="400px">주소</th>
+						<th width="20px">매장번호</th>
+						<th width="150px">이메일</th>
+						<th width="150px">매장명</th>
+						<th width="250px">매장주소(도로명)</th>
 						<th width="100px">전화번호</th>
-						<th>관리</th>
+						<th width="100px">가입날짜</th>
+						<th width="60px">관리</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,12 +53,13 @@
 							<tr>
 								<td>${item.shopNo}</td>
 								<td><input type="text" name="shopEmail" value="${item.shopEmail}" size="24"></td>
-								<td><input type="text" name="compName" value="${item.compName}" size="14"></td>
-								<td><input type="text" name="compAddr2" value="${item.compAddr2}" size="37"></td>
+								<td><input type="text" name="compName" value="${item.compName}" size="22"></td>
+								<td><input type="text" name="compAddr2" value="${item.compAddr2}" size="40"></td>
 								<td><input type="text" name="compCall" value="${item.compCall}" size="13"></td>
+								<td><input type="date" name="shopRegDate" value="<fmt:formatDate value="${item.shopRegDate}" pattern="yyyy-MM-dd" />"></td>
 								<td>
-									<button type="submit" class="btn btn-danger btn-sm">수정</button>
-									<button><a href="shopdelete/${item.shopNo}" class="btn btn-warning btn-sm">삭제</a></button>
+									<button type="submit" class="btn btn-danger btn-sm btn-mod">수정</button>
+									<button><a href="shopdelete/${item.shopNo}" class="btn btn-warning btn-sm btn-del">삭제</a></button>
 								</td>
 							</tr>
 						</form>	
@@ -76,6 +78,24 @@
 </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function(){
+	//변경
+	$(".btn-mod").click(function(){
+		alert('변경이 완료되었습니다');
+	});
+});
+
+$(document).ready(function(){
+	//삭제
+	$(".btn-del").click(function(){
+		if(!confirm('삭제하시면 복구할 수 없습니다. \n 정말로 삭제하시겠습니까?')){
+	        return false;
+	    }
+	});
+});
+</script>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

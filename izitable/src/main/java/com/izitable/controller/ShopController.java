@@ -58,7 +58,13 @@ public class ShopController {
 	
 	//매장 페이지 예약 목록
 	@GetMapping("/booking/{shopNo}")
-	String shopBookingList(@PathVariable int shopNo, Pager pager, Model model) {
+	String shopBookingList(@PathVariable int shopNo, Pager pager, Model model, HttpSession session) {
+		
+		String msg = (String) session.getAttribute("msg");
+		if(msg != null) {
+			model.addAttribute("msg", msg);
+			session.removeAttribute("msg");
+		}
 		
 		int total = (int) bookingService.totalShop(shopNo);
 		pager.setTotal(total);

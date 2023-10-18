@@ -1,8 +1,12 @@
 package com.izitable.model;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
 	@NotNull @Email
@@ -18,6 +22,17 @@ public class User {
 	private String userName;		//회원 이름
 	private String loginType;		//로그인 타입
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date userRegDate;		//가입날짜
+
+	
+	public Date getUserRegDate() {
+		return userRegDate;
+	}
+	public void setUserRegDate(Date userRegDate) {
+		this.userRegDate = userRegDate;
+		
+	}
 	public String getLoginType() {
 		return loginType;
 	}

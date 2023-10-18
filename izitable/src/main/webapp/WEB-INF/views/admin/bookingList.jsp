@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-#bbs_wrap {min-height: 608px;}
+#bbs_wrap {min-height: 608px; margin-top: 50px;}
 </style>
 </head>
 
@@ -39,8 +39,8 @@
 				<thead>
 					<tr>
 						<th width="60px">예약번호</th>
-						<th>회원번호</th>
-						<th>매장번호</th>
+						<th>회원이름</th>
+						<th>매장이름</th>
 						<th>예약날짜</th>
 						<th>예약시간</th>
 						<th width="60px">예약인원</th>
@@ -52,14 +52,20 @@
 						<form method="post" action="/admin/bookingupdate/${item.bookingNo}">
 							<tr>
 								<td>${item.bookingNo}</td>
-								<td>${item.userNo}</td>
-								<td>${item.shopNo}</td>
+								<td>${item.userName}</td>
+								<td>${item.compName}</td>
+								<td><fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd" /></td>
+								<td>${item.bookingTime}:00</td>
+								<td>${item.bookingMemNum}</td>
+								
+								<!-- 
 								<td><input type="text" name="bookingDate" value="<fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd" />"></td>
 								<td><input type="text" name="bookingTime" value="${item.bookingTime}:00"></td>
 								<td><input type="text" name="bookingMemNum" value="${item.bookingMemNum}" size="5"></td>
+								 -->
 								
 								<td>
-									<button type="submit" class="btn btn-danger btn-sm">수정</button>
+									<!-- <button type="submit" class="btn btn-danger btn-sm">수정</button> -->
 									<button><a href="userdelete/${item.bookingNo}" class="btn btn-warning btn-sm"  onclick="delBtn()">삭제</a></button>
 								</td>
 							</tr>

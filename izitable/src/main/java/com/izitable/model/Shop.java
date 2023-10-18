@@ -1,5 +1,9 @@
 package com.izitable.model;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Shop {
 	private int shopNo; 		//점주 번호
 	private String shopEmail;	//점주 이메일
@@ -28,6 +32,16 @@ public class Shop {
 	private String compHour;	//매장 영업시간
 	private String parking;		//매장 주차여부
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date shopRegDate;	//매장 가입날짜
+	
+	
+	public Date getShopRegDate() {
+		return shopRegDate;
+	}
+	public void setShopRegDate(Date shopRegDate) {
+		this.shopRegDate = shopRegDate;
+	}
 	
 	public String getCompHour() {
 		return compHour;

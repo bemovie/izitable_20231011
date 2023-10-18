@@ -10,6 +10,7 @@
 		<result column="phone" property="userPhone"/>
 		<result column="phone_cert" property="userPhoneCert"/>
 		<result column="name" property="userName"/>
+		<result column="reg_date" property="userRegDate"/>		
 	</resultMap>
 	
 	<select id="list" resultMap="UserMap">
@@ -27,7 +28,7 @@
 	
 	<update id="update">
 		UPDATE tbl_user
-		SET email = #{userEmail}, phone = #{userPhone}, name = #{userName}
+		SET email = name = #{userName}, email = #{userEmail}, phone = #{userPhone}, reg_date = #{userRegDate}
 		WHERE no = #{userNo}
 	</update>
 	

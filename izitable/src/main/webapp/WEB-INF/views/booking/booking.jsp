@@ -93,9 +93,6 @@
                                     <fieldset>
                                         <select value="bookingTime" name="bookingTime" id="bookingTime">
                                             <option value="bookingTime">예약 가능 시간</option>
-                                            <option>11시</option>
-                                            <option>12시</option>
-                                            <option>13시</option>
                                         </select>
                                     </fieldset>
                                 </div>

@@ -50,7 +50,7 @@
 
 <jsp:include page="../nav.jsp"></jsp:include>
 
-<div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/">
+<div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/ min-height: 1000px;">
 
 <div class="tit_intro_step">
 	<ul>
