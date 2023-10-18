@@ -78,9 +78,9 @@ body {text-align: center; /*border: 2px solid black*/ margin-top: 50px;}
 			
 			
 			<div class="btn-cont">
-								<a class="btn-kakao" href="#" data-type="login">
-									<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="200" alt="카카오 로그인 버튼"/>
-								</a>
+				<a class="btn-kakao" href="#" data-type="login">
+					<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="200" alt="카카오 로그인 버튼"/>
+				</a>
 			</div>
 			
 			

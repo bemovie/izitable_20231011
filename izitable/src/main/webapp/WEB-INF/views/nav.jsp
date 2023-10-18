@@ -26,7 +26,7 @@
 
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="/list">음식점</a></li>
+                        <li class="scroll-to-section"><a href="/list?keyword=">음식점</a></li>
                         
                         <c:if test="${sessionScope.user == null and sessionScope.shop == null}"> <!-- session에 있는 정보 꺼내옴 -->
                         	<li class="scroll-to-section"><a href="/login" id="loginalert">예약관리</a></li>
