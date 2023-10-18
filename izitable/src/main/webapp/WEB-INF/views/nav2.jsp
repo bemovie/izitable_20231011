@@ -6,7 +6,7 @@
 img {
 	margin:0;
 	border:none;
-	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
 </style>
 
@@ -73,7 +73,7 @@ img {
 							<c:if test="${sessionScope.user != null}">
 								<c:choose>
 									<c:when test="${sessionScope.user.userNo <= 0}">
-										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userName}님</a> 환영합니다</li>
+										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userName}님</a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="scroll-to-section"><a href="/user/booking/${sessionScope.user.userNo}">${sessionScope.user.userName}님</a></li>

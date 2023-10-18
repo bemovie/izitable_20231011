@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<jsp:include page="../nav1.jsp"></jsp:include>
+<jsp:include page="../nav2.jsp"></jsp:include>
 
 <div id="content">
 <div class="container" style="margin: 0 auto; width: 1200px;">

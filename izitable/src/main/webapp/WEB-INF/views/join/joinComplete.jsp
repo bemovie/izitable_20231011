@@ -18,7 +18,7 @@ join_input { margin-bottom: 30px; }
 
 <body>
 
-<jsp:include page="../nav.jsp"></jsp:include>
+<jsp:include page="../nav1.jsp"></jsp:include>
 
 
 <body>
