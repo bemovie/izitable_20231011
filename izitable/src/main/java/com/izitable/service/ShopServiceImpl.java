@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.izitable.dao.ShopDao;
@@ -19,6 +20,9 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	ShopDao dao;
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	@Override
 	public List<Shop> list(Shop shop) {
 		
@@ -36,12 +40,12 @@ public class ShopServiceImpl implements ShopService {
 		Shop result = dao.login(shop);
 		
 		if (result != null) {
+			boolean a = passwordEncoder.matches(shop.getShopPwd(), result.getShopPwd());
 			BeanUtils.copyProperties(result, shop);
-			shop.setShopPwd(null);
-			
-			return true;
+			//shop.setUserPwd(null);
+			return a;
 		}
-		return false;
+		return false;	
 	}
 
 	@Override
@@ -60,6 +64,10 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void add(Shop shop) {
+		
+		 String rawPassword = shop.getShopPwd();
+		    String encodedPassword = passwordEncoder.encode(rawPassword);
+		    shop.setShopPwd(encodedPassword);
 		dao.add(shop);
 	}
 

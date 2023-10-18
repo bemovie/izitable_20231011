@@ -76,7 +76,7 @@
  	
  	<select id="login" resultMap="ShopMap">
 		SELECT * FROM tbl_shop
-		WHERE email = #{shopEmail} AND pwd = #{shopPwd}
+		WHERE email = #{shopEmail}
 	</select>
 	
 	<insert id="add">
