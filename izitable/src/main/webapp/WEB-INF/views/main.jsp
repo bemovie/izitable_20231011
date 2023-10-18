@@ -79,7 +79,12 @@
                 
                 <c:forEach var="item" items="${list}">
                 	<div class="item">
-                        <div class='card' style="background-image: url(/upload/${item.imgFilename});">
+                		<c:if test="${item.imgFilename != null}">
+                        	<div class='card' style="background-image: url(/upload/${item.imgFilename});">
+                        </c:if>
+                        <c:if test="${item.imgFilename == null}">
+                        	<div class='card' style="background-image: url(/resources/image/shop.png);">
+                        </c:if>
                             <div class='info'>
                                 <h1 class='title'>${item.compName}</h1>
                                 <p class='description'>${item.compIntro}</p>

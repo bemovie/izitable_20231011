@@ -122,12 +122,14 @@ join_input { margin-bottom: 30px; }
 							<input name="uploadFile" type="file" id="imageInput">
 						</div>
 						
+						<!-- 
 						<div>
 							<button type="button" id="previewbtn" class="btn">미리보기</button>
 						</div>
+						 -->
 						
 						<div id="imagePreview">
-							<img id="previewImage" alt="미리보기" src="/resources/image/profile.png">
+							<img id="previewImage" alt="미리보기" src="/resources/image/profile.png" width="100" height="100">
 						</div>
 					</div>
 				
@@ -283,7 +285,7 @@ $(document).ready(function() {
 
 //매장 이미지 등록할 때 미리보기
 $(document).ready(function() {
-    $("#previewbtn").click(function() {
+    $("#imageInput").change(function() {
         var input = document.getElementById("imageInput");
         var preview = document.getElementById("previewImage");
 

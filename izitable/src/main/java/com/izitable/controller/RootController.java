@@ -179,8 +179,10 @@ public class RootController {
 		return "join/joinShop";
 	}
 	
+	
+	String webPath = "/upload/";
 	@PostMapping("/join")
-	String join(User user, Shop shop, Image image) throws IOException {
+	String join(User user, Shop shop, Image image, HttpServletRequest req) throws IOException {
 		if (user.getUserEmail() != null) userService.add(user);
 		else {
 			shop.setCompAddr1( shop.getCompAddr1() + " " + shop.getDetailAddr() ); 
@@ -190,10 +192,14 @@ public class RootController {
 			MultipartFile file = image.getUploadFile();
 			System.out.println(file.getOriginalFilename());
 			
+			String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+			System.out.println(folderPath);
+			
 			if(file != null && !file.isEmpty()) {
 				String filename = file.getOriginalFilename();
 				
-				file.transferTo(new File(uploadPath  + filename));
+				//file.transferTo(new File(uploadPath  + filename));
+				file.transferTo(new File(folderPath  + filename));
 				
 				System.out.println(file.getOriginalFilename());
 				
