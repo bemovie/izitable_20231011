@@ -12,7 +12,7 @@ public interface BookingDao {
 
 	void add(Booking item);
 
-	List<Booking> userBookingList(int userNo);
+	List<Booking> userBookingList(Booking booking);
 
 	void userBookingDelete(int bookingNo);
 

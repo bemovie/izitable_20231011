@@ -77,8 +77,8 @@
 					</c:if>
 				</tbody>
 				
-				<!-- 
-				<tfoot>
+				
+				<!-- <tfoot>
 					<tr>
 						<td colspan="8">
 							<ul class="pagination justify-content-center mt-3">
@@ -92,8 +92,8 @@
 							</ul>
 						</td>
 					</tr>
-				</tfoot>
-				-->
+				</tfoot> -->
+				
 				
 			</table>
 		</div>

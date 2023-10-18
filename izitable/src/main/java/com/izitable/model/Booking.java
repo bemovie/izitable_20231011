@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Booking {
+public class Booking extends Pager{
 	
 	private int bookingNo;		//예약 번호
 	private int userNo;			//회원 번호

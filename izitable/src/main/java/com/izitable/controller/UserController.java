@@ -49,11 +49,13 @@ public class UserController {
 	
 	//회원 페이지 예약 목록
 	@GetMapping("/booking/{userNo}")
-	String userBookingList(@PathVariable int userNo, Pager pager, Model model) {
+	String userBookingList(@PathVariable int userNo, Pager pager, Model model, Booking booking) {
 		
+		pager.setKeyword("");
 		pager.setPerPage(5);
-		pager.setOffset(pager.getOffset());
-		List<Booking> list = bookingService.userBookingList(userNo);
+		booking.setPerPage(5);
+		booking.setUserNo(userNo);
+		List<Booking> list = bookingService.userBookingList(booking);
 		
 		int total = (int) bookingService.totalUser(userNo);
 		pager.setTotal(total);

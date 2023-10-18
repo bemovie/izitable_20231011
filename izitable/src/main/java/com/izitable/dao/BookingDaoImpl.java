@@ -24,8 +24,8 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	@Override
-	public List<Booking> userBookingList(int userNo) {
-		return sql.selectList("booking.userBookingList", userNo);
+	public List<Booking> userBookingList(Booking booking) {
+		return sql.selectList("booking.userBookingList", booking);
 	}
 
 	@Override

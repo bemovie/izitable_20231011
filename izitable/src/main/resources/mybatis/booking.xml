@@ -69,7 +69,7 @@
 		SELECT tbl_booking.*, tbl_shop.* FROM tbl_booking JOIN tbl_shop ON tbl_booking.shop_no = tbl_shop.no
 		WHERE tbl_booking.user_no = #{userNo}
 		ORDER BY date, time
-		<!-- LIMIT #{offset}, #{perPage}  -->
+		LIMIT #{offset}, #{perPage} 
 	</select>
 	
 	<select id="userBookingDelete">
@@ -82,7 +82,7 @@
 		FROM tbl_booking JOIN tbl_user ON tbl_booking.user_no = tbl_user.no
 		WHERE tbl_booking.shop_no = #{shopNo}
 		ORDER BY date, time
-		<!-- LIMIT #{offset}, #{perPage} -->
+		LIMIT #{offset}, #{perPage}
 	</select>
 	
 	<select id="shopBookingUpdate">

@@ -24,8 +24,8 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<Booking> userBookingList(int userNo) {
-		return dao.userBookingList(userNo);
+	public List<Booking> userBookingList(Booking booking) {
+		return dao.userBookingList(booking);
 	}
 
 	@Override
