@@ -63,8 +63,10 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="/booking/add" method="post">
                         <input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
+                        <input type="hidden" name="userNo" id="userNo" value="${sessionScope.user.userNo}">
+                        
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h4>테이블 예약</h4>
@@ -76,45 +78,9 @@
                                        <%-- <c:set var="maxymd" value="${ymd}+30" /> --%> 
                                        <c:set var="maxymd" value="<%=new java.util.Date(new java.util.Date().getTime() + 60*60*24*1000*20)%>"/>
                                        <%-- <fmt:formatDate value="${maxymd}" pattern="yyyy-MM-dd" /> --%>
-                                       <input type="date" name="date" id="date" min="<fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" />" max="<fmt:formatDate value="${maxymd}" pattern="yyyy-MM-dd" />" placeholder="예약 가능 날짜">
+                                       <input type="date" name="bookingDate" id="bookingDate" min="<fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" />" max="<fmt:formatDate value="${maxymd}" pattern="yyyy-MM-dd" />" placeholder="예약 가능 날짜" required="required">
                                        <!-- <input type="date" id="myDate" max="2023-10-25" placeholder="예약 가능 날짜"> -->
-                                       
-                                       <!-- 날짜 선택시(날짜 input 클릭) ajax 발생 -->
-                                       <script>
-                                       //document.addEventListener('DOMContentLoaded', function() {
-                                    	   
-		                                    //~ fetch api 방식 ~
-		                                    var sInp = document.querySelector('#shopNo');
-		                                    var dInp = document.querySelector('#date');
-		                                    var tInp = document.querySelector('#time');
-		                                    
-											dInp.onchange = function() {
-		                               			alert('test');
-		                               			console.log(sInp.value, dInp.value);
-		                               			fetch('/booking/date', {
-		                               				method: 'POST',
-		                               				body: new URLSearchParams({shopNo: sInp.value, bookingDate: dInp.value})
-		                               			}).then(function(response) {
-		                               				//let data = response.json();
-		                               				return response.json();
-		                               			}).then(function(data){ //response.json()의 결과가 인자로 전달
-		                               				console.dir(data);
-		                               				for (var i = 0; i < data.length; i++) {
-														var d = data[i];
-														let optElm = tInp.createElement('option');
-			                               				optElm.innerHTML = d.bookingTime;
-			                               				tInp.append(optElm);
-			                               				//tInp.innerHTML = d.bookingTime;
-													}
-		                               			}).catch(function(error){
-		                               				console.log(error);
-		                               				//alert(error);
-		                               			});
-		                               		};
-	                               		
-                                       //}
-                                        </script>
-                                            
+                             
                                             <div class="input-group-addon">
                                                 <span class="glyphicon glyphicon-th"></span>
                                             </div>
@@ -125,42 +91,16 @@
                                 
                                 <div class="col-md-12 col-sm-12">
                                     <fieldset>
-                                        <select value="time" name="time" id="time">
-                                            <option value="time">예약 가능 시간</option>
-                                            <!-- 
-                                            <option name="1" id="1">09:00</option>
-                                            <option name="2" id="2">10:00</option>
-                                            <option name="3" id="3">11:00</option>
-                                            <option name="4" id="4">12:00</option>
-                                            <option name="5" id="5">13:00</option>
-                                            <option name="6" id="6">14:00</option>
-                                            <option name="7" id="7">15:00</option>
-                                            <option name="8" id="8">16:00</option>
-                                            <option name="9" id="9">17:00</option>
-                                            <option name="10" id="10">18:00</option>
-                                            <option name="11" id="11">19:00</option>
-                                            <option name="12" id="12">20:00</option>
-                                            <option name="13" id="13">21:00</option>
-                                            <option name="14" id="14">22:00</option>
-                                             -->
+                                        <select value="bookingTime" name="bookingTime" id="bookingTime">
+                                            <option value="bookingTime">예약 가능 시간</option>
                                         </select>
                                     </fieldset>
                                 </div>
                                 
                                 <div class="col-md-12 col-sm-12">
                                     <fieldset>
-                                        <select value="number-guests" name="number-guests" id="number-guests">
-                                            <option value="number-guests">인원수</option>
-                                            <option name="1" id="1">1</option>
-                                            <option name="2" id="2">2</option>
-                                            <option name="3" id="3">3</option>
-                                            <option name="4" id="4">4</option>
-                                            <option name="5" id="5">5</option>
-                                            <option name="6" id="6">6</option>
-                                            <option name="7" id="7">7</option>
-                                            <option name="8" id="8">8</option>
-                                            <option name="9" id="9">9</option>
-                                            <option name="10" id="10">10</option>
+                                        <select value="bookingMemNum" name="bookingMemNum" id="bookingMemNum">
+                                            <option value="bookingMemNum">인원수</option>
                                         </select>
                                     </fieldset>
                                 </div>
@@ -168,8 +108,7 @@
                                 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="요청사항을 입력해주세요"
-                                            required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="요청사항을 입력해주세요"></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -185,6 +124,110 @@
         </div>
     </section>
     <!-- ***** Reservation Area Ends ***** -->
+    
+    <!-- 날짜 선택시(날짜 input 변경) ajax 발생 -->
+    <script>
+	//document.addEventListener('DOMContentLoaded', function() {
+                	   
+	//~ fetch api 방식 ~
+    var sInp = document.querySelector('#shopNo');
+    var dInp = document.querySelector('#bookingDate');
+    var tInp = document.querySelector('#bookingTime');
+                  
+	dInp.onchange = function() {
+		alert('test');
+		console.log(sInp.value, dInp.value);
+		
+		//select box option 초기화
+		//optElm.innerHTML = '';
+		if(document.querySelectorAll('.timeOption').length > 1) {
+			let toList = document.querySelectorAll('.timeOption');
+			for (var i = 0; i < toList.length; i++) {
+				toList[i].remove();
+			}
+		}
+		
+		fetch('/booking/time', {
+			method: 'POST',
+		body: new URLSearchParams({shopNo: sInp.value, bookingDate: dInp.value})
+	}).then(function(response) {
+		//let data = response.json();
+		return response.json();
+		}).then(function(data){ //response.json()의 결과가 인자로 전달
+			console.dir(data);
+			for (var i = 0; i < data.length; i++) {
+				var d = data[i];
+				//tInp.createElement('option');
+				let optElm = document.createElement('option');
+				optElm.innerHTML = d.timeHour;
+				//optElm.innerHTML = d.timeHour; + ':00';
+				//console.log(d.timeHour; + ':00');
+				//optElm.setAttribute('value', d.timeHour);
+				optElm.classList.add('timeOption');
+				tInp.append(optElm);
+				
+				//tInp.innerHTML = d.bookingTime;
+			}
+		}).catch(function(error){
+			console.log(error);
+			//alert(error);
+		});
+	};              		
+	//}
+</script>
+
+	<!-- 시간 선택시(시간 input 변경) ajax 발생 -->
+    <script>
+	//document.addEventListener('DOMContentLoaded', function() {
+                	   
+	//~ fetch api 방식 ~
+    var sInp = document.querySelector('#shopNo');
+    var dInp = document.querySelector('#bookingDate');
+    var tInp = document.querySelector('#bookingTime');
+    var nInp = document.querySelector('#bookingMemNum');
+                  
+    tInp.onchange = function() {
+		alert('test');
+		console.log(sInp.value, dInp.value, tInp.value);
+		
+		//select box option 초기화
+		//optElm.innerHTML = '';
+		let mnoList = document.querySelectorAll('.memNumOption');
+		for (var i = 0; i < mnoList.length; i++) {
+			mnoList[i].remove();
+		}
+		
+		fetch('/booking/memNum', {
+			method: 'POST',
+		body: new URLSearchParams({shopNo: sInp.value, bookingDate: dInp.value, bookingTime: tInp.value})
+	}).then(function(response) {
+		//let data = response.json();
+		return response.json();
+		}).then(function(data){ //response.json()의 결과가 인자로 전달
+			console.dir(data);
+			for (var i = 0; i < data.length; i++) {
+				var d = data[i];
+				//tInp.createElement('option');
+				let optElm = document.createElement('option');
+				optElm.innerHTML = d.tableNumber-1;
+				optElm.classList.add('memNumOption');
+				nInp.append(optElm);
+				
+				optElm = document.createElement('option');
+				optElm.innerHTML = d.tableNumber;
+				optElm.classList.add('memNumOption');
+				nInp.append(optElm);
+				
+				//tInp.innerHTML = d.bookingTime;
+			}
+		}).catch(function(error){
+			console.log(error);
+			//alert(error);
+		});
+	};              		
+	//}
+</script>
+
 
     <!-- jQuery -->
     <script src="resources/assets/js/jquery-2.1.0.min.js"></script>

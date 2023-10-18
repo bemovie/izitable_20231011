@@ -76,6 +76,18 @@
 				<a href=""><img src="/resources/image/naverlogin.png" width="200px"></a>		
 			</div>
 			
+			<article>
+			<h3 class="icon2 ico-user">SNS회원</h3>
+				<div class="confirm_box">
+					<p class="mB20">카카오 회원</p>
+					<div class="btn-cont">
+						<a class="btn-kakao" href="#" data-type="join">
+							<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="150" alt="카카오 로그인 버튼"/>
+						</a>
+					</div>
+				</div>
+			</article>
+			
 			
 			<div style="border: 2px solid black; width: 200px; height: 200px; float: right; padding: 10px; text-align: center;">
 				<a href="/join/shop"><img src="/resources/image/shop.png" width="200px">

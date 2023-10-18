@@ -9,7 +9,7 @@ public class Booking {
 	private int bookingNo;		//예약 번호
 	private int userNo;			//회원 번호
 	private int shopNo;			//매장 번호
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bookingDate;	//예약 날짜
 	private String bookingTime;	//예약 시간
 	private int bookingMemNum;	//예약 인원
@@ -21,7 +21,45 @@ public class Booking {
 	
 	private String userName;	//회원 이름
 	
+	private String message;		//요청사항
 	
+	private int tableNo;		//테이블 번호
+	private int tableNumber;	//테이블 인원수
+	private String tableName;	//테이블 인원수
+
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+	public int getTableNo() {
+		return tableNo;
+	}
+
+	public void setTableNo(int tableNo) {
+		this.tableNo = tableNo;
+	}
+
+	public int getTableNumber() {
+		return tableNumber;
+	}
+
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

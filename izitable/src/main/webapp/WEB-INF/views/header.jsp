@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-<title>IZITABLE_header</title>
+<title>IZITable - 실시간 음식점 예약 플랫폼</title>
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" type="text/css" href="/resources/assets/css/bootstrap.min.css">

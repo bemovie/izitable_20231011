@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.izitable.dao.BookingDao;
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTable;
 import com.izitable.model.ShopTime;
 import com.izitable.model.Booking;
 
@@ -66,8 +67,20 @@ public class BookingServiceImpl implements BookingService {
 		return dao.totalUser(userNo);
 	}
 
+	
 	@Override
 	public List<ShopTime> bookingTimeList(ShopTime shopTime) {
 		return dao.bookingTimeList(shopTime);
+	}
+
+	@Override
+	public List<ShopTable> bookingTableList(ShopTable shopTable) {
+		return dao.bookingTableList(shopTable);
+	}
+
+	
+	@Override
+	public ShopTable selectTable(ShopTable st) {
+		return dao.selectTable(st);
 	}
 }

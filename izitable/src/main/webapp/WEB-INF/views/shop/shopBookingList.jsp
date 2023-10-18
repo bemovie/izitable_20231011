@@ -72,13 +72,19 @@ body {margin: 0; padding: 0; margin-top: 50px;}
 					</c:if>
 					
 				</tbody>
-				
 			</table>
 		</div>
 	</div>
 </div>
 </div>
 </div>
+
+<!-- 로그인 성공 메세지 -->   
+<script>
+	const msg = "${msg}"; //따옴표가 있어야 작동함, 없으면 변수이름으로 인식함
+	if(msg)
+		alert(msg);
+</script>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

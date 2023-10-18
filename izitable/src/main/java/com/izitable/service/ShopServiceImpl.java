@@ -108,4 +108,16 @@ public class ShopServiceImpl implements ShopService {
 		dao.delete(shopNo);
 	}
 	
+	//조회수 증가
+	@Override
+	public void viewCount(int shopNo) {
+		dao.viewCount(shopNo);
+	}
+	
+	//메인 페이지 인기 음식점(10곳 제한)
+	@Override
+	public List<Shop> list_popular(Pager pager) {
+		return dao.list_popular(pager);
+	}
+	
 }

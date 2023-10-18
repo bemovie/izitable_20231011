@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.izitable.model.Booking;
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTable;
 import com.izitable.model.ShopTime;
 
 public interface BookingService {
@@ -26,7 +27,13 @@ public interface BookingService {
 	int totalShop(int shopNo);
 
 	int totalUser(int userNo);
+	
 
 	List<ShopTime> bookingTimeList(ShopTime shopTime);
+
+	List<ShopTable> bookingTableList(ShopTable shopTable);
+
+	
+	ShopTable selectTable(ShopTable st);
 
 }

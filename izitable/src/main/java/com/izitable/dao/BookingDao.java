@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTable;
 import com.izitable.model.ShopTime;
 import com.izitable.model.Booking;
 
@@ -29,6 +30,12 @@ public interface BookingDao {
 
 	int totalUser(int userNo);
 
+	
 	List<ShopTime> bookingTimeList(ShopTime shopTime);
+
+	List<ShopTable> bookingTableList(ShopTable shopTable);
+
+	
+	ShopTable selectTable(ShopTable st);
 
 }

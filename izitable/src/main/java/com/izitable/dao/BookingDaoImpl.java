@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.izitable.model.Pager;
+import com.izitable.model.ShopTable;
 import com.izitable.model.ShopTime;
 import com.izitable.model.Booking;
 
@@ -67,9 +68,21 @@ public class BookingDaoImpl implements BookingDao {
 		return sql.selectOne("booking.totalUser", userNo);
 	}
 
+	
 	@Override
 	public List<ShopTime> bookingTimeList(ShopTime shopTime) {
 		return sql.selectList("booking.bookingTimeList", shopTime);
+	}
+
+	@Override
+	public List<ShopTable> bookingTableList(ShopTable shopTable) {
+		return sql.selectList("booking.bookingTableList", shopTable);
+	}
+
+	
+	@Override
+	public ShopTable selectTable(ShopTable st) {
+		return sql.selectOne("booking.selectTable", st);
 	}
 
 }

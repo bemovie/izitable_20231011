@@ -97,4 +97,16 @@ public class ShopDaoImpl implements ShopDao {
 		return sql.selectOne("shop.total", pager);
 	}
 
+	//조회수 증가
+	@Override
+	public void viewCount(int shopNo) {
+		sql.update("shop.viewCount", shopNo);
+	}
+	
+	//메인 페이지 인기 음식점(10곳 제한)
+	@Override
+	public List<Shop> list_popular(Pager pager) {
+		return sql.selectList("shop.list_popular", pager);
+	}
+	
 }

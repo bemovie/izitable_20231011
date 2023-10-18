@@ -36,6 +36,12 @@
 		<result column="shop_no" property="shopNo"/>	
 	</resultMap>
 	
+	<select id="list_popular" resultMap="ShopMap">
+		SELECT * FROM tbl_shop
+		ORDER BY view_count DESC
+		LIMIT 10
+	</select>
+	
 	<select id="list_admin" resultMap="ShopMap">
 		SELECT * FROM tbl_shop
 	</select>
@@ -122,5 +128,11 @@
 		DELETE FROM tbl_shop
 		WHERE tbl_shop.no = #{shopNo}
 	</delete>
+	
+	<update id="viewCount">
+		UPDATE tbl_shop
+		SET view_count = view_count + 1
+		WHERE no = #{shopNo}
+	</update>
 	
 </mapper>

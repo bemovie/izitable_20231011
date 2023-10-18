@@ -60,7 +60,7 @@
 								
 								<td>
 									<button type="submit" class="btn btn-danger btn-sm">수정</button>
-									<button><a href="userdelete/${item.bookingNo}" class="btn btn-warning btn-sm">삭제</a></button>
+									<button><a href="userdelete/${item.bookingNo}" class="btn btn-warning btn-sm"  onclick="delBtn()">삭제</a></button>
 								</td>
 							</tr>
 						</form>	
@@ -79,6 +79,17 @@
 </div>
 </div>
 </div>
+
+<!-- 삭제 확인 알람창 - 취소 선택하면 페이지 이동 안되야함 -->
+<!-- 
+<script>
+function delBtn(){
+    if(!confirm('삭제하시면 복구할 수 없습니다. \n 정말로 삭제하시겠습니까?')){
+        return false;
+    }
+}
+</script>
+ -->
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

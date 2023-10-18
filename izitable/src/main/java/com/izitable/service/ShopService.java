@@ -40,4 +40,10 @@ public interface ShopService {
 
 	void delete(int shopNo);
 
+	//조회수 증가
+	void viewCount(int shopNo);
+	
+	//메인 페이지 인기 음식점(10곳 제한)
+	List<Shop> list_popular(Pager pager);
+
 }

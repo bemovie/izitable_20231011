@@ -56,7 +56,4 @@ public class UserDaoImpl implements UserDao {
 		return sql.selectOne("user.duplicateCheck", user);
 	}
 
-
-	
-
 }

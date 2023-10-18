@@ -57,7 +57,7 @@
 		</interceptor>
 	</interceptors>
 	
-	<resources location="file:///d:/upload/" mapping="/upload/**"></resources>
+	<!-- <resources location="file:///d:/upload/" mapping="/upload/**"></resources> -->
 	
 
 

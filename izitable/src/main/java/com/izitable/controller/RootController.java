@@ -54,7 +54,7 @@ public class RootController {
 			session.removeAttribute("msg");
 		}
 		
-		List<Shop> list = shopService.list_admin(pager);
+		List<Shop> list = shopService.list_popular(pager);
 		model.addAttribute("list", list);
 		
 		return "main";
@@ -62,7 +62,14 @@ public class RootController {
 	
 	//로그인
 	@GetMapping("/login")
-	public String login() {
+	public String login(HttpSession session, Model model) {
+		String msg = (String) session.getAttribute("msg");
+		
+		if(msg != null) {
+			model.addAttribute("msg", msg);
+			session.removeAttribute("msg");
+		}
+		
 		return "login";
 	}
 	
