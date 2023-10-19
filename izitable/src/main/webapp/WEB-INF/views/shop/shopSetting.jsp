@@ -80,7 +80,7 @@
 				<tbody>
 					<c:if test="${tablelist.size() < 1}">
 						<tr>
-							<td colspan="5">등록 된 영업시간이 없습니다</td>					
+							<td colspan="4">등록 된 영업시간이 없습니다</td>					
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${tablelist}">

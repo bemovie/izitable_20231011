@@ -67,7 +67,7 @@
 					
 					<c:if test="${list.size() < 1}">
 					<tr>
-						<td colspan="5">검색 된 매장이 없습니다</td>
+						<td colspan="7">검색 된 매장이 없습니다</td>
 					</tr>
 					</c:if>
 					
