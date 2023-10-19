@@ -2712,15 +2712,15 @@ ul.section2 li + li {
 	color:#000;
 	font-weight:500;
 }
-.icon1:before {
-	content:"";
-	position:absolute;
-	top:17px;
-	left:0;
-	width:16px;
-	height:4px;
-	background-color:#476694;
-}
+/* .icon1:before { */
+/* 	content:""; */
+/* 	position:absolute; */
+/* 	top:17px; */
+/* 	left:0; */
+/* 	width:16px; */
+/* 	height:4px; */
+/* 	background-color:#476694; */
+/* } */
 .icon1:first-child,
 link + .icon1,
 input[type="hidden"] + .icon1 {

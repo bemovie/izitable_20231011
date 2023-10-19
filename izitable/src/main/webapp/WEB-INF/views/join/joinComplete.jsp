@@ -22,7 +22,7 @@ join_input { margin-bottom: 30px; }
 
 
 <body>
-<div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/">
+<div class="container" style="margin: 0 auto; width: 1200px; /*border: 2px solid black;*/ min-height: 700px; margin-top:100px">
 
 <div class="tit_intro_step">
 	<ul>
