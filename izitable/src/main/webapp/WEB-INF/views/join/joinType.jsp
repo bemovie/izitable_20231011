@@ -63,21 +63,26 @@
 
 <h2 class="icon1">회원유형</h2>
 
+	
 		<div style="width: 80%; margin: 10px auto">
+		
+		<div class="container_signin" style="margin-top: 80px; width: 900px; padding-left: 60px;" >
 			<div style="width: 200px; float: left; text-align: center;">
-				<div style="border: 2px solid black; width: 200px; height: 250px; padding: 10px; text-align: center;">
+				<div style="border: 2px solid black; width: 200px; height: 250px; text-align: center;">
 					<a href="/join/user"><img src="/resources/image/normal.png" width="150px">
 					<br>
-					<button class="btn">일반 회원 가입</button></a>
+					<button class="btn" style="margin-top: 10px;">일반 회원 가입</button></a>
 				</div>
 			</div>
 			
 			
 			
-			<div style="border: 2px solid black; width: 200px; height: 250px; float: right; padding: 10px; text-align: center;">
+			<div style="border: 2px solid black; width: 200px; height: 250px; float: right; text-align: center;">
 				<a href="/join/shop"><img src="/resources/image/shop.png" width="150px">
-				<button class="btn">매장 회원 가입</button></a>
+				<button class="btn" style="margin-top: 10px;">매장 회원 가입</button></a>
 			</div>
+		</div>
+		
 		</div>
 			
 	</div>
