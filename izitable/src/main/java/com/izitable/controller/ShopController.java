@@ -70,6 +70,11 @@ public class ShopController {
 		pager.setTotal(total);
 		model.addAttribute("pager", pager);
 		
+		
+		
+		pager.setKeyword("");
+		pager.setPerPage(5);
+		
 		List<Booking> list = bookingService.shopBookingList(shopNo);		
 		
 		model.addAttribute("list", list);

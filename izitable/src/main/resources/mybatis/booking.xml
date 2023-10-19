@@ -44,6 +44,7 @@
 		SELECT * FROM tbl_booking b
 		JOIN tbl_user u ON b.user_no = u.no JOIN tbl_shop s ON b.shop_no = s.no 
 		ORDER BY date, time
+		LIMIT #{offset}, #{perPage}
 	</select>
 	
 	<select id="total" resultType="Integer">

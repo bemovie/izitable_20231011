@@ -56,7 +56,7 @@ public class RootController {
 		}
 
 		pager.setKeyword("");
-//		pager.setPerPage(3);
+		pager.setPerPage(5);
 		List<Shop> list = shopService.list_popular(pager);
 		model.addAttribute("list", list);
 		

@@ -6,9 +6,9 @@ import java.util.List;
 public class Pager {
 	
 	private int page = 1; 
-	private int perPage = 10;
+	private int perPage =10;
 	private float total;
-	private int perGroup = 3;
+	private int perGroup = 5;
 	
 	private int search = 1; // 1로 설정해서 shop.xml에서 검색 조건문을 실행한다. 아래의 조건문이 search가 0이상이므로 !
 	private String keyword;
@@ -59,14 +59,16 @@ public class Pager {
 	}
 	
 	public int getPrev() {
-		return  page <= perGroup ? 1 : (((page - 1) / perGroup) - 1 ) * perGroup + 1; 
+		//return  page <= perGroup ? 1 : (((page - 1) / perGroup) - 1 ) * perGroup + 1; 
+		return page -1;
 	}
 	
 	public int getNext() {
-		int next = (((page - 1) / perGroup) + 1 ) * perGroup + 1; 
-		int last = getLast();
-		
-		return  next < last ? next :last;
+//		int next = (((page - 1) / perGroup) + 1 ) * perGroup + 1; 
+//		int last = getLast();
+//		
+//		return  next < last ? next :last;
+		return page +1;
 	}
 	
 	public List<Integer> getList() {

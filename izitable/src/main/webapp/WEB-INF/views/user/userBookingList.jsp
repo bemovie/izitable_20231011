@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 
 <head>
@@ -68,21 +69,23 @@
 				
 			</tbody>
 			
+			<c:if test="${fn:length(list) != 0}">
 			<tfoot>
-					<tr>
-						<td colspan="8">
-							<ul class="pagination justify-content-center mt-3">
-								<li class="page-item"><a class="page-link" href="?page=1${pager.query}">처음</a></li>
-								<li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>
-								<c:forEach var="page" items="${pager.list}">
-									<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}&offset=${pager.offset}">${page}</a></li>
-								</c:forEach>
-								<li class="page-item"><a class="page-link" href="?page=${pager.next}${pager.query}">다음</a></li>
-								<li class="page-item"><a class="page-link" href="?page=${pager.last}${pager.query}">마지막</a></li>
-							</ul>
-						</td>
-					</tr>
-				</tfoot>
+				<tr>
+					<td colspan="8">
+						<ul class="pagination justify-content-center mt-3">
+							<li class="page-item"><a class="page-link" href="?page=1${pager.query}">처음</a></li>
+							<li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>
+							<c:forEach var="page" items="${pager.list}">
+								<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}&offset=${pager.offset}">${page}</a></li>
+							</c:forEach>
+							<li class="page-item"><a class="page-link" href="?page=${pager.next}${pager.query}">다음</a></li>
+							<li class="page-item"><a class="page-link" href="?page=${pager.last}${pager.query}">마지막</a></li>
+						</ul>
+					</td>
+				</tr>
+			</tfoot>
+			</c:if>
 		</table>
 	</div>
 		

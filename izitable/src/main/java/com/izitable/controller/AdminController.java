@@ -33,9 +33,15 @@ public class AdminController {
 	@Autowired
 	BookingService bookingService;
 	
+	
+	
+	
 	//회원 목록
 	@GetMapping("/userlist")
 	String userList(Model model, Pager pager) {
+		
+		pager.setKeyword("");
+		pager.setPerPage(5);
 		List<User> list = userService.list(pager);
 		
 		model.addAttribute("list", list);
@@ -76,6 +82,10 @@ public class AdminController {
 	//매장 목록
 	@GetMapping("/shoplist")
 	String shopList(Model model, Pager pager) {
+		
+		pager.setKeyword("");
+		pager.setPerPage(5);
+		
 		List<Shop> list = shopService.list_admin(pager);
 		
 		model.addAttribute("list", list);
@@ -104,6 +114,11 @@ public class AdminController {
 	//예약 목록
 	@GetMapping("/bookinglist")
 	String bookinglist(Model model, Pager pager) {
+		
+		
+		pager.setKeyword("");
+		pager.setPerPage(5);
+		
 		List<Booking> list = bookingService.list(pager);
 		
 		model.addAttribute("list", list);
