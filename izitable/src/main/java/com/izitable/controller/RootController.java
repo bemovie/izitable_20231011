@@ -77,7 +77,8 @@ public class RootController {
 	}
 	
 	@PostMapping("/login")
-	String login(User user, Shop shop, HttpSession session) {
+	String login(User user, Shop shop, HttpSession session, Model model) {
+		boolean loginSuccessful = false;
 		//매장 로그인
 		if (shop.getShopEmail() != null) {
 			

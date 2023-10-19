@@ -124,6 +124,26 @@ $(document).ready(function(){
 		kakaoLogin(type);
 		return false;
 	});
+	
+	   // 로그인 버튼 클릭 시 폼 검증 및 서버로 전송
+    $("form").submit(function(e) {
+        e.preventDefault(); // 폼 제출 동작을 중지
+
+        // 이메일 및 비밀번호 입력값 가져오기
+        const email = $("#email").val();
+        const pwd = $("#pwd").val();
+
+        // 이메일 또는 비밀번호가 비어있을 때 알림 메시지 표시
+        if (email.trim() === "") {
+            alert("이메일을 입력하세요");
+        } else if (pwd.trim() === "") {
+            alert("비밀번호를 입력하세요");
+        } else {
+            // 폼이 유효하면 서버로 전송
+            $(this).off("submit").submit(); // 폼 제출 허용 및 제출
+        }
+    });
+	
 });
 
 //카카오 키 정보 입력
@@ -155,12 +175,27 @@ function kakaoLogin(type){
 }
 </script>
 
-<!-- 로그인 실패 메세지 -->   
+
+<%
+    String msg = (String) request.getAttribute("msg"); // 서버에서 전달한 메시지를 가져옵니다.
+%>
+<!-- 로그인 실패 메시지 -->
 <script>
+    // 서버에서 전달받은 메시지가 비어있지 않고, 로그인 실패 시에만 alert를 표시합니다.
+    const msg = "<%= msg %>";
+    if (msg && msg === "로그인에 실패했습니다.") {
+        alert(msg);
+    }
+</script>
+
+
+
+<!-- 로그인 실패 메세지 -->   
+<!-- <script>
 	const msg = "${msg}"; //따옴표가 있어야 작동함, 없으면 변수이름으로 인식함
 	if(msg)
 		alert(msg);
-</script>
+</script> -->
 
 <jsp:include page="footer.jsp"></jsp:include>
 
