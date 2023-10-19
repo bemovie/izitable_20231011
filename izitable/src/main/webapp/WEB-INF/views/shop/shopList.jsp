@@ -29,30 +29,33 @@ body {
 <div id="bbs_wrap" >
 		
 <form method="post" action="/list" style="margin: 10px;">
-<select id="si" name="si" onchange="this.form.submit()">
+<select id="si" name="si">
 	<option value="">시</option>
 	<!-- <option value="서울">서울</option> -->
 	<option value="대전">대전</option>
 </select>
-<script type="text/javascript">
+
+<script>
 	if('${si}' != "") { document.querySelector('[name="si"]').value = '${si}'; }
 </script>
+
 <select id="gu" name="gu" onchange="this.form.submit()">
 	<option value="">구</option>
-	<option value="동구">동구</option>
+	<!-- <option value="동구">동구</option>
 	<option value="서구">서구</option>
-	<option value="대덕구">대덕구</option>
+	<option value="대덕구">대덕구</option> -->
 </select>
-<script type="text/javascript">
+<script>
 	if('${gu}' != "") { document.querySelector('[name="gu"]').value = '${gu}'; }
 </script>
+
 <select id="dong" name="dong" onchange="this.form.submit()">
 	<option value="">동</option>
+	<!-- <option value="가양동">가양동</option>
 	<option value="가양동">가양동</option>
-	<option value="가양동">가양동</option>
-	<option value="비래동">비래동</option>
+	<option value="비래동">비래동</option> -->
 </select>
-<script type="text/javascript">
+<script>
 	if('${dong}' != "") { document.querySelector('[name="dong"]').value = '${dong}'; }
 </script>
 <select id="categoryNo" name="categoryNo" onchange="this.form.submit()">
@@ -127,6 +130,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
 //console.log(cityval)
+/*
 geocoder.addressSearch(sival + " " + guval + " " + dongval, function(result, status) {
 
 // 정상적으로 검색이 완료됐으면 
@@ -136,6 +140,8 @@ if (status === kakao.maps.services.Status.OK) {
 
 //지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 map.setCenter(coords);
+});
+*/
 </script>
 	    
 <!-- 카테고리에 따른 마커 생성 -->
@@ -491,7 +497,152 @@ window.addEventListener('click', function(event) {
 </script>
 
 
+<!-- 시구동 -->
+<!-- 
+<script>
+//시 불러오기
 
+	//~ fetch api 방식 ~
+	var siInp = document.querySelector('#si');
+	var guInp = document.querySelector('#gu');
+	var dongInp = document.querySelector('#dong');
+	
+	siInp.onclick = function() {
+		//alert('test');
+		//select box option 초기화
+		
+		var siOpt = document.querySelectorAll('.siOption');
+		console.dir(siOpt);
+		
+		if(siOpt.length > 0) {
+			let soList = siOpt;
+			for (var i = 0; i < soList.length; i++) {
+				soList[i].remove();
+			}
+		}
+		
+		fetch('/api/si', {
+			method: 'POST'
+		}).then(function(response) {
+		//let data = response.json();
+		return response.json();
+		}).then(function(data){ //response.json()의 결과가 인자로 전달
+			//alert('test2');
+			console.dir(data);
+			for (var i = 0; i < data.length; i++) {
+				var d = data[i];
+				let optElm = document.createElement('option');
+				optElm.innerHTML = d.si;
+				optElm.setAttribute('value', d.si);
+				optElm.classList.add('siOption');
+				siInp.append(optElm);
+			}
+		}).catch(function(error){
+			console.log(error);
+			//alert(error);
+		});
+	};
+</script>
+ -->
+
+<script>
+//구 불러오기
+
+	//~ fetch api 방식 ~
+	var siInp = document.querySelector('#si');
+	var guInp = document.querySelector('#gu');
+	var dongInp = document.querySelector('#dong');
+	
+	console.log(siInp);
+	
+	siInp.onchange = function(){
+		alert('test');
+		//select box option 초기화
+		
+		var guOpt = document.querySelectorAll('.guOption');
+		console.dir(guOpt);
+		
+		if(guOpt.length > 0) {
+			let goList = guOpt;
+			for (var i = 0; i < goList.length; i++) {
+				goList[i].remove();
+			}
+		}
+		
+		fetch('/api/gu', {
+			method: 'POST',
+			body: new URLSearchParams({si: siInp.value})
+		}).then(function(response) {
+		//let data = response.json();
+		return response.json();
+		}).then(function(data){ //response.json()의 결과가 인자로 전달
+			//alert('test2');
+			console.dir(data);
+			for (var i = 0; i < data.length; i++) {
+				var d = data[i];
+				let optElm = document.createElement('option');
+				optElm.innerHTML = d.si;
+				optElm.setAttribute('value', d.gu);
+				optElm.classList.add('guOption');
+				guInp.append(optElm);
+			}
+		}).catch(function(error){
+			console.log(error);
+			//alert(error);
+		});
+		
+		//this.form.submit();
+	};
+</script>
+	
+<script>
+//동 불러오기
+	window.addEventListener('load', function() {
+		console.log("load");
+		
+	//~ fetch api 방식 ~
+	var siInp = document.querySelector('#si');
+	var guInp = document.querySelector('#gu');
+	var dongInp = document.querySelector('#dong');
+	
+	guInp.onchange = function() {
+		//alert('test');
+		//select box option 초기화
+		
+		var dongOpt = document.querySelectorAll('.dongOption');
+		console.dir(dongOpt);
+		
+		if(dongOpt.length > 0) {
+			let doList = dongOpt;
+			for (var i = 0; i < doList.length; i++) {
+				doList[i].remove();
+			}
+		}
+		
+		fetch('/api/dong', {
+			method: 'POST',
+			body: new URLSearchParams({si: siInp.value, gu: guInp.value})
+		}).then(function(response) {
+		//let data = response.json();
+		return response.json();
+		}).then(function(data){ //response.json()의 결과가 인자로 전달
+			//alert('test2');
+			console.dir(data);
+			for (var i = 0; i < data.length; i++) {
+				var d = data[i];
+				let optElm = document.createElement('option');
+				optElm.innerHTML = d.si;
+				optElm.setAttribute('value', d.dong);
+				optElm.classList.add('dongOption');
+				dongInp.append(optElm);
+			}
+		}).catch(function(error){
+			console.log(error);
+			//alert(error);
+		});
+	};
+});
+</script>
 
 
 </div>

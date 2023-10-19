@@ -127,5 +127,22 @@ public class ShopServiceImpl implements ShopService {
 	public List<Shop> list_popular(Pager pager) {
 		return dao.list_popular(pager);
 	}
+
+	
+	//지역 db 불러오기
+	@Override
+	public List<Shop> siList() {
+		return dao.siList();
+	}
+
+	@Override
+	public List<Shop> guList(Shop shop) {
+		return dao.guList(shop);
+	}
+
+	@Override
+	public List<Shop> dongList(Shop shop) {
+		return dao.dongList(shop);
+	}
 	
 }

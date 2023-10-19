@@ -56,5 +56,33 @@ public class RootApiController {
 		
 		return path + "shopList";
 	}
+	
+	
+	@PostMapping("/si")
+	@ResponseBody
+	List<Shop> si() {
+		
+		List<Shop> list = shopService.siList();
+		
+		return list;
+	}
+	
+	@PostMapping("/gu")
+	@ResponseBody
+	List<Shop> gu(Shop shop) {
+		
+		List<Shop> list = shopService.guList(shop);
+		
+		return list;
+	}
+	
+	@PostMapping("/dong")
+	@ResponseBody
+	List<Shop> dong(Shop shop) {
+		
+		List<Shop> list = shopService.dongList(shop);
+		
+		return list;
+	}
 
 }

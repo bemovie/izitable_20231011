@@ -109,4 +109,21 @@ public class ShopDaoImpl implements ShopDao {
 		return sql.selectList("shop.list_popular", pager);
 	}
 	
+	
+	//지역 db 불러오기
+	@Override
+	public List<Shop> siList() {
+		return sql.selectList("shop.siList");
+	}
+
+	@Override
+	public List<Shop> guList(Shop shop) {
+		return sql.selectList("shop.guList");
+	}
+
+	@Override
+	public List<Shop> dongList(Shop shop) {
+		return sql.selectList("shop.dongList");
+	}
+	
 }

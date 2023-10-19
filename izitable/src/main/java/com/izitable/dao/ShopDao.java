@@ -47,4 +47,12 @@ public interface ShopDao {
 	//메인 페이지 인기 음식점(10곳 제한)
 	List<Shop> list_popular(Pager pager);
 
+	
+	//지역 db 불러오기
+	List<Shop> siList();
+
+	List<Shop> guList(Shop shop);
+
+	List<Shop> dongList(Shop shop);
+
 }

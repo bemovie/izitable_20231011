@@ -22,6 +22,10 @@
 		<result column="parking" property="parking"/>
 		
 		<result column="reg_date" property="shopRegDate"/>
+		
+		<result column="si" property="si"/>
+		<result column="gu" property="gu"/>
+		<result column="dong" property="dong"/>
 	</resultMap>
 	
 	<resultMap type="ShopTime" id="ShopTimeMap">
@@ -165,7 +169,18 @@
 		</if>
 		
 		ORDER BY comp_name
-		
 	</sql>
+	
+	<select id="siList" resultMap="ShopMap">
+		SELECT DISTINCT si FROM tbl_area
+	</select>
+	
+	<select id="guList" resultMap="ShopMap">
+		SELECT DISTINCT gu FROM tbl_area WHERE si = #{si}
+	</select>
+	
+	<select id="dongList" resultMap="ShopMap">
+		SELECT DISTINCT dong FROM tbl_area WHERE si = #{si} AND gu = #{gu}
+	</select>
 	
 </mapper>
