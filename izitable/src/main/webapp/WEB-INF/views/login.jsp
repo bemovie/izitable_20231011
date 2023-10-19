@@ -65,7 +65,7 @@ body {text-align: center; /*border: 2px solid black*/ margin-top: 50px;}
 			<br>
 			
 			<div>
-				<button type="submit" class="btn" style="margin: 5px 0px; width: 200px">로그인</button>
+				<button type="submit" class="btn" style="margin: 5px 0px; width: 200px" id="">로그인</button>
 			</div>
 			
 			<br>
