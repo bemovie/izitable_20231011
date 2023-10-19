@@ -1,7 +1,11 @@
 package com.izitable.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -14,8 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.izitable.model.Booking;
+import com.izitable.model.Image;
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
 import com.izitable.model.ShopTable;
@@ -35,6 +41,11 @@ public class ShopController {
 	@Autowired
 	BookingService bookingService;
 	
+	//매장 프로필 사진 업로드 경로
+	private String uploadPath = "D:/upload/";
+		
+	List<Image> list = new ArrayList<Image>();
+	
 	
 	//매장 정보 변경
 	@GetMapping("/update/{shopNo}")
@@ -48,8 +59,29 @@ public class ShopController {
 	}
 	
 	//매장 정보 변경
+	String webPath = "/upload/";
 	@PostMapping("/update/{shopNo}")
-	String update(Shop item) {
+	String update(Shop item, Image image, HttpServletRequest req) throws IOException {
+		
+		//매장 프로필 사진 업로드
+		MultipartFile file = image.getUploadFile();
+		System.out.println(file.getOriginalFilename());
+		
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		System.out.println(folderPath);
+		
+		if(file != null && !file.isEmpty()) {
+			String filename = file.getOriginalFilename();
+			
+			//file.transferTo(new File(uploadPath  + filename));
+			file.transferTo(new File(folderPath  + filename));
+			
+			System.out.println(file.getOriginalFilename());
+			
+			list.add(image);
+			
+			item.setImgFilename(filename);
+		}
 		
 		shopService.update(item);
 		

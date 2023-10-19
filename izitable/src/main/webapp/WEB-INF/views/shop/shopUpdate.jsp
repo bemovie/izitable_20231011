@@ -32,7 +32,7 @@ input {width:500px;'}
 		
 		<br>
 		
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<div style="/*border: 2px solid black;*/ margin: 0 auto; width: 1100px; margin-top: 50px;">
 			
 				<div class="inline"  style="margin: 0 auto; ">
@@ -118,6 +118,28 @@ $(document).ready(function(){
 	$(".btn-mod").click(function(){
 		alert('변경이 완료되었습니다');
 	});
+});
+
+
+//매장 이미지 등록할 때 미리보기
+$(document).ready(function() {
+    $("#imageInput").change(function() {
+        var input = document.getElementById("imageInput");
+        var preview = document.getElementById("previewImage");
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                $("#imagePreview").show(); // 미리 보기 영역 표시
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            alert("파일을 선택해주세요.");
+        }
+    });
 });
 </script>
 

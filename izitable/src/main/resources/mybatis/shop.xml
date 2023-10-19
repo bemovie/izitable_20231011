@@ -92,7 +92,7 @@
 	
 	<update id="update">
 		UPDATE tbl_shop
-		SET email = #{shopEmail}, comp_name = #{compName}, comp_num = #{compNum}, comp_ceo = #{compCeo}, comp_call = #{compCall}, comp_addr1 = #{compAddr1}, comp_addr2 = #{compAddr2}, comp_intro = #{compIntro} 
+		SET email = #{shopEmail}, comp_name = #{compName}, comp_num = #{compNum}, comp_ceo = #{compCeo}, comp_call = #{compCall}, comp_addr1 = #{compAddr1}, comp_addr2 = #{compAddr2}, comp_intro = #{compIntro}, img_filename = #{imgFilename} 
 		WHERE no = #{shopNo}
 	</update>
 	
