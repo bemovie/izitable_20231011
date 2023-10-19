@@ -10,6 +10,7 @@
 #bbs_wrap {min-height: 608px; margin-top: 50px;}
 .inline {display: inline-block; margin: 0 10;}
 input {width:500px;'}
+
 </style>
 </head>
 
@@ -34,10 +35,12 @@ input {width:500px;'}
 		<form method="post">
 			<div style="/*border: 2px solid black;*/ margin: 0 auto; width: 1100px; margin-top: 50px;">
 			
-				<div class="inline">
-					<img src="/upload/${item.imgFilename}" width="500px" height="500px"><br>
+				<div class="inline"  style="margin: 0 auto; ">
+					<img class="shop_img" src="/upload/${item.imgFilename}" width="500px" height="500px" style="margin: 100px auto; padding-bottom:0px;"><br>
 					<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				</div>
+				
+
 				<div class="inline">
 					<div>
 						<label>- 이메일</label><br>
@@ -78,6 +81,21 @@ input {width:500px;'}
 					<div>
 						<label>- 매장 소개</label><br>
 						<input type="text" name="compIntro" value="${item.compIntro}">
+					</div>
+					
+					<div>
+					
+					<div>
+						<label>- 매장 이미지</label><br>					
+						<div>
+							<label>파일:</label>
+							<input name="uploadFile" type="file" id="imageInput">
+						</div>
+								
+						<div id="imagePreview">
+							<img id="previewImage" alt="미리보기" src="/resources/image/profile.png" width="100" height="100" style="padding-bottom:0px;">
+						</div>
+					</div>
 					</div>
 					
 					<br>

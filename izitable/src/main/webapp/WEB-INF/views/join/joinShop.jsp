@@ -132,10 +132,7 @@ join_input { margin-bottom: 30px; }
 							<img id="previewImage" alt="미리보기" src="/resources/image/profile.png" width="100" height="100">
 						</div>
 					</div>
-				
 					<hr>
-					
-				
 				</form>
 				
 	
