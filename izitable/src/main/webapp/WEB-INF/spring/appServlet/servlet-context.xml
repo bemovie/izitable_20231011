@@ -29,6 +29,7 @@
 		<interceptor>
 			<!-- 인터셉터를 실행할 요청 경로(주소) 설정 -->
 			<mapping path="/user/**" /> <!-- 모든 경로 -->
+			<mapping path="/booking/add" />
 			<!-- 인터셉터를 실행하지 않을 요청 경로(주소) 설정 -->
 			<exclude-mapping path="/login"/>
 			<exclude-mapping path="/join"/>

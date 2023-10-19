@@ -113,7 +113,17 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
+                                    <button type="submit" id="form-submit" class="main-button-icon">예약완료하기</button>
+                                    
+                                    <!-- 
+                                    <c:if test="${sessionScope.user.userNo != null}">
                                         <button type="submit" id="form-submit" class="main-button-icon">예약완료하기</button>
+                                    </c:if>
+                                    <c:if test="${sessionScope.user.userNo == null}">
+                                        <button type="button" id="form-submit" class="main-button-icon btn-login">예약완료하기</button>
+                                    </c:if>
+                                     -->
+                                    
                                     </fieldset>
                                 </div>
                             </div>
@@ -292,6 +302,18 @@ myDateInput.max = oneMonthLater.toISOString().slice(0, 10); // 1개월 후의 �
 
         
     </script>
+
+<!--     
+<script>
+$(document).ready(function(){
+	//로그인
+	$(".btn-login").click(function(){
+		alert('회원 로그인이 필요합니다.');
+		location.href = '/login';
+	});
+});
+</script>
+ --> 
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

@@ -29,24 +29,33 @@ body {
 <div id="bbs_wrap" >
 		
 <form method="post" action="/list" style="margin: 10px;">
-<select id="si" name="si">
+<select id="si" name="si" onchange="this.form.submit()">
 	<option value="">시</option>
 	<!-- <option value="서울">서울</option> -->
 	<option value="대전">대전</option>
 </select>
-<select id="gu" name="gu">
+<script type="text/javascript">
+	if('${si}' != "") { document.querySelector('[name="si"]').value = '${si}'; }
+</script>
+<select id="gu" name="gu" onchange="this.form.submit()">
 	<option value="">구</option>
 	<option value="동구">동구</option>
 	<option value="서구">서구</option>
 	<option value="대덕구">대덕구</option>
 </select>
-<select id="dong" name="dong">
+<script type="text/javascript">
+	if('${gu}' != "") { document.querySelector('[name="gu"]').value = '${gu}'; }
+</script>
+<select id="dong" name="dong" onchange="this.form.submit()">
 	<option value="">동</option>
 	<option value="가양동">가양동</option>
 	<option value="가양동">가양동</option>
 	<option value="비래동">비래동</option>
 </select>
-<select id="categoryNo" name="categoryNo">
+<script type="text/javascript">
+	if('${dong}' != "") { document.querySelector('[name="dong"]').value = '${dong}'; }
+</script>
+<select id="categoryNo" name="categoryNo" onchange="this.form.submit()">
 	<option value="0">카테고리</option>
 	<option value="1">한식</option>
 	<option value="2">일식</option>
@@ -54,6 +63,9 @@ body {
 	<option value="4">양식</option>
 	<option value="5">디저트</option>
 </select>
+<script type="text/javascript">
+	if('${categoryNo}' != "") { document.querySelector('[name="categoryNo"]').value = '${categoryNo}'; }
+</script>
 <!-- <button onclick="applyFn()">적용</button> -->
 <button type="submit" class="btn">적용</button>
 

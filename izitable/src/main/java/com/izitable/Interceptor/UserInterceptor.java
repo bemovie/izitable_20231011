@@ -29,7 +29,13 @@ public class UserInterceptor implements HandlerInterceptor{
 		
 		//로그인 정보가 없다면,
 		if (user==null) {
-		
+			
+			//login하면 저장했던 session의 target 속성을 꺼내서 원래 url로 보내줌,
+			String query = request.getQueryString();
+			//System.out.println(query);
+			session.setAttribute("target", request.getRequestURI() + (query != null ? "?" + query : ""));
+			//System.out.println(session.getAttribute("target"));
+			
 			//로그인 페이지로 이동
 			response.sendRedirect(request.getContextPath() + "/login"); // 로그인 화면으로 이동
 			return false; //컨트롤러 실행하지 않음

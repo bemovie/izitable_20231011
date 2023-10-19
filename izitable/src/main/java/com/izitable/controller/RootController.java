@@ -111,7 +111,13 @@ public class RootController {
 			}
 		}
 		
-		return "redirect:/";
+		String target = (String) session.getAttribute("target");
+		System.out.println(target);
+		if ( target != null ) 
+			return "redirect:" + target; //target에서 기존 url 꺼내서 보냄
+		else 
+			
+			return "redirect:/";
 	}
 	
 	//카카오 로그인
@@ -276,6 +282,11 @@ public class RootController {
 		List<Shop> list = shopService.list(shop);
 		
 		model.addAttribute("list", list);
+		
+		model.addAttribute("si", shop.getSi());
+		model.addAttribute("gu", shop.getGu());
+		model.addAttribute("dong", shop.getDong());
+		model.addAttribute("categoryNo", shop.getCategoryNo());
 		
 		return path + "shopList";
 	}
