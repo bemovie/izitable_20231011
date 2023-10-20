@@ -146,11 +146,15 @@ public class ShopController {
 		else shopTm.setTimeDay("2");
 		
 		shopTm.setShopNo(shopNo);
+		shopTb.setShopNo(shopNo);
+		
+		int total = (int) shopService.totalShopTable(shopNo);
+		pager.setTotal(total);
+		model.addAttribute("pager", pager);
 		
 		pager.setKeyword("");
 		pager.setPerPage(5);
 		shopTb.setPerPage(5);
-		shopTb.setShopNo(shopNo);
 		
 		
 		List<Shop> timelist = shopService.shopSettingTimeList(shopTm);

@@ -125,5 +125,11 @@ public class ShopDaoImpl implements ShopDao {
 	public List<Shop> dongList(Shop shop) {
 		return sql.selectList("shop.dongList", shop);
 	}
-	
+
+	//매장 total 테이블 갯수
+	@Override
+	public int totalShopTable(int shopNo) {
+		return sql.selectOne("shop.totalShopTable", shopNo);
+	}
+
 }
