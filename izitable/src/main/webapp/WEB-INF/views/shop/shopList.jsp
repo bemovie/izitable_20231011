@@ -17,6 +17,18 @@ body {
 	margin-top: 50px;
 	margin-bottom: -50px;
 }
+.shopList {
+	border: 2px solid #fb5849; 
+	/*border-radius:2%;*/ 
+	width:479px; text-align: 
+	left; margin-bottom: 5px; 
+	/*background-color: #fb5849*/; 
+	color: #fb5849;"
+}
+.focus {
+	background-color: #fb5849;
+	color: white;
+}
 </style>
 </head>
 
@@ -29,7 +41,7 @@ body {
 <div id="bbs_wrap" >
 		
 <form method="post" action="/list" style="margin: 10px;">
-<select id="si" name="si" onchange="this.form.submit()">
+<select id="si" name="si" onchange="this.form.submit()" style="width: 100px">
 	<option value="">시</option>
 	<!-- <option value="서울">서울</option> -->
 	<option value="대전">대전</option>
@@ -39,7 +51,7 @@ body {
 	if('${si}' != "") { document.querySelector('[name="si"]').value = '${si}'; }
 </script>
 
-<select id="gu" name="gu" onchange="this.form.submit()">
+<select id="gu" name="gu" onchange="this.form.submit()" style="width: 100px">
 	<option value="">구</option>
 	<!-- <option value="동구">동구</option>
 	<option value="서구">서구</option>
@@ -52,7 +64,7 @@ body {
 	if('${gu}' != "") { document.querySelector('[name="gu"]').value = '${gu}'; }
 </script>
 
-<select id="dong" name="dong" onchange="this.form.submit()">
+<select id="dong" name="dong" onchange="this.form.submit()" style="width: 100px">
 	<option value="" selected>동</option>
 	<!-- <option value="가양동">가양동</option>
 	<option value="가양동">가양동</option>
@@ -64,7 +76,7 @@ body {
 <script>
 	if('${dong}' != "") { document.querySelector('[name="dong"]').value = '${dong}'; }
 </script>
-<select id="categoryNo" name="categoryNo" onchange="this.form.submit()">
+<select id="categoryNo" name="categoryNo" onchange="this.form.submit()" style="width: 100px">
 	<option value="0">카테고리</option>
 	<option value="1">한식</option>
 	<option value="2">일식</option>
@@ -76,9 +88,9 @@ body {
 	if('${categoryNo}' != "") { document.querySelector('[name="categoryNo"]').value = '${categoryNo}'; }
 </script>
 <!-- <button onclick="applyFn()">적용</button> -->
-<button type="submit" class="btn">적용</button>
+<!-- <button type="submit" class="btn">적용</button> -->
 
-<button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()" class="btn"><img src="/resources/image/mylocation2.png" width="14px" height="20px"> 내 위치</button>
+<button type="button" id="getMyPositionBtn" onclick="getCurrentPosBtn()" class="btn" ><img src="/resources/image/mylocation.png" width="20px" height="20px"> 내 위치</button>
 
 </form>
 
@@ -90,7 +102,7 @@ body {
 
 <div style="/*border: 2px solid black;*/ width:500px; height:500px; display: inline-block; margin-left: 10px; overflow: auto">
 	<c:forEach var="item" items="${list}">
-		<div style="border: 2px solid #fb5849; border-radius:2%; width:479px; text-align: left; margin-bottom: 5px; background-color: #fb5849; color: white">
+		<div id="${item.shopNo}" tabindex="-1" class="shopList">
 			
 			<c:choose>
 				<c:when test="${item.imgFilename == null || item.imgFilename == \"\"}">
@@ -191,6 +203,17 @@ for (var i = 0; i < positions.length; i ++) {
     
  	// 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
+    	let sDiv = document.getElementById(`${item.shopNo}`)
+    	//$(sDiv).css('background-color', 'black').focus();
+    	if ( $(sDiv).hasClass('focus') ) return;
+    	$('.focus').removeClass('focus')
+    	$(sDiv).addClass('focus').focus();
+    	alert("매장번호" + ${item.shopNo});
+    });
+ 	
+ 	/*
+ 	// 마커에 클릭이벤트를 등록합니다
+    kakao.maps.event.addListener(marker, 'click', function() {
     	document.getElementById('myModal').style.display = 'block';
     	fetch(`item/${item.shopNo}`, {
             method: "GET",
@@ -201,7 +224,8 @@ for (var i = 0; i < positions.length; i ++) {
     	document.getElementById('sn').value = `${item.shopNo}`;
 
     	alert("매장번호" + ${item.shopNo});
-    });   
+    });
+ 	*/
 }
 
 //검색 결과가 있을 때, 첫 번째 마커를 기준으로 지도 중심을 설정합니다

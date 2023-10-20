@@ -53,5 +53,9 @@ public interface ShopService {
 	List<Shop> guList(Shop shop);
 
 	List<Shop> dongList(Shop shop);
+	
+	
+	//매장 total 테이블 갯수
+	int totalShopTable(int shopNo);
 
 }

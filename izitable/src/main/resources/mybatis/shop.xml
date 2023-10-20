@@ -130,6 +130,12 @@
 		LIMIT #{offset}, #{perPage}
 	</select>
 	
+	<!-- 매장 total 테이블 갯수 -->
+	<select id="totalShopTable" resultType="Integer">
+		SELECT COUNT(*) FROM tbl_shop_table
+		WHERE shop_no = #{shopNo}
+	</select>
+	
 	<delete id="shopSettingTableDel">
 		DELETE FROM tbl_shop_table
 		WHERE tbl_shop_table.no = #{tableNo}
@@ -174,14 +180,17 @@
 	
 	<select id="siList" resultMap="ShopMap">
 		SELECT DISTINCT si FROM tbl_area
+		ORDER BY si
 	</select>
 	
 	<select id="guList" resultMap="ShopMap">
 		SELECT DISTINCT gu FROM tbl_area WHERE si = #{si}
+		ORDER BY gu
 	</select>
 	
 	<select id="dongList" resultMap="ShopMap">
 		SELECT DISTINCT dong FROM tbl_area WHERE si = #{si} AND gu = #{gu}
+		ORDER BY dong
 	</select>
 	
 </mapper>

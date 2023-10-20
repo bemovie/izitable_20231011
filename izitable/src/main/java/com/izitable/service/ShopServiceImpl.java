@@ -144,5 +144,11 @@ public class ShopServiceImpl implements ShopService {
 	public List<Shop> dongList(Shop shop) {
 		return dao.dongList(shop);
 	}
+
+	//매장 total 테이블 갯수
+	@Override
+	public int totalShopTable(int shopNo) {
+		return dao.totalShopTable(shopNo);
+	}
 	
 }
