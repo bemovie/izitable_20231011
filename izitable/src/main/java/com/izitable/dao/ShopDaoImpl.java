@@ -118,12 +118,12 @@ public class ShopDaoImpl implements ShopDao {
 
 	@Override
 	public List<Shop> guList(Shop shop) {
-		return sql.selectList("shop.guList");
+		return sql.selectList("shop.guList", shop);
 	}
 
 	@Override
 	public List<Shop> dongList(Shop shop) {
-		return sql.selectList("shop.dongList");
+		return sql.selectList("shop.dongList", shop);
 	}
 	
 }

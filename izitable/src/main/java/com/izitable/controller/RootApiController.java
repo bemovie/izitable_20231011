@@ -58,6 +58,7 @@ public class RootApiController {
 	}
 	
 	
+	/*
 	@PostMapping("/si")
 	@ResponseBody
 	List<Shop> si() {
@@ -84,5 +85,6 @@ public class RootApiController {
 		
 		return list;
 	}
+	*/
 
 }

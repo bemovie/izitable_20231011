@@ -29,7 +29,7 @@ body {
 <div id="bbs_wrap" >
 		
 <form method="post" action="/list" style="margin: 10px;">
-<select id="si" name="si">
+<select id="si" name="si" onchange="this.form.submit()">
 	<option value="">시</option>
 	<!-- <option value="서울">서울</option> -->
 	<option value="대전">대전</option>
@@ -44,16 +44,22 @@ body {
 	<!-- <option value="동구">동구</option>
 	<option value="서구">서구</option>
 	<option value="대덕구">대덕구</option> -->
+	<c:forEach var="item" items="${gulist}">
+		<option value="${item.gu}">${item.gu}</option>
+	</c:forEach>
 </select>
 <script>
 	if('${gu}' != "") { document.querySelector('[name="gu"]').value = '${gu}'; }
 </script>
 
 <select id="dong" name="dong" onchange="this.form.submit()">
-	<option value="">동</option>
+	<option value="" selected>동</option>
 	<!-- <option value="가양동">가양동</option>
 	<option value="가양동">가양동</option>
 	<option value="비래동">비래동</option> -->
+	<c:forEach var="item" items="${donglist}">
+		<option value="${item.dong}">${item.dong}</option>
+	</c:forEach>
 </select>
 <script>
 	if('${dong}' != "") { document.querySelector('[name="dong"]').value = '${dong}'; }
@@ -544,7 +550,8 @@ window.addEventListener('click', function(event) {
 	};
 </script>
  -->
-
+ 
+<!--
 <script>
 //구 불러오기
 
@@ -643,7 +650,7 @@ window.addEventListener('click', function(event) {
 	};
 });
 </script>
-
+  -->
 
 </div>
 </div>

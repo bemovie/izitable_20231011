@@ -289,6 +289,14 @@ public class RootController {
 		model.addAttribute("dong", shop.getDong());
 		model.addAttribute("categoryNo", shop.getCategoryNo());
 		
+		//List<Shop> silist = shopService.siList();
+		List<Shop> gulist = shopService.guList(shop);
+		List<Shop> donglist = shopService.dongList(shop);
+		
+		//model.addAttribute("silist", silist);
+		model.addAttribute("gulist", gulist);
+		model.addAttribute("donglist", donglist);
+		
 		return path + "shopList";
 	}
 	
