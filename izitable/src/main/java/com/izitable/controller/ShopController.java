@@ -90,7 +90,7 @@ public class ShopController {
 	
 	//매장 페이지 예약 목록
 	@GetMapping("/booking/{shopNo}")
-	String shopBookingList(@PathVariable int shopNo, Pager pager, Model model, HttpSession session) {
+	String shopBookingList(@PathVariable int shopNo, Pager pager, Model model, HttpSession session, Booking booking) {
 		
 		String msg = (String) session.getAttribute("msg");
 		if(msg != null) {
@@ -106,8 +106,10 @@ public class ShopController {
 		
 		pager.setKeyword("");
 		pager.setPerPage(5);
+		booking.setPerPage(5);
+		booking.setUserNo(shopNo);
 		
-		List<Booking> list = bookingService.shopBookingList(shopNo);		
+		List<Booking> list = bookingService.shopBookingList(booking);		
 		
 		model.addAttribute("list", list);
 		

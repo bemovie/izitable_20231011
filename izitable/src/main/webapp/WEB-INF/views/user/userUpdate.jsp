@@ -20,8 +20,8 @@
 <div id="bbs_wrap">	
 		<div style="/*border: 2px solid black;*/ text-align: center;">
 		
-			<button class="btn btn-lg" style="margin-right: 30px;"><a href="/user/update/${sessionScope.user.userNo}"><h3>정보 변경</h3></a></button>
-			<button class="btn"><a href="/user/booking/${sessionScope.user.userNo}"><h3>예약 목록</h3></a></button>
+			<button class="btn" style="margin-right: 30px;"><a href="/user/booking/${sessionScope.user.userNo}"><h3>예약 목록</h3></a></button>
+			<button class="btn btn-lg"><a href="/user/update/${sessionScope.user.userNo}"><h3>정보 변경</h3></a></button>
 
 		</div>
 		

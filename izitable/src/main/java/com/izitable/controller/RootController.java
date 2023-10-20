@@ -111,12 +111,13 @@ public class RootController {
 			}
 		}
 		
+		/*
 		String target = (String) session.getAttribute("target");
 		System.out.println(target);
 		if ( target != null ) 
 			return "redirect:" + target; //target에서 기존 url 꺼내서 보냄
 		else 
-			
+		*/	
 			return "redirect:/";
 	}
 	

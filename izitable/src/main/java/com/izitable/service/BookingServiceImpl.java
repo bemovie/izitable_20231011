@@ -34,8 +34,8 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<Booking> shopBookingList(int shopNo) {
-		return dao.shopBookingList(shopNo);
+	public List<Booking> shopBookingList(Booking booking) {
+		return dao.shopBookingList(booking);
 	}
 
 	@Override

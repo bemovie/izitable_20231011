@@ -83,7 +83,7 @@
 		FROM tbl_booking JOIN tbl_user ON tbl_booking.user_no = tbl_user.no
 		WHERE tbl_booking.shop_no = #{shopNo}
 		ORDER BY date, time
-		LIMIT #{offset}, #{perPage}
+		<!-- LIMIT #{offset}, #{perPage} -->
 	</select>
 	
 	<select id="shopBookingUpdate">
@@ -124,6 +124,7 @@
 		WHERE tbl_booking.date = #{bookingDate}
 		ORDER BY tbl_shop_time.hour, a.table_no
 		)
+		ORDER BY number
 	</select>
 	
 	<select id="selectTable" resultMap="shopTableMap">

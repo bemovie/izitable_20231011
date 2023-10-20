@@ -16,7 +16,7 @@ public interface BookingDao {
 
 	void userBookingDelete(int bookingNo);
 
-	List<Booking> shopBookingList(int shopNo);
+	List<Booking> shopBookingList(Booking booking);
 
 	void shopBookingUpdate(Booking booking);
 
