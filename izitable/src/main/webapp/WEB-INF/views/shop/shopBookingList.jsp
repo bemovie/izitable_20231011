@@ -78,8 +78,6 @@
 					</c:if>
 				</tbody>
 				
-				
-				
 			<tfoot>
 				<tr>
 					<td colspan="11">

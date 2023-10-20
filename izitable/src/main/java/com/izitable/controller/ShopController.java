@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.izitable.model.Booking;
 import com.izitable.model.Image;
@@ -177,9 +178,11 @@ public class ShopController {
 	
 	//매장 시간대 등록
 	@PostMapping("/setting/{shopNo}/addtime")
-	String shopSettingTimeAdd(@PathVariable int shopNo, ShopTime shopTm) {
+	String shopSettingTimeAdd(@PathVariable int shopNo, ShopTime shopTm, HttpSession session) {
 		shopTm.setShopNo(shopNo);
 		shopService.shopSettingTimeAdd(shopTm);
+		
+		session.setAttribute("shopTm", shopTm);
 		
 		return "redirect:.";
 	}

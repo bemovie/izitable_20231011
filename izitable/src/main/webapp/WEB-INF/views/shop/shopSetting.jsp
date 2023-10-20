@@ -118,13 +118,13 @@
 	
 	<h3>시간대 등록</h3>
 		
-		<div>
+		
 			<form method="post" action="/shop/setting/${sessionScope.shop.shopNo}/addtime">
 				
 				<span>
 					<label>요일:</label>
-					<span>
-						<select name="timeDay">
+					
+						<select name="timeDay" id="timeDay">
 							<option value="2">월요일</option>
 							<option value="3">화요일</option>
 							<option value="4">수요일</option>
@@ -133,14 +133,32 @@
 							<option value="7">토요일</option>
 							<option value="1">일요일</option>
 						</select>
-					</span>
+						
 				</span>
+				
+				<script>
+					if('${sessionScope.shopTm.timeDay}' != "") { document.querySelector('[name="timeDay"]').value = '${sessionScope.shopTm.timeDay}'; }
+				</script>
 				
 				<span>
 					<label>영업 시간대:</label>
+					
+					<!-- 
 					<span>
 						<input type="number" name="timeHour" min="0" max="23"> 시
 					</span>
+					 -->
+					 
+					 <span>
+						시작시간 : <input type="number" name="startTime" min="0" max="23"> 시
+					</span>
+					~
+					<span>
+						끝시간 : <input type="number" name="endTime" min="" max="23"> 시
+					</span>
+					
+					
+					
 				</span>
 				
 				<span>
@@ -152,7 +170,7 @@
 					<span></span>
 				</span>			
 			</form>
-		</div>
+		
 		
 		<br>
 
@@ -197,7 +215,7 @@
 				<tfoot>
 					<tr>
 						<td colspan="4">
-							<ul class="pagination justify-content-center mt-3">
+							<ul class="pagination justify-content-center mt-3" >
 								<li class="page-item"><a class="page-link" href="?timeDay=2">월</a></li>
 								<li class="page-item"><a class="page-link" href="?timeDay=3">화</a></li>
 								<li class="page-item"><a class="page-link" href="?timeDay=4">수</a></li>
@@ -216,8 +234,19 @@
 </div>
 </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	let sInp = document.querySelector('[name="startTime"]')
+	let startVal = parseInt(document.querySelector('[name="startTime"]').value) + 1;
+	console.log(startVal);
+	document.querySelector('[name="endTime"]').setAttribute('min', startVal);
+});
+</script>
 	
 <jsp:include page="../footer.jsp"></jsp:include>	
+	
+	
 	
 </body>
 </html>
