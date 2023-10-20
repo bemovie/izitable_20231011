@@ -67,6 +67,13 @@ public class RootController {
 	//로그인
 	@GetMapping("/login")
 	public String login(HttpSession session, Model model) {
+		
+		//기존에 로그인 정보가 있다면 강제 로그아웃
+		Shop shop = (Shop) session.getAttribute("shop");
+		User user = (User) session.getAttribute("user");
+		if (shop != null) session.removeAttribute("shop");
+		if (user != null) session.removeAttribute("user");
+		
 		String msg = (String) session.getAttribute("msg");
 		
 		if(msg != null) {
@@ -246,14 +253,14 @@ public class RootController {
 		response.setContentType("application/json; charset=utf-8"); 
 		
 		int duplicateCnt = 0;
-		if (user.getUserEmail() !=null) duplicateCnt = userService.duplicateCheck(user);
-		else duplicateCnt = shopService.duplicateCheck(shop);
+		if (user.getUserEmail() !=null) duplicateCnt = userService.duplicateCheck(user); //일반 회원 가입의 경우 중복 체크
+		else duplicateCnt = shopService.duplicateCheck(shop); //매장 가입의 경우 중복 체크
 		
 		if(duplicateCnt > 0) {
 			successYn = "N";
 			message = "이미 사용중인 이메일입니다.";
-		}	
-		
+		} 
+
 		jo.put("successYn", successYn);
 		jo.put("message", message);
 		
@@ -276,7 +283,7 @@ public class RootController {
 	
 	final String path = "shop/";
 	
-	//매장 목록 (메인 페이지)
+	//매장 목록 (음식점)
 	@GetMapping("/list")
 	String list(Model model, Pager pager) {
 		

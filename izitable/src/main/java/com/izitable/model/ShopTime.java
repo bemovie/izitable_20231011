@@ -16,6 +16,21 @@ public class ShopTime {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bookingDate;
 	
+	private int startTime;		//영업 시작시간
+	private int endTime;		//영업 끝시간
+	
+	public int getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(int startTime) {
+		this.startTime = startTime;
+	}
+	public int getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(int endTime) {
+		this.endTime = endTime;
+	}
 
 	public int getShopNo() {
 		return shopNo;

@@ -42,6 +42,7 @@
 					<th>인원수</th>
 					<th>수용인원</th>
 					<th>테이블이름</th>						
+					<th>요청사항</th>						
 					<th>관리</th>
 				</tr>
 			</thead>
@@ -55,6 +56,7 @@
 					<td>${item.bookingMemNum}</td>
 					<td>${item.tableNumber}</td>
 					<td>${item.tableName}</td>
+					<td>${item.message}</td>
 					<td>
 						<button><a href="/user/booking/${item.userNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm btn-del">삭제</a></button>
 					</td>
@@ -63,7 +65,7 @@
 				
 				<c:if test="${list.size() < 1}">
 				<tr>
-					<td colspan="8">검색 된 예약이 없습니다</td>
+					<td colspan="9">검색 된 예약이 없습니다</td>
 				</tr>
 				</c:if>
 				
@@ -72,7 +74,7 @@
 		
 			<tfoot>
 				<tr>
-					<td colspan="8">
+					<td colspan="9">
 						<ul class="pagination justify-content-center mt-3">
 							<li class="page-item"><a class="page-link" href="?page=1${pager.query}">처음</a></li>
 							<li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>

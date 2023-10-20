@@ -41,17 +41,23 @@ body {
 <div id="bbs_wrap" >
 		
 <form method="post" action="/list" style="margin: 10px;">
-<select id="si" name="si" onchange="this.form.submit()" style="width: 100px">
+<select id="si" name="si" style="width: 100px">
 	<option value="">시</option>
 	<!-- <option value="서울">서울</option> -->
 	<option value="대전">대전</option>
 </select>
-
+<script>
+	$('#si').on('change', function(){
+		$('#gu').val('');
+		$('#dong').val('');
+		this.form.submit();
+	});
+</script>
 <script>
 	if('${si}' != "") { document.querySelector('[name="si"]').value = '${si}'; }
 </script>
 
-<select id="gu" name="gu" onchange="this.form.submit()" style="width: 100px">
+<select id="gu" name="gu" style="width: 100px">
 	<option value="">구</option>
 	<!-- <option value="동구">동구</option>
 	<option value="서구">서구</option>
@@ -61,11 +67,17 @@ body {
 	</c:forEach>
 </select>
 <script>
+	$('#gu').on('change', function(){
+		$('#dong').val('');
+		this.form.submit();
+	});
+</script>
+<script>
 	if('${gu}' != "") { document.querySelector('[name="gu"]').value = '${gu}'; }
 </script>
 
 <select id="dong" name="dong" onchange="this.form.submit()" style="width: 100px">
-	<option value="" selected>동</option>
+	<option value="">동</option>
 	<!-- <option value="가양동">가양동</option>
 	<option value="가양동">가양동</option>
 	<option value="비래동">비래동</option> -->
@@ -208,7 +220,7 @@ for (var i = 0; i < positions.length; i ++) {
     	if ( $(sDiv).hasClass('focus') ) return;
     	$('.focus').removeClass('focus')
     	$(sDiv).addClass('focus').focus();
-    	alert("매장번호" + ${item.shopNo});
+    	//alert("매장번호" + ${item.shopNo});
     });
  	
  	/*

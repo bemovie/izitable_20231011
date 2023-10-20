@@ -108,6 +108,13 @@
 		VALUES (#{shopNo}, #{timeDay}, #{timeHour})
 	</insert>
 	
+	<select id="shopSettingTimeCheck" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(*) CNT 
+		FROM tbl_shop_time
+		WHERE shop_no = #{shopNo} AND day = #{timeDay} AND hour = #{timeHour}
+	</select>
+	
 	<select id="shopSettingTimeList" resultMap="ShopTimeMap">
 		SELECT * FROM tbl_shop_time
 		<where>
@@ -145,6 +152,11 @@
 		DELETE FROM tbl_shop_time
 		WHERE tbl_shop_time.no = #{timeNo}
 	</delete>
+	
+	<select id="shopSettingTimeItem" resultMap="ShopTimeMap">
+		SELECT * FROM tbl_shop_time
+		WHERE tbl_shop_time.no = #{timeNo}
+	</select>
 	
 	<update id="update_admin">
 		UPDATE tbl_shop

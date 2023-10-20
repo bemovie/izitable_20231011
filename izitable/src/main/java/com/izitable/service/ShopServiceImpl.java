@@ -150,5 +150,17 @@ public class ShopServiceImpl implements ShopService {
 	public int totalShopTable(int shopNo) {
 		return dao.totalShopTable(shopNo);
 	}
+
+	//영업시간 삭제 시 redirect로 필요한 요일 select
+	@Override
+	public ShopTime shopSettingTimeItem(int timeNo) {
+		return dao.shopSettingTimeItem(timeNo);
+	}
+
+	//영업시간 추가 시 중복 체크
+	@Override
+	public int shopSettingTimeCheck(ShopTime shopTm) {
+		return dao.shopSettingTimeCheck(shopTm);
+	}
 	
 }

@@ -58,4 +58,10 @@ public interface ShopDao {
 	//매장 total 테이블 갯수
 	int totalShopTable(int shopNo);
 
+	//영업시간 삭제 시 redirect로 필요한 요일 select
+	ShopTime shopSettingTimeItem(int timeNo);
+
+	//영업시간 추가 시 중복 체크
+	int shopSettingTimeCheck(ShopTime shopTm);
+
 }

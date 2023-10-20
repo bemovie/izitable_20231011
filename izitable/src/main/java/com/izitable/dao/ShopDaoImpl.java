@@ -132,4 +132,16 @@ public class ShopDaoImpl implements ShopDao {
 		return sql.selectOne("shop.totalShopTable", shopNo);
 	}
 
+	//영업시간 삭제 시 redirect로 필요한 요일 select
+	@Override
+	public ShopTime shopSettingTimeItem(int timeNo) {
+		return sql.selectOne("shop.shopSettingTimeItem", timeNo);
+	}
+
+	//영업시간 추가 시 중복 체크
+	@Override
+	public int shopSettingTimeCheck(ShopTime shopTm) {
+		return sql.selectOne("shop.shopSettingTimeCheck", shopTm);
+	}	
+
 }

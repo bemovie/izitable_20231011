@@ -93,7 +93,6 @@
 					</c:forEach>					
 				</tbody>
 				
-				
 				<tfoot>
 					<tr>
 						<td colspan="4">
@@ -110,14 +109,12 @@
 					</tr>
 				</tfoot>
 				
-				
 			</table>
 		</div>
 		
 		<br>
 	
 	<h3>시간대 등록</h3>
-		
 		
 			<form method="post" action="/shop/setting/${sessionScope.shop.shopNo}/addtime">
 				
@@ -150,14 +147,12 @@
 					 -->
 					 
 					 <span>
-						시작시간 : <input type="number" name="startTime" min="0" max="23"> 시
+						시작시간 : <input type="number" name="startTime" min="0" max="23" style="width:50px;"> 시
 					</span>
 					~
 					<span>
-						끝시간 : <input type="number" name="endTime" min="" max="23"> 시
+						끝시간 : <input type="number" name="endTime" min="" max="23" style="width:50px;"> 시
 					</span>
-					
-					
 					
 				</span>
 				
@@ -171,8 +166,7 @@
 				</span>			
 			</form>
 		
-		
-		<br>
+		<br><br>
 
 	<h3 class="mt-2">시간대 목록</h3>
 		<div class="mb-2 px-3">
@@ -216,13 +210,13 @@
 					<tr>
 						<td colspan="4">
 							<ul class="pagination justify-content-center mt-3" >
-								<li class="page-item"><a class="page-link" href="?timeDay=2">월</a></li>
-								<li class="page-item"><a class="page-link" href="?timeDay=3">화</a></li>
-								<li class="page-item"><a class="page-link" href="?timeDay=4">수</a></li>
-								<li class="page-item"><a class="page-link" href="?timeDay=5">목</a></li>
-								<li class="page-item"><a class="page-link" href="?timeDay=6">금</a></li>
-								<li class="page-item"><a class="page-link" href="?timeDay=7">토</a></li>
-								<li class="page-item"><a class="page-link" href="?timeDay=1">일</a></li>
+								<li class="page-item"><a href="?timeDay=2" class="page-link ${timeDay == 2 ? 'active' : ''}">월</a></li>
+								<li class="page-item"><a href="?timeDay=3" class="page-link ${timeDay == 3 ? 'active' : ''}">화</a></li>
+								<li class="page-item"><a href="?timeDay=4" class="page-link ${timeDay == 4 ? 'active' : ''}">수</a></li>
+								<li class="page-item"><a href="?timeDay=5" class="page-link ${timeDay == 5 ? 'active' : ''}">목</a></li>
+								<li class="page-item"><a href="?timeDay=6" class="page-link ${timeDay == 6 ? 'active' : ''}">금</a></li>
+								<li class="page-item"><a href="?timeDay=7" class="page-link ${timeDay == 7 ? 'active' : ''}">토</a></li>
+								<li class="page-item"><a href="?timeDay=1" class="page-link ${timeDay == 1 ? 'active' : ''}">일</a></li>
 							</ul>
 						</td>
 					</tr>
@@ -235,18 +229,28 @@
 </div>
 </div>
 
+<!-- 영업 시간 등록 : 끝시간의 min 설정  -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	let sInp = document.querySelector('[name="startTime"]')
-	let startVal = parseInt(document.querySelector('[name="startTime"]').value) + 1;
-	console.log(startVal);
-	document.querySelector('[name="endTime"]').setAttribute('min', startVal);
+	let $sInp = $('[name="startTime"]')
+	$sInp.on('change', function(){
+		let sVal = parseInt($sInp.val());
+		console.log(sVal);
+		$('[name="endTime"]').attr('min', sVal);
+	});
 });
 </script>
+<!-- 영업 시간 등록 : 끝시간의 min 설정  -->
+
+<!-- 로그인 실패 메세지 -->   
+ <script>
+	const msg = "${msg}"; //따옴표가 있어야 작동함, 없으면 변수이름으로 인식함
+	if(msg)
+		alert(msg);
+</script>
+<!-- 로그인 실패 메세지 -->  
 	
 <jsp:include page="../footer.jsp"></jsp:include>	
-	
-	
 	
 </body>
 </html>

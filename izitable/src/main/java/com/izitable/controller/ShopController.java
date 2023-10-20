@@ -61,46 +61,46 @@ public class ShopController {
 	}
 	
 	//매장 정보 변경
-		String webPath = "/upload/";
-		@PostMapping("/update/{shopNo}")
-		String update(Shop item, Image image, HttpServletRequest req) throws IOException {
+	String webPath = "/upload/";
+	@PostMapping("/update/{shopNo}")
+	String update(Shop item, Image image, HttpServletRequest req) throws IOException {
+		
+		//매장 프로필 사진 업로드
+		MultipartFile file = image.getUploadFile();
+		System.out.println(file.getOriginalFilename());
+		
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		System.out.println(folderPath);
+		
+		if(file != null && !file.isEmpty()) {
+			String filename = file.getOriginalFilename();
+			String extension = filename.substring(filename.lastIndexOf("."));
+	        String randomFileName = generateRandomFileName() + extension;
+	        
+	        String filePath = folderPath + randomFileName;
 			
-			//매장 프로필 사진 업로드
-			MultipartFile file = image.getUploadFile();
+			
+			//file.transferTo(new File(uploadPath  + filename));
+			file.transferTo(new File(filePath));
+			
 			System.out.println(file.getOriginalFilename());
 			
-			String folderPath = req.getSession().getServletContext().getRealPath(webPath);
-			System.out.println(folderPath);
+			list.add(image);
 			
-			if(file != null && !file.isEmpty()) {
-				String filename = file.getOriginalFilename();
-				String extension = filename.substring(filename.lastIndexOf("."));
-		        String randomFileName = generateRandomFileName() + extension;
-		        
-		        String filePath = folderPath + randomFileName;
-				
-				
-				//file.transferTo(new File(uploadPath  + filename));
-				file.transferTo(new File(filePath));
-				
-				System.out.println(file.getOriginalFilename());
-				
-				list.add(image);
-				
-				item.setImgFilename(randomFileName);
-			}
-			
-			shopService.update(item);
-			
-			return "redirect:./{shopNo}";
+			item.setImgFilename(randomFileName);
 		}
 		
-		// 파일명을 난수로 생성하는 함수
-		private String generateRandomFileName() {
-		    // 파일명을 난수로 생성하는 로직을 구현
-		    String uuid = UUID.randomUUID().toString();
-		    return uuid;
-		}
+		shopService.update(item);
+		
+		return "redirect:./{shopNo}";
+	}
+	
+	// 파일명을 난수로 생성하는 함수
+	private String generateRandomFileName() {
+	    // 파일명을 난수로 생성하는 로직을 구현
+	    String uuid = UUID.randomUUID().toString();
+	    return uuid;
+	}
 	
 	//매장 페이지 예약 목록
 	@GetMapping("/booking/{shopNo}")
@@ -115,8 +115,6 @@ public class ShopController {
 		int total = (int) bookingService.totalShop(shopNo);
 		pager.setTotal(total);
 		model.addAttribute("pager", pager);
-		
-		
 		
 		pager.setKeyword("");
 		pager.setPerPage(5);
@@ -155,11 +153,15 @@ public class ShopController {
 	
 	//매장 설정
 	@GetMapping("/setting/{shopNo}")
-	String shopSetting(@PathVariable int shopNo, ShopTime shopTm, ShopTable shopTb, Model model, String timeDay, Pager pager) {
+	String shopSetting(@PathVariable int shopNo, ShopTime shopTm, ShopTable shopTb, Model model, /*String timeDay,*/ Pager pager, @RequestParam(value = "timeDay", required = false) String timeDay, HttpSession session) {
 		if (timeDay != null) shopTm.setTimeDay(timeDay);
 		else shopTm.setTimeDay("2");
 		
-		shopTm.setShopNo(shopNo);
+		shopTb.setShopNo(shopNo);
+
+		int total = (int) shopService.totalShopTable(shopNo);
+		pager.setTotal(total);
+		model.addAttribute("pager", pager);
 		
 		pager.setKeyword("");
 		pager.setPerPage(5);
@@ -172,26 +174,43 @@ public class ShopController {
 		
 		model.addAttribute("timelist", timelist);
 		model.addAttribute("tablelist", tablelist);
+		model.addAttribute("timeDay", timeDay);
+		
+		String msg = (String) session.getAttribute("msg");
+		model.addAttribute("msg", msg);
 		
 		return path + "shopSetting";
 	}
 	
 	//매장 시간대 등록
 	@PostMapping("/setting/{shopNo}/addtime")
-	String shopSettingTimeAdd(@PathVariable int shopNo, ShopTime shopTm, HttpSession session) {
+	String shopSettingTimeAdd(@PathVariable int shopNo, ShopTime shopTm, HttpSession session, RedirectAttributes redirect) {
 		shopTm.setShopNo(shopNo);
-		shopService.shopSettingTimeAdd(shopTm);
+		
+		for (int i=shopTm.getStartTime(); i<=shopTm.getEndTime(); i++) {
+			shopTm.setTimeHour(String.valueOf(i));
+			int checkCnt = shopService.shopSettingTimeCheck(shopTm);
+			if (checkCnt == 0) shopService.shopSettingTimeAdd(shopTm);
+			else session.setAttribute("msg", "이미 존재하는 영업시간입니다");
+		}		
 		
 		session.setAttribute("shopTm", shopTm);
+		
+		redirect.addAttribute("timeDay", shopTm.getTimeDay());
 		
 		return "redirect:.";
 	}
 	
 	//매장 시간대 삭제
 	@GetMapping("/setting/{shopNo}/deleteTime/{timeNo}")
-	String shopSettingTimeDel(@PathVariable int shopNo, @PathVariable int timeNo) {
+	String shopSettingTimeDel(@PathVariable int shopNo, @PathVariable int timeNo, RedirectAttributes redirect) {
+		
+		ShopTime shopTm = shopService.shopSettingTimeItem(timeNo);
+		redirect.addAttribute("timeDay", shopTm.getTimeDay());
 		
 		shopService.shopSettingTimeDel(timeNo);
+		
+		System.out.println(shopTm.getTimeDay());
 		
 		return "redirect:../";
 	}
