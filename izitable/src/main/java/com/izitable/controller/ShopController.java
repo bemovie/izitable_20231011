@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,34 +60,46 @@ public class ShopController {
 	}
 	
 	//매장 정보 변경
-	String webPath = "/upload/";
-	@PostMapping("/update/{shopNo}")
-	String update(Shop item, Image image, HttpServletRequest req) throws IOException {
-		
-		//매장 프로필 사진 업로드
-		MultipartFile file = image.getUploadFile();
-		System.out.println(file.getOriginalFilename());
-		
-		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
-		System.out.println(folderPath);
-		
-		if(file != null && !file.isEmpty()) {
-			String filename = file.getOriginalFilename();
+		String webPath = "/upload/";
+		@PostMapping("/update/{shopNo}")
+		String update(Shop item, Image image, HttpServletRequest req) throws IOException {
 			
-			//file.transferTo(new File(uploadPath  + filename));
-			file.transferTo(new File(folderPath  + filename));
-			
+			//매장 프로필 사진 업로드
+			MultipartFile file = image.getUploadFile();
 			System.out.println(file.getOriginalFilename());
 			
-			list.add(image);
+			String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+			System.out.println(folderPath);
 			
-			item.setImgFilename(filename);
+			if(file != null && !file.isEmpty()) {
+				String filename = file.getOriginalFilename();
+				String extension = filename.substring(filename.lastIndexOf("."));
+		        String randomFileName = generateRandomFileName() + extension;
+		        
+		        String filePath = folderPath + randomFileName;
+				
+				
+				//file.transferTo(new File(uploadPath  + filename));
+				file.transferTo(new File(filePath));
+				
+				System.out.println(file.getOriginalFilename());
+				
+				list.add(image);
+				
+				item.setImgFilename(randomFileName);
+			}
+			
+			shopService.update(item);
+			
+			return "redirect:./{shopNo}";
 		}
 		
-		shopService.update(item);
-		
-		return "redirect:./{shopNo}";
-	}
+		// 파일명을 난수로 생성하는 함수
+		private String generateRandomFileName() {
+		    // 파일명을 난수로 생성하는 로직을 구현
+		    String uuid = UUID.randomUUID().toString();
+		    return uuid;
+		}
 	
 	//매장 페이지 예약 목록
 	@GetMapping("/booking/{shopNo}")
@@ -146,15 +159,11 @@ public class ShopController {
 		else shopTm.setTimeDay("2");
 		
 		shopTm.setShopNo(shopNo);
-		shopTb.setShopNo(shopNo);
-		
-		int total = (int) shopService.totalShopTable(shopNo);
-		pager.setTotal(total);
-		model.addAttribute("pager", pager);
 		
 		pager.setKeyword("");
 		pager.setPerPage(5);
 		shopTb.setPerPage(5);
+		shopTb.setShopNo(shopNo);
 		
 		
 		List<Shop> timelist = shopService.shopSettingTimeList(shopTm);

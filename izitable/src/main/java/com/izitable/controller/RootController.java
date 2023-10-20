@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -202,25 +203,37 @@ public class RootController {
 			System.out.println(file.getOriginalFilename());
 			
 			String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+			
 			System.out.println(folderPath);
 			
 			if(file != null && !file.isEmpty()) {
 				String filename = file.getOriginalFilename();
+				String extension = filename.substring(filename.lastIndexOf("."));
+	            String randomFileName = generateRandomFileName() + extension;
+	            
+	            //파일 저장 경로
+	            String filePath = folderPath + randomFileName;
 				
 				//file.transferTo(new File(uploadPath  + filename));
-				file.transferTo(new File(folderPath  + filename));
+				file.transferTo(new File(filePath));
 				
 				System.out.println(file.getOriginalFilename());
 				
 				list.add(image);
 				
-				shop.setImgFilename(filename);
+				shop.setImgFilename(randomFileName);
 			}
 			
 			shopService.add(shop);
 		}
 		
 		return "join/joinComplete";
+	}
+	
+	// 파일명을 난수로 생성하는 함수
+	private String generateRandomFileName() {
+	    // UUID를 사용하여 파일명을 생성
+	    return UUID.randomUUID().toString();
 	}
 	
 	//아이디 중복체크
