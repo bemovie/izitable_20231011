@@ -115,6 +115,7 @@
 		AND day = #{timeDay}
 		</where>
 		ORDER BY day ASC, hour ASC
+		
 	</select>
 	
 	<insert id="shopSettingTableAdd">
@@ -126,7 +127,7 @@
 		SELECT * FROM tbl_shop_table
 		WHERE tbl_shop_table.shop_no = #{shopNo}
 		ORDER BY number ASC, name ASC
-		<!-- LIMIT #{offset}, #{perPage}  -->
+		LIMIT #{offset}, #{perPage}
 	</select>
 	
 	<delete id="shopSettingTableDel">

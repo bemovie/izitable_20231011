@@ -93,10 +93,10 @@
 					</c:forEach>					
 				</tbody>
 				
-				<!-- 
+				
 				<tfoot>
 					<tr>
-						<td colspan="8">
+						<td colspan="4">
 							<ul class="pagination justify-content-center mt-3">
 								<li class="page-item"><a class="page-link" href="?page=1${pager.query}">처음</a></li>
 								<li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>
@@ -109,7 +109,7 @@
 						</td>
 					</tr>
 				</tfoot>
-				 -->
+				
 				
 			</table>
 		</div>

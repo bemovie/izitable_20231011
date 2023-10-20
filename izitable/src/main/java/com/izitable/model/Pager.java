@@ -60,7 +60,7 @@ public class Pager {
 	
 	public int getPrev() {
 		//return  page <= perGroup ? 1 : (((page - 1) / perGroup) - 1 ) * perGroup + 1; 
-		return page -1;
+		return page ==1 ? 1 : page -1;
 	}
 	
 	public int getNext() {
@@ -68,7 +68,7 @@ public class Pager {
 //		int last = getLast();
 //		
 //		return  next < last ? next :last;
-		return page +1;
+		return page == getLast() ? getLast() : page +1;
 	}
 	
 	public List<Integer> getList() {

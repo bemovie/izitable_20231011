@@ -79,7 +79,7 @@
 				</tbody>
 				
 				
-				<c:if test="${fn:length(list) != 0}">
+				
 			<tfoot>
 				<tr>
 					<td colspan="11">
@@ -95,7 +95,7 @@
 					</td>
 				</tr>
 			</tfoot>
-			</c:if>
+			
 				
 			</table>
 		</div>
