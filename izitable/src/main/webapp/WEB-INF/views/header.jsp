@@ -8,6 +8,9 @@
     rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+    
+<!-- 파비콘! -->
+<link href="${pageContext.request.contextPath}/resources/image/favicon.png" rel="icon">
 
 <title>IZITable - 실시간 음식점 예약 플랫폼</title>
 
@@ -69,3 +72,4 @@
         margin-top: 30px;
     }
 </style>
+
