@@ -65,15 +65,15 @@
 							<c:if test="${sessionScope.user != null}">
 								<c:choose>
 									<c:when test="${sessionScope.user.userNo <= 0}">
-										<li class="scroll-to-section"><a href="/admin/userlist">${sessionScope.user.userName}님</a></li>
+										<li class="scroll-to-section"><a href="/admin/userlist"><img src="/resources/image/normal2.png" style="height: 20px; width: 20px; margin-right: 5px;">${sessionScope.user.userName}님</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="scroll-to-section"><a href="/user/booking/${sessionScope.user.userNo}">${sessionScope.user.userName}님</a></li>
+										<li class="scroll-to-section"><a href="/user/booking/${sessionScope.user.userNo}"><img src="/resources/image/normal.png" style="height: 30px; width: 30px; margin-right: 5px;">${sessionScope.user.userName}님</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:if>
 							<c:if test="${sessionScope.shop != null}">
-								<li class="scroll-to-section"><a href="/shop/booking/${sessionScope.shop.shopNo}">${sessionScope.shop.compName}님</a></li>
+								<li class="scroll-to-section"><a href="/shop/booking/${sessionScope.shop.shopNo}"><img src="/resources/image/shop.png" style="height: 30px; width: 30px; margin-right: 5px;">${sessionScope.shop.compName}님</a></li>
 							</c:if>
 						</c:if>
                         
