@@ -64,4 +64,7 @@ public interface ShopService {
 	//영업시간 추가 시 중복 체크
 	int shopSettingTimeCheck(ShopTime shopTm);
 
+	//지도 + 매장 리스트
+	List<Shop> list_map(Pager pager);
+
 }

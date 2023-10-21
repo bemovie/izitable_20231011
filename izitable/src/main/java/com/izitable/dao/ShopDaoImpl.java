@@ -144,4 +144,10 @@ public class ShopDaoImpl implements ShopDao {
 		return sql.selectOne("shop.shopSettingTimeCheck", shopTm);
 	}	
 
+	//지도 + 매장 리스트
+	@Override
+	public List<Shop> list_map(Pager pager) {
+		return sql.selectList("shop.list_map", pager);
+	}
+	
 }

@@ -163,4 +163,10 @@ public class ShopServiceImpl implements ShopService {
 		return dao.shopSettingTimeCheck(shopTm);
 	}
 	
+	//지도 + 매장 리스트
+	@Override
+	public List<Shop> list_map(Pager pager) {
+		return dao.list_map(pager);
+	}
+	
 }

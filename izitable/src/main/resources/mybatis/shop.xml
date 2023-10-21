@@ -48,6 +48,10 @@
 		LIMIT 10
 	</select>
 	
+	<select id="list_map" resultMap="ShopMap">
+		SELECT * FROM (<include refid="search"></include>) sub
+	</select>
+	
 	<select id="list_admin" resultMap="ShopMap">
 		SELECT * FROM (<include refid="search"></include>) sub
  		LIMIT #{offset}, #{perPage}
