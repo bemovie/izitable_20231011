@@ -26,22 +26,24 @@
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h6>Restaurant Info</h6><br>
-                        	<div style="display: inline-block;">
-                        		<img src="/upload/${shop.imgFilename}" width="200" height="200">
-                        	</div>
-                        	<div style="display: inline-block; width:350px; height:250px; vertical-align: middle; margin-left: 10px; /*border: 2px solid black*/">
-	                            <h2>${shop.compName}</h2>
-	                            <ul style="color: white">
-	                        		<li>${shop.compIntro}</li>
-	                        		<li>사업자 번호 : ${shop.compNum}</li>
-	                        		<li>대표 : ${shop.compCeo}</li>
-	                        		<li>주소 : ${shop.compAddr2}</li>
-	                        		<li>영업시간 : ${shop.compHour}</li>
-	                        		<li>주차 : ${shop.parking}</li>
-	                        	</ul>
-                        	</div>
+                            <!-- <div style="border: 2px solid white; padding-bottom: 10px;"> -->
+	                        	<div style="display: inline-block;">
+	                        		<img src="/upload/${shop.imgFilename}" width="200" height="200">
+	                        	</div>
+	                        	<div style="display: inline-block; width:350px; height:250px; vertical-align: middle; margin-left: 10px; /*border: 2px solid black*/">
+		                            <h2>${shop.compName}</h2>
+		                            <ul style="color: white">
+		                        		<li>${shop.compIntro}</li>
+		                        		<li>사업자 번호 : ${shop.compNum}</li>
+		                        		<li>대표 : ${shop.compCeo}</li>
+		                        		<li>주소 : ${shop.compAddr2}</li>
+		                        		<li>영업시간 : ${shop.compHour}</li>
+		                        		<li>주차 : ${shop.parking}</li>
+		                        	</ul>
+	                        	</div>
+	                        <!-- </div> -->
                         </div>
-                        <p>이벤트 및 인원수 등 추가적인 문의 필요시 이지테이블(IZITABLE) 또는 매장으로 <br>직접 연락 부탁드립니다.</p>
+                        <p>이벤트 및 인원수 등 추가적인 문의 필요시 매장 또는 이지테이블(IZITabe)로 직접 연락 부탁드립니다.</p>
                         <!-- <p>If you need additional inquiries such as events and number of people, please contact the IZITABLE or the store directly.</p> -->
                         <div class="row">
                             <div class="col-lg-6">

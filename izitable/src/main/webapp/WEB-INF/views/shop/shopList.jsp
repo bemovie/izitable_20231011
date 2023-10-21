@@ -186,31 +186,98 @@ map.setCenter(coords);
 
 
 
+//마커 속성
+var MARKER_WIDTH = 33, // 기본, 클릭 마커의 너비
+    MARKER_HEIGHT = 36, // 기본, 클릭 마커의 높이
+    OFFSET_X = 12, // 기본, 클릭 마커의 기준 X좌표
+    OFFSET_Y = MARKER_HEIGHT, // 기본, 클릭 마커의 기준 Y좌표
+    OVER_MARKER_WIDTH = 40, // 오버 마커의 너비
+    OVER_MARKER_HEIGHT = 42, // 오버 마커의 높이
+    OVER_OFFSET_X = 13, // 오버 마커의 기준 X좌표
+    OVER_OFFSET_Y = OVER_MARKER_HEIGHT, // 오버 마커의 기준 Y좌표
+    SPRITE_MARKER_URL = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png', // 스프라이트 마커 이미지 URL
+    SPRITE_WIDTH = 126, // 스프라이트 이미지 너비
+    SPRITE_HEIGHT = 146, // 스프라이트 이미지 높이
+    SPRITE_GAP = 10; // 스프라이트 이미지에서 마커간 간격
 
+var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT), // 기본, 클릭 마커의 크기
+    markerOffset = new kakao.maps.Point(OFFSET_X, OFFSET_Y), // 기본, 클릭 마커의 기준좌표
+    overMarkerSize = new kakao.maps.Size(OVER_MARKER_WIDTH, OVER_MARKER_HEIGHT), // 오버 마커의 크기
+    overMarkerOffset = new kakao.maps.Point(OVER_OFFSET_X, OVER_OFFSET_Y), // 오버 마커의 기준 좌표
+    spriteImageSize = new kakao.maps.Size(SPRITE_WIDTH, SPRITE_HEIGHT); // 스프라이트 이미지의 크기
+//마커 속성
+    
+    
+//마커의 위치
 var positions = [
 	{
         title: `${item.compName}`, 
         latlng: new kakao.maps.LatLng(${item.latitude}, ${item.longitude})
     }
-]
+],
+selectedMarker = null; // 클릭한 마커를 담을 변수
+
 
 //마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 
+
+//지도 위에 마커를 표시합니다
 for (var i = 0; i < positions.length; i ++) {
+	var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
+    originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
+    overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
+    normalOrigin = new kakao.maps.Point(0, originY), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
+    clickOrigin = new kakao.maps.Point(gapX, originY), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
+    overOrigin = new kakao.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
+	
+	// 마커를 생성하고 지도위에 표시합니다
+    addMarker(positions[i], normalOrigin, overOrigin, clickOrigin);
+}
+
+function addMarker(position, normalOrigin, overOrigin, clickOrigin) {
 	
 	// 마커 이미지의 이미지 크기 입니다
-    var imageSize = new kakao.maps.Size(24, 35); 
+    //var imageSize = new kakao.maps.Size(24, 35); 
     
     // 마커 이미지를 생성합니다    
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    //var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    
+    // 기본 마커이미지, 오버 마커이미지, 클릭 마커이미지를 생성합니다
+    var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
+    overImage = createMarkerImage(overMarkerSize, overMarkerOffset, overOrigin),
+    clickImage = createMarkerImage(markerSize, markerOffset, clickOrigin);
     
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: positions[i].latlng, // 마커를 표시할 위치
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        image : markerImage // 마커 이미지 
+        //image : markerImage // 마커 이미지 
+        image: normalImage
+    });
+    
+ 	// 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
+    marker.normalImage = normalImage;
+    
+ 	// 마커에 mouseover 이벤트를 등록합니다
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+
+        // 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면
+        // 마커의 이미지를 오버 이미지로 변경합니다
+        if (!selectedMarker || selectedMarker !== marker) {
+            marker.setImage(overImage);
+        }
+    });
+
+    // 마커에 mouseout 이벤트를 등록합니다
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+
+        // 클릭된 마커가 없고, mouseout된 마커가 클릭된 마커가 아니면
+        // 마커의 이미지를 기본 이미지로 변경합니다
+        if (!selectedMarker || selectedMarker !== marker) {
+            marker.setImage(normalImage);
+        }
     });
     
  	// 마커에 클릭이벤트를 등록합니다
@@ -221,8 +288,24 @@ for (var i = 0; i < positions.length; i ++) {
     	$('.focus').removeClass('focus')
     	$(sDiv).addClass('focus').focus();
     	//alert("매장번호" + ${item.shopNo});
+    	
+    	
+    	// 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
+        // 마커의 이미지를 클릭 이미지로 변경합니다
+        if (!selectedMarker || selectedMarker !== marker) {
+
+            // 클릭된 마커 객체가 null이 아니면
+            // 클릭된 마커의 이미지를 기본 이미지로 변경하고
+            !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);
+
+            // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
+            marker.setImage(clickImage);
+        }
+
+        // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
+        selectedMarker = marker;
     });
- 	
+	
  	/*
  	// 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
@@ -239,7 +322,25 @@ for (var i = 0; i < positions.length; i ++) {
     });
  	*/
 }
+ 	
 
+// MakrerImage 객체를 생성하여 반환하는 함수입니다
+function createMarkerImage(markerSize, offset, spriteOrigin) {
+    var markerImage = new kakao.maps.MarkerImage(
+        SPRITE_MARKER_URL, // 스프라이트 마커 이미지 URL
+        markerSize, // 마커의 크기
+        {
+            offset: offset, // 마커 이미지에서의 기준 좌표
+            spriteOrigin: spriteOrigin, // 스트라이프 이미지 중 사용할 영역의 좌상단 좌표
+            spriteSize: spriteImageSize // 스프라이트 이미지의 크기
+        }
+    );
+    
+    return markerImage;
+}
+ 	
+
+ 	
 //검색 결과가 있을 때, 첫 번째 마커를 기준으로 지도 중심을 설정합니다
 if (positions.length > 0) {
     map.setCenter(positions[0].latlng);
@@ -393,6 +494,7 @@ ${info.shopNo}
 
 
 <!-- 적용x -->
+<!-- 
 <script>
 //배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
 function setMarkers(map) {
@@ -519,6 +621,7 @@ function applyFn(){
 	});
 };
 </script>
+ -->
 <!-- 적용x -->
 
 
