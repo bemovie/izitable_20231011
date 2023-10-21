@@ -43,7 +43,7 @@
 	<select id="list" resultMap="BookingMap">
 		SELECT * FROM tbl_booking b
 		JOIN tbl_user u ON b.user_no = u.no JOIN tbl_shop s ON b.shop_no = s.no 
-		ORDER BY date, time
+		ORDER BY date DESC, time DESC
 		LIMIT #{offset}, #{perPage}
 	</select>
 	
@@ -67,10 +67,11 @@
 	</insert>
 	
 	<select id="userBookingList" resultMap="BookingMap">
-		SELECT tbl_booking.*, tbl_shop.* FROM tbl_booking JOIN tbl_shop ON tbl_booking.shop_no = tbl_shop.no
+		SELECT tbl_booking.*, tbl_shop.* 
+		FROM tbl_booking JOIN tbl_shop ON tbl_booking.shop_no = tbl_shop.no
 		WHERE tbl_booking.user_no = #{userNo}
-		ORDER BY date, time
-		LIMIT #{offset}, #{perPage} 
+		ORDER BY date DESC, time DESC
+		LIMIT #{offset}, #{perPage}
 	</select>
 	
 	<select id="userBookingDelete">
@@ -82,7 +83,7 @@
 		SELECT tbl_booking.*, tbl_user.* 
 		FROM tbl_booking JOIN tbl_user ON tbl_booking.user_no = tbl_user.no
 		WHERE tbl_booking.shop_no = #{shopNo}
-		ORDER BY date, time
+		ORDER BY date DESC, time DESC
 		LIMIT #{offset}, #{perPage}
 	</select>
 	

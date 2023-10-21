@@ -174,9 +174,10 @@ public class ShopController {
 		
 		model.addAttribute("timelist", timelist);
 		model.addAttribute("tablelist", tablelist);
-		model.addAttribute("timeDay", timeDay);
+		model.addAttribute("timeDay", shopTm.getTimeDay());
 		
 		String msg = (String) session.getAttribute("msg");
+		session.removeAttribute("msg");
 		model.addAttribute("msg", msg);
 		
 		return path + "shopSetting";

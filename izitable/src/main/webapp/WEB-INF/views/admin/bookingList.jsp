@@ -49,13 +49,16 @@
 					</tr>
 				</thead>
 				<tbody>
+					<jsp:useBean id="now" class="java.util.Date" />
+					<fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일" var="today" />
 					<c:forEach var="item" items="${list}">
-						<form method="post" action="/admin/bookingupdate/${item.bookingNo}">
-							<tr>
+					<fmt:formatDate value="${item.bookingDate}" pattern="yyyy년 MM월 dd일" var="bookingDate" />
+						<!-- <form method="post" action="/admin/bookingupdate/${item.bookingNo}"> -->
+							<tr <c:if test="${bookingDate < today}">class="table-danger"</c:if>>
 								<td>${item.bookingNo}</td>
 								<td>${item.userName}</td>
 								<td>${item.compName}</td>
-								<td><fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd" /></td>
+								<td>${bookingDate}</td>
 								<td>${item.bookingTime}:00</td>
 								<td>${item.bookingMemNum}</td>
 								
@@ -70,7 +73,7 @@
 									<button><a href="userdelete/${item.bookingNo}" class="btn btn-warning btn-sm"  onclick="delBtn()">삭제</a></button>
 								</td>
 							</tr>
-						</form>	
+						<!-- </form> -->	
 					</c:forEach>
 					
 					<c:if test="${list.size() < 1}">

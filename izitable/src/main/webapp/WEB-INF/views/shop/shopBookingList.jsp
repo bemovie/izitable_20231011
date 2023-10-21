@@ -53,22 +53,26 @@
 					</tr>
 				</thead>
 				<tbody>
+					<jsp:useBean id="now" class="java.util.Date" />
+					<fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일" var="today" />
+					
 					<c:forEach var="item" items="${list}">
-							<tr>
-								<td>${item.bookingNo}</td>
-								<td>${item.userName}</td>
-								<td>${item.userEmail}</td>
-								<td>${item.userPhone}</td>
-								<td><fmt:formatDate value="${item.bookingDate}" pattern="yyyy-MM-dd"/></td>
-								<td>${item.bookingTime}:00</td>
-								<td>${item.bookingMemNum}</td>
-								<td>${item.tableNumber}</td>
-								<td>${item.tableName}</td>
-								<td>${item.message}</td>
-								<td>
-									<button><a href="/shop/booking/${item.shopNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm btn-del">삭제</a></button>
-								</td>
-							</tr>
+					<fmt:formatDate value="${item.bookingDate}" pattern="yyyy년 MM월 dd일" var="bookingDate" />
+						<tr <c:if test="${bookingDate < today}">class="table-danger"</c:if>>
+							<td>${item.bookingNo}</td>
+							<td>${item.userName}</td>
+							<td>${item.userEmail}</td>
+							<td>${item.userPhone}</td>
+							<td>${bookingDate}</td>
+							<td>${item.bookingTime}:00</td>
+							<td>${item.bookingMemNum}</td>
+							<td>${item.tableNumber}</td>
+							<td>${item.tableName}</td>
+							<td>${item.message}</td>
+							<td>
+								<button><a href="/shop/booking/${item.shopNo}/delete/${item.bookingNo}" class="btn btn-warning btn-sm btn-del">삭제</a></button>
+							</td>
+						</tr>
 					</c:forEach>	
 					
 					<c:if test="${list.size() < 1}">
