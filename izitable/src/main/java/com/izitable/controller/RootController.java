@@ -299,7 +299,7 @@ public class RootController {
 	@GetMapping("/list")
 	String list(Model model, Pager pager) {
 		
-		List<Shop> list = shopService.list_admin(pager);
+		List<Shop> list = shopService.list_map(pager);
 		
 		model.addAttribute("list", list);
 		
