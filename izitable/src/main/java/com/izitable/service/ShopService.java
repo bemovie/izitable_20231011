@@ -22,7 +22,7 @@ public interface ShopService {
 
 	void add(Shop shop);
 
-	int duplicateCheck(Shop shop);
+	int duplicateCheck(String shopEmail);
 
 	void shopSettingTimeAdd(ShopTime shopTm);
 

@@ -48,8 +48,8 @@ public class ShopDaoImpl implements ShopDao {
 	}
 
 	@Override
-	public int duplicateCheck(Shop shop) {
-		return sql.selectOne("shop.duplicateCheck", shop);
+	public int duplicateCheck(String shopEmail) {
+		return sql.selectOne("shop.duplicateCheck", shopEmail);
 	}
 
 	@Override

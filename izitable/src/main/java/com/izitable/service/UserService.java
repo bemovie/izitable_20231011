@@ -21,7 +21,7 @@ public interface UserService {
 
 	User item(int userNo);
 
-	int duplicateCheck(User user);
+	int duplicateCheck(String userEmail);
 
 	User actionlogin(User user);
 

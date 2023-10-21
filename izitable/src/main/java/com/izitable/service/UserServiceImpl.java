@@ -70,8 +70,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int duplicateCheck(User user) {
-		return dao.duplicateCheck(user);
+	public int duplicateCheck(String userEmail) {
+		return dao.duplicateCheck(userEmail);
 	}
 
 	@Override

@@ -2,13 +2,12 @@ package com.izitable.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +19,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.izitable.model.Image;
 import com.izitable.model.Pager;
 import com.izitable.model.Shop;
 import com.izitable.model.User;
+import com.izitable.service.MailSendService;
 import com.izitable.service.ShopService;
 import com.izitable.service.UserService;
-
-import net.sf.json.JSONObject;
 
 @Controller
 public class RootController {
@@ -39,6 +38,10 @@ public class RootController {
 	
 	@Autowired
 	ShopService shopService;
+	
+	@Autowired
+	MailSendService mailservice;
+	
 	
 	//매장 프로필 사진 업로드 경로
 	private String uploadPath = "D:/upload/";
@@ -244,30 +247,39 @@ public class RootController {
 	}
 	
 	//아이디 중복체크
-	@PostMapping("/join/duplicateCheck")
-	public void duplicateCheck(User user, Shop shop, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+	@ResponseBody
+	@GetMapping("/join/duplicateCheck")
+	public HashMap<String, String> duplicateCheck(String email, HttpSession session) {
 		String successYn = "Y";
 		String message = "성공";
 		
-		JSONObject jo = new JSONObject();
-		response.setContentType("application/json; charset=utf-8"); 
 		
-		int duplicateCnt = 0;
-		if (user.getUserEmail() !=null) duplicateCnt = userService.duplicateCheck(user); //일반 회원 가입의 경우 중복 체크
-		else duplicateCnt = shopService.duplicateCheck(shop); //매장 가입의 경우 중복 체크
+		HashMap<String, String> jo = new HashMap<String, String>();
+		// response.setContentType("application/json; charset=utf-8"); 
+		System.out.println(email);
+		int duplicateCnt = userService.duplicateCheck(email); //일반 회원 가입의 경우 중복 체크
+		
+		
+		if(duplicateCnt == 0)
+			duplicateCnt = shopService.duplicateCheck(email); //매장 가입의 경우 중복 체크
 		
 		if(duplicateCnt > 0) {
 			successYn = "N";
 			message = "이미 사용중인 이메일입니다.";
-		} 
+		}
+		//이메일인증
+		else {
+			System.out.println("이메일 인증 요청");
+			System.out.println("이메일 인증 이메일 :" + email);
+				
+			mailservice.joinEmail(email);
+		
+		}
 
 		jo.put("successYn", successYn);
 		jo.put("message", message);
 		
-		PrintWriter printwriter = response.getWriter();
-		printwriter.println(jo.toString());
-		printwriter.flush();
-		printwriter.close();
+		return jo;
 	}
 	
 	/*

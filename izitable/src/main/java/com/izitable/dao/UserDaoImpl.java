@@ -52,8 +52,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int duplicateCheck(User user) {
-		return sql.selectOne("user.duplicateCheck", user);
+	public int duplicateCheck(String userEmail) {
+		return sql.selectOne("user.duplicateCheck", userEmail);
 	}
 
 }

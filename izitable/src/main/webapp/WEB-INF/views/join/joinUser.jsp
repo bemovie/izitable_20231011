@@ -46,6 +46,12 @@ join_input { margin-bottom: 30px; }
 				</div>
 				
 				<div class="join_input">
+					<label>인증번호 입력</label><br>
+					<input type="text" id="userEmailcheck" name="userEmailcheck" palceholder="인증번호를 입력해주세요">
+					<a href="#" id="btn-email-check" class="btn-sm spot fn" title="인증번호(새창열림)"><span>인증</span></a>
+				</div>
+				
+				<div class="join_input">
 					<label>이름</label><br>
 					<input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요">
 				</div>
@@ -73,7 +79,7 @@ join_input { margin-bottom: 30px; }
 				</div>
 				
 				영문, 숫자, 특수문자 등 3가지 사용시 8자 이상, 2가지 사용시 10자리 이상으로 설정해주세요.
-	
+
 				<div class="join_input">
 					<button type="submit" id="join" class="btn">등록</button>
 					<a href="/joinType"><button type="button" class="btn">뒤로</button></a>
@@ -90,24 +96,22 @@ $(document).ready(function() {
 		var userEmail = $("#userEmail").val();
 		
 		if(userEmail) {
-			$.ajax({
-				url : "/join/duplicateCheck",
-				type : "post",
-				data : {"userEmail" : userEmail},
-				dataType : "json",
-				success : function(data/*result*/) {
+			fetch("/join/duplicateCheck?email=" + userEmail, {
+				method : "GET",								
+			})
+			.then(resp => resp.json())
+			.then(data => {
 					/*alert(result.data.totalCount);*/
 					if(data.successYn == "Y") {
-						alert("사용가능한 ID입니다.");
+						alert("사용가능한 ID입니다. 인증번호가 전송되었습니다.");
 						$("#idCheckAt").val("Y");
 					}else{
 						alert(data.message);
 						$("#idCheckAt").val("N");
 					}
-				}, error : function() {
+				}).catch(()=> {
 					alert("error");
-				}
-			});
+				});
 		}else{
 			alert("ID를 입력해주세요.");
 		}

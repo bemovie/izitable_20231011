@@ -243,14 +243,14 @@ $(document).ready(function() {
 		
 		if(shopEmail) {
 			$.ajax({
-				url : "/join/duplicateCheck",
-				type : "post",
-				data : {"shopEmail" : shopEmail},
-				dataType : "json",
+				url : "/join/duplicateCheck?email=" + shopEmail,
+				type : "GET",
+				//contentType: "application/json",
+ 				dataType : "json",				
 				success : function(data/*result*/) {
 					/*alert(result.data.totalCount);*/
 					if(data.successYn == "Y") {
-						alert("사용가능한 ID입니다.");
+						alert("사용가능한 ID입니다. 인증번호가 전송되었습니다.");
 						$("#idCheckAt").val("Y");
 					}else{
 						alert(data.message);

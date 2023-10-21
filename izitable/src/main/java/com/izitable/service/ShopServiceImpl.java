@@ -72,8 +72,8 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public int duplicateCheck(Shop shop) {
-		return dao.duplicateCheck(shop);
+	public int duplicateCheck(String shopEmail) {
+		return dao.duplicateCheck(shopEmail);
 	}
 
 	@Override
