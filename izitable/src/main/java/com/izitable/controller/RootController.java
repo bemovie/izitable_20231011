@@ -162,41 +162,6 @@ public class RootController {
 		}
 		return "redirect:/";
 	}
-
-	//네이버 로그인
-			@PostMapping("/naverLogin")
-			public String naverLogin(@ModelAttribute("userVO") User user, HttpServletRequest request, ModelMap model, HttpSession session ) {
-				//model에 값이 있는지 확인한다. 
-				user.setUserPwd(user.getUserEmail());
-				User userVO = userService.actionlogin(user);
-				if(userVO != null && userVO.getUserEmail() != null && !userVO.getUserEmail().equals("") && userVO.getUserPhone().equals("naver가입자") ) {
-					
-					if(userVO.getUserEmail() != null && userVO.getUserName() != null) {
-						request.getSession().setAttribute("user", userVO);
-						return "redirect:/";
-					
-					}else {
-						model.addAttribute("loginMessage", "fail.common.login"); //로그인 정보가 올바르지 않습니다.	
-						return "redirect:/login";
-						}
-				}
-				else {
-					User naver = user;
-					naver.setUserEmail(user.getUserEmail());
-					naver.setUserPwd("");
-					naver.setUserName(user.getUserName());
-					naver.setUserPhone("naver가입자");
-					naver.setUserPhoneCert(naver.getUserPhoneCert());
-					userService.addKakao(naver);
-					
-					session.setAttribute("user", naver);
-				}
-				return "redirect:/";
-			}
-		
-	
-	
-	
 	
 	
 	//로그아웃

@@ -66,11 +66,8 @@ body {text-align: center; /*border: 2px solid black*/ margin-top: 50px;}
 		<div class="btn-cont">
 			<a class="btn-kakao" href="#" data-type="login">
 				<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="200" alt="카카오 로그인 버튼"/>
-			<br/><br>
-			<a class="btn-naver" href="#" data-type="login" id="naver_id_login">
-				<img src="/asset/front/images/common/btn-naver.png" width="200" alt="네이버 로그인 버튼"/>
-			</a>
-		</div>
+			
+					</div>
 		</fieldset>
 	</form>
 			<div>
@@ -181,96 +178,6 @@ function kakaoLogin(type){
 	})
 }
 </script>
-
-<!--네이버 로그인  -->
-   <!-- 네이버 로그인 버튼 노출 영역 -->
-  <div ></div>
-  <!-- //네이버 로그인 버튼 노출 영역 -->
-  <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("vBzrSa7Q3a2LO1jDPLdi", "http://localhost:8083/naverLogin");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("green", 3,50);
-  	naver_id_login.setDomain("http://localhost:8083");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  </script>
-  <!-- 네이버아디디로로그인 초기화 Script -->
-<script type="text/javascript">
-
-
-
-	var naverLogin = new naver.LoginWithNaverId(
-		{
-			clientId: "vBzrSa7Q3a2LO1jDPLdi",
-			callbackUrl: "http://localhost:8083/naverLogin",
-			isPopup: false, /* 팝업을 통한 연동처리 여부 */
-			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
-		}
-	);
-	/* 설정정보를 초기화하고 연동을 준비 */
-	naverLogin.init();
-
-
-	</script>
-	
-<!--네이버 로그인 콜백  -->	
-	
-	callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바로 main으로 redirect하기때문에 이 메시지가 보이면 안됩니다.
-
-	<!-- (1) LoginWithNaverId Javscript SDK -->
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-
-
-<!-- <script type="text/javascript">
-  var naver_id_login = new naver_id_login("vBzrSa7Q3a2LO1jDPLdi", "http://localhost:8083/login");
-  // 접근 토큰 값 출력
-  alert(naver_id_login.oauthParams.access_token);
-  // 네이버 사용자 프로필 조회
-  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
-    alert(naver_id_login.getProfileData('email'));
-    alert(naver_id_login.getProfileData('nickname'));
-  }
-</script> -->
-	
-	<script>
-		var naver_id_login = new naver.LoginWithNaverId(
-			{
-				clientId: "{vBzrSa7Q3a2LO1jDPLdi}",
-				callbackUrl: "{http://localhost:8083/naverLogin}",
-				isPopup: false,
-				callbackHandle: true
-				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
-			}
-		);
-
-		/* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-		naver_id_login.init();
-
-		/* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
-		window.addEventListener('load', function () {
-			naver_id_login.getLoginStatus(function (status) {
-				if (status) {
-					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-					var email = naver_id_login.user.getEmail();
-					console.log(email); // 사용자 이메일 정보를 받을수 있습니다.
-            		console.log(naver_id_login.user); //사용자 정보를 받을수 있습니다.
-                    if( email == undefined || email == null) {
-						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-						naver_id_login.reprompt();
-						return;
-					}
-
-					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/login");
-				} else {
-					console.log("callback 처리에 실패하였습니다.");
-				}
-			});
-		});
-	</script>
 	
 	
 
