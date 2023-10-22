@@ -147,7 +147,7 @@
     var tInp = document.querySelector('#bookingTime');
                   
 	dInp.onchange = function() {
-		alert('test');
+		//alert('test');
 		console.log(sInp.value, dInp.value);
 		
 		//select box option 초기화
@@ -199,7 +199,7 @@
     var nInp = document.querySelector('#bookingMemNum');
                   
     tInp.onchange = function() {
-		alert('test');
+		//alert('test');
 		console.log(sInp.value, dInp.value, tInp.value);
 		
 		//select box option 초기화
