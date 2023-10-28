@@ -32,8 +32,7 @@
 
 ## 프로젝트 도면 및 사진
 
-
-
+![Main-비주얼+인기음식점](https://github.com/bemovie/izitable_20231011/assets/127908469/fc448e63-5721-4699-8446-97ad282b7ace)
 
 
 
