@@ -32,21 +32,22 @@
 
 ## 프로젝트 도면 및 사진
 
+- 메인 페이지
+
 ![Main-비주얼+인기음식점](https://github.com/bemovie/izitable_20231011/assets/127908469/fc448e63-5721-4699-8446-97ad282b7ace)
 
-<메인 페이지>
+- 지도, 리스트 페이지
 
 ![지도+리스트](https://github.com/bemovie/izitable_20231011/assets/127908469/961b50ae-9c9f-41ca-b4ed-97e64ceac019)
 
-<지도, 리스트 페이지>
+- 마이 페이지 (회원)
 
 ![예약관리](https://github.com/bemovie/izitable_20231011/assets/127908469/ed6a9de0-70ec-4b39-a3c8-9f654cdda750)
 
-<마이 페이지 (회원)>
+- 마이 페이지 (매장)
 
 ![마이페이지(매장)](https://github.com/bemovie/izitable_20231011/assets/127908469/0f15c97f-ce5d-4ba6-824a-24179ea60053)
 
-<마이 페이지 (매장)>
 
 
 
