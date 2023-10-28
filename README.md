@@ -36,13 +36,26 @@
 
 ![Main-비주얼+인기음식점](https://github.com/bemovie/izitable_20231011/assets/127908469/fc448e63-5721-4699-8446-97ad282b7ace)
 
+
+- 회원가입 페이지
+
+![Join](https://github.com/bemovie/izitable_20231011/assets/127908469/3d08b92f-330b-4a25-9256-4d1a0dc74ca4)
+
+
+- 로그인 페이지
+
+![Login](https://github.com/bemovie/izitable_20231011/assets/127908469/8d4317b7-376b-4af6-83a1-59df98da2ac0)
+
+
 - 지도, 리스트 페이지
 
 ![지도+리스트](https://github.com/bemovie/izitable_20231011/assets/127908469/961b50ae-9c9f-41ca-b4ed-97e64ceac019)
 
+
 - 마이 페이지 (회원)
 
 ![예약관리](https://github.com/bemovie/izitable_20231011/assets/127908469/ed6a9de0-70ec-4b39-a3c8-9f654cdda750)
+
 
 - 마이 페이지 (매장)
 
