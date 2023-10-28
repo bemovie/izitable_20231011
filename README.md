@@ -76,5 +76,8 @@
 ![마이페이지(매장)](https://github.com/bemovie/izitable_20231011/assets/127908469/0f15c97f-ce5d-4ba6-824a-24179ea60053)
 
 
+## 시연영상
+
+https://youtu.be/n04AlzZz7Is
 
 
