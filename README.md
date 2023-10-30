@@ -46,6 +46,11 @@
 ![이지테이블-erd](https://github.com/bemovie/izitable_20231011/assets/127908469/bc507b5d-f6f3-4805-8021-59a177347b5e)
 
 
+## 프로젝트 패널
+
+![이지테이블_패널](https://github.com/bemovie/izitable_20231011/assets/127908469/bf5bdec8-30cd-4f95-ba2b-0357e5022cdb)
+
+
 ## 프로젝트 페이지
 
 - 메인 페이지
